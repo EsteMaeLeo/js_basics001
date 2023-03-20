@@ -137,9 +137,74 @@ if (a1 >= valMin && a1 <= valMax) {
 
 /*****************OR*****************************/
 
-let vacaciones = true, diaDescanso = false;
-if(vacaciones || diaDescanso){
-    console.log("Puede asistir al juego");
-}else{
-    console.log("NO! Puede asistir al juego");
+let vacaciones = true,
+  diaDescanso = false;
+if (vacaciones || diaDescanso) {
+  console.log("Puede asistir al juego");
+} else {
+  console.log("NO! Puede asistir al juego");
 }
+
+/*****************if else*****************************/
+let resultado = 3 > 2 ? "Verdadero" : "Falso";
+console.log(resultado);
+
+let pair = 9;
+resultado = 9 % 2 == 0 ? "Pair number" : "Not pair";
+console.log(resultado);
+
+/*****************string to number*****************************/
+let stNumber = "10";
+console.log(stNumber);
+console.log(typeof stNumber);
+let vote = Number(stNumber);
+console.log(vote);
+console.log(typeof vote);
+
+if (vote >= 18) {
+  console.log("Yeap you can vote");
+} else {
+  console.log("nope you can not vote");
+}
+
+let canVote = vote >= 18 ? "You can vote" : "Nope you can not vote";
+console.log(canVote);
+
+/***************** ISNAN *****************************/
+let stNumber2 = "18x";
+console.log(stNumber2);
+
+let vote2 = Number(stNumber2);
+console.log(vote2);
+
+if (isNaN(vote2)) {
+  console.log("is not a number");
+} else {
+  if (vote2 >= 18) {
+    console.log("Yeap you can vote");
+  } else {
+    console.log("nope you can not vote");
+  }
+}
+if (isNaN(vote2)) {
+  console.log("is not a number");
+} else {
+  let canVote = vote2 >= 18 ? "You can vote" : "Nope you can not vote";
+  console.log(canVote);
+}
+
+/*****************  *****************************/
+
+let q = 5,
+  w = 10;
+let r = ++q + w--;
+// q = 6 w = 10 total 16 but next uses "W" will be 9
+console.log(q);
+console.log(w);
+console.log(r);
+
+let resul = 4 + (5 * 6) / 3;
+console.log(resul);
+
+resul = (4 + 5) * 6 / 3;
+console.log(resul);
