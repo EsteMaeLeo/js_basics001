@@ -119,10 +119,27 @@ if (par % 2 == 0) {
 let edad = 28;
 adulto = 18;
 if (edad >= adulto) {
-    console.log("Yeap is an adult you can drink now");
-}else{
-    console.log("Dude nope you are not an adult");
+  console.log("Yeap is an adult you can drink now");
+} else {
+  console.log("Dude nope you are not an adult");
 }
 
-/**************************************************/
+/*****************AND*****************************/
+let a1 = 5;
+let valMin = 0;
+let valMax = 10;
 
+if (a1 >= valMin && a1 <= valMax) {
+  console.log("value is in the range");
+} else {
+  console.log("values is not in the range");
+}
+
+/*****************OR*****************************/
+
+let vacaciones = true, diaDescanso = false;
+if(vacaciones || diaDescanso){
+    console.log("Puede asistir al juego");
+}else{
+    console.log("NO! Puede asistir al juego");
+}
