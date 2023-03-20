@@ -108,3 +108,54 @@ switch (mes) {
     break;
 }
 console.log(estacion);
+
+// cycles
+//while
+let contador = 0;
+while (contador < 3) {
+  console.log(contador);
+  contador++;
+}
+console.log("--End--");
+
+//do while
+contador = 0;
+do {
+  console.log(contador);
+  contador++;
+} while (contador < 3);
+console.log("--End--");
+
+//FOR
+for (let i = 0; i < 3; i++) {
+  console.log(i);
+}
+console.log("--End--");
+
+//BREAK
+for (let cont = 0; cont <= 10; cont++) {
+  if (cont % 2 == 0) {
+    console.log(cont);
+    break;
+  }
+}
+console.log("--End--");
+
+//CONTINUE
+for (let cont2 = 0; cont2 <= 10; cont2++) {
+  if (cont2 % 2 !== 0) {
+    continue;
+  }
+  console.log(cont2);
+}
+console.log("--End--");
+
+//labels but not recommended usage
+start:
+for (let cont3 = 0; cont3 <= 10; cont3++) {
+    if (cont3 % 2 !== 0) {
+      continue start;
+    }
+    console.log(cont3);
+  }
+  console.log("--End--");
