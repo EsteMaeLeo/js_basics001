@@ -1,18 +1,47 @@
 // objects
+// function constructor type persona
+function Persona(nombre, apellido, email){
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.email = email;
+    this.nombreCompleto = function(){
+        return this.nombre + " " + this.apellido;
+    }
+}
 
+let padre = new Persona("Peter", "Parker", "spidy@gmail.com");
+console.log(padre);
+console.log(padre.nombreCompleto());
+let madre = new Persona("Mary", "Parker", "maryparker@gmail.com");
+console.log(madre);
+console.log(madre.nombreCompleto());
+
+
+
+/**********************/
 let persona = {
   nombre: "John",
   apellido: "Rod",
   email: "hnojdor@email.com",
   edad: 28,
-  nombreCompleto: function () {
+  idioma: 'es',
+  get langu(){
+    return this.idioma.toUpperCase();
+  },
+  set langu(langu){
+    this.idioma = langu.toUpperCase();
+  },
+  //get method
+  get nombreCompleto () {
     return this.nombre + " " + this.apellido;
   },
 };
 
-console.log(persona.nombre);
+console.log(persona.langu);
+persona.langu = "en";
+console.log(persona.langu);
 
-console.log(persona.nombreCompleto());
+console.log(persona.nombreCompleto);
 
 //create object dynamically can assign the properties
 let persona2 = new Object();
