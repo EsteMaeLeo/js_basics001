@@ -127,3 +127,6 @@ class Persona {
   console.log(nCliente1.toString());
   console.log(nCliente1.fechaRegistro);
   
+  let nCliente2 = new Cliente("Chester", "White", "78", fechaRegistro);
+  console.log(nCliente2.toString());
+  console.log(nCliente2.fechaRegistro);
