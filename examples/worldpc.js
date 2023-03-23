@@ -32,7 +32,7 @@ class Raton extends DispositivoEntrada {
   }
 
   toString() {
-    return `Id Raton: ${this._idRaton} Tipo Entrada: ${this._tipoEntrada} Marca: ${this._marca}`;
+    return `IdRaton: ${this._idRaton}, Tipo Entrada: ${this._tipoEntrada}, Marca: ${this._marca}`;
   }
 }
 
@@ -44,7 +44,7 @@ class Teclado extends DispositivoEntrada {
   }
 
   toString() {
-    return `Id Teclado: ${this._idTeclado} Tipo Entrada: ${this._tipoEntrada} Marca: ${this._marca}`;
+    return `IdTeclado: ${this._idTeclado}, Tipo Entrada: ${this._tipoEntrada}, Marca: ${this._marca}`;
   }
 }
 
@@ -68,7 +68,7 @@ class Monitor {
     this._tamano = tamano;
   }
   toString() {
-    return `Id Monitor: ${this._idMonitor} Marca: ${this._marca} Tamaño: ${this._tamano}`;
+    return `IdMonitor: ${this._idMonitor}, Marca: ${this._marca}, Tamaño: ${this._tamano}`;
   }
 }
 
@@ -109,12 +109,30 @@ class Computadora {
   set monitor(monitor) {
     this._monitor = monitor;
   }
-  toString(){
-    return `Computadora Id: ${this._idComputadora} ${this._monitor.toString()} ${this.teclado.toString()} ${this.raton.toString()}`
+  toString() {
+    return `Computadora: ${
+      this._idComputadora
+    } \nMonitor [${this._monitor.toString()}] \nTeclado[${this.teclado.toString()}] \nRaton[${this.raton.toString()}]`;
   }
 }
 
-class Orden {}
+class Orden {
+  static contadorOrdenes = 0;
+  constructor(computadora) {
+    this._computadoras = [];
+    this._idOrden = ++this._contadorOrdenes;
+  }
+  agregarComputadora(computadora) {
+    this._computadoras.push(computadora);
+  }
+  mostrarOrden() {
+    let computadoraDetalle = "";
+    for (let computadora of this._computadoras) {
+      computadoraDetalle += "\n" + computadora.toString() + " ";
+    }
+    console.log(computadoraDetalle);
+  }
+}
 
 /**************************Testing dispositivo **************************/
 let usb1 = new DispositivoEntrada("USB", "MSI");
@@ -145,9 +163,16 @@ let moni3 = new Monitor("MSI", "25");
 console.log(moni3.toString());
 
 /**************************Testing Computadora **************************/
-let comp1 = new Computadora("DELL", mou1, tec1, moni1);
+let comp1 = new Computadora("DELL", mou1, tec1, moni2);
 console.log(comp1.raton.toString());
 console.log(comp1.teclado.toString());
 console.log(comp1.monitor.toString());
 console.log(comp1.monitor.toString());
 console.log(comp1.toString());
+
+let comp2 = new Computadora("HP", mou2, tec2, moni1);
+/**************************Testing Ordenes **************************/
+let ord1 = new Orden();
+ord1.agregarComputadora(comp1);
+ord1.agregarComputadora(comp2);
+ord1.mostrarOrden();
