@@ -112,15 +112,15 @@ class Computadora {
   toString() {
     return `Computadora: ${
       this._idComputadora
-    } \nMonitor [${this._monitor.toString()}] \nTeclado[${this.teclado.toString()}] \nRaton[${this.raton.toString()}]`;
+    } \nMonitor: [${this._monitor.toString()}] \nTeclado: [${this.teclado.toString()}] \nRaton: [${this.raton.toString()}]`;
   }
 }
 
 class Orden {
   static contadorOrdenes = 0;
   constructor(computadora) {
+    this._idOrden = ++Orden.contadorOrdenes;
     this._computadoras = [];
-    this._idOrden = ++this._contadorOrdenes;
   }
   agregarComputadora(computadora) {
     this._computadoras.push(computadora);
@@ -130,7 +130,7 @@ class Orden {
     for (let computadora of this._computadoras) {
       computadoraDetalle += "\n" + computadora.toString() + " ";
     }
-    console.log(computadoraDetalle);
+    console.log(`Orden: ${this._idOrden} ${computadoraDetalle}`);
   }
 }
 
@@ -148,6 +148,8 @@ let mou1 = new Raton("USB", "MSI");
 console.log(mou1.toString());
 let mou2 = new Raton("USB", "Logitech");
 console.log(mou2.toString());
+
+let mou3 = new Raton("USB", "HP");
 /**************************Testing teclados **************************/
 let tec1 = new Teclado("USB", "MSI");
 console.log(tec1.toString());
@@ -171,8 +173,21 @@ console.log(comp1.monitor.toString());
 console.log(comp1.toString());
 
 let comp2 = new Computadora("HP", mou2, tec2, moni1);
+
+let comp3 = new Computadora("HP", mou2, tec2, moni3);
+let comp4 = new Computadora("HP", mou3, tec2, moni3);
 /**************************Testing Ordenes **************************/
 let ord1 = new Orden();
 ord1.agregarComputadora(comp1);
 ord1.agregarComputadora(comp2);
 ord1.mostrarOrden();
+
+let ord2 = new Orden();
+ord2.agregarComputadora(comp1);
+ord2.agregarComputadora(comp3);
+ord2.mostrarOrden();
+
+let ord3 = new Orden();
+ord3.agregarComputadora(comp2);
+ord3.agregarComputadora(comp4);
+ord3.mostrarOrden();
