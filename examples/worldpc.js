@@ -75,17 +75,42 @@ class Monitor {
 class Computadora {
   static contadorComputadoras = 0;
   constructor(nombre, raton, teclado, monitor) {
-    this._nombre = nombre;
+    /*this._nombre = nombre;
     this.teclado.push(teclado);
     this._raton.push(raton);
-    this._monitor.push(monitor);
-    this._idComputadora = ++contadorComputadoras;
+    this._monitor.push(monitor);*/
+    this._nombre = nombre;
+    this._teclado = teclado;
+    this._raton = raton;
+    this._monitor = monitor;
+    this._idComputadora = ++Computadora.contadorComputadoras;
   }
   get nombre() {
     return this._nombre;
   }
   set nombre(nombre) {
     this._nombre = nombre;
+  }
+  get teclado() {
+    return this._teclado;
+  }
+  set teclado(teclado) {
+    this._teclado = teclado;
+  }
+  get raton() {
+    return this._raton;
+  }
+  set raton(raton) {
+    this._raton = raton;
+  }
+  get monitor() {
+    return this._monitor;
+  }
+  set monitor(monitor) {
+    this._monitor = monitor;
+  }
+  toString(){
+    return `Computadora Id: ${this._idComputadora} ${this._monitor.toString()} ${this.teclado.toString()} ${this.raton.toString()}`
   }
 }
 
@@ -118,3 +143,11 @@ let moni2 = new Monitor("Dell", "18");
 console.log(moni2.toString());
 let moni3 = new Monitor("MSI", "25");
 console.log(moni3.toString());
+
+/**************************Testing Computadora **************************/
+let comp1 = new Computadora("DELL", mou1, tec1, moni1);
+console.log(comp1.raton.toString());
+console.log(comp1.teclado.toString());
+console.log(comp1.monitor.toString());
+console.log(comp1.monitor.toString());
+console.log(comp1.toString());
