@@ -18,15 +18,26 @@ class Gerente extends Empleado {
 
   obtenerDetalle() {
     //return `Nombre: ${this._nombe} Sueldo: ${this._sueldo} Departamento: ${this._departamento}`;
-    return `Gerente: ${super.obtenerDetalle()} Departamento: ${this._departamento}`;
+    return `Gerente: ${super.obtenerDetalle()} Departamento: ${
+      this._departamento
+    }`;
   }
 }
 
-function imprimir(tipo){
-    console.log(tipo.obtenerDetalle());
+function imprimir(tipo) {
+  console.log(tipo.obtenerDetalle());
+  if (tipo instanceof Gerente) {
+    console.log("Objeto Tipo Gerente");
+  }
+  else if (tipo instanceof Empleado) {
+    console.log("Objeto Tipo Empleado");
+  }
+  else if (tipo instanceof Object) {
+    console.log("Objeto Tipo Object");
+  }
 }
 
-let empleado1 = new Empleado('Juam', 2000)
+let empleado1 = new Empleado("Juam", 2000);
 
 let gerente1 = new Gerente("Charlie Skywalker", "5000", "Ventas");
 //console.log(gerente1.obtenerDetalle());
