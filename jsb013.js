@@ -13,7 +13,10 @@ const saludar = () => "Saludos desde function flecha";
 
 const regresaObjeto = () => ({ nombre: "Juan", apellido: "Perez" });
 
-const funcionParametros = (mensaje) => console.log(mensaje)
+//const funcionParametros = (mensaje) => console.log(mensaje)
+const funcionParametros = (mensaje) => console.log(mensaje);
+
+const funcionSuma = (a, b) => a + b;
 
 miFucion();
 
@@ -23,3 +26,5 @@ miFuncionFlecha2();
 console.log(saludar());
 console.log(regresaObjeto());
 funcionParametros("saludo con paramentros");
+
+console.log(funcionSuma(19,8))
