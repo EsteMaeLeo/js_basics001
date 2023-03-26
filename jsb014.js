@@ -15,7 +15,22 @@ function imprimir(mensaje) {
 
 function sumar(op1, op2, functionCallBack) {
   let res = op1 + op2;
+  //ejuctar procesos asincronico podria seguir ejecutando mientras callback
   functionCallBack(`Resultado: ${res}`);
 }
 
 sumar(5, 9, imprimir);
+
+//async calls
+
+function myFunctionCallBack() {
+  console.log("saludo asincrono despues de 3 seg");
+}
+
+setTimeout(myFunctionCallBack, 3000); //ejecutar despues de 3 segundos
+
+setTimeout(function () {
+  console.log("Saludo async 2");
+}, 4000);
+
+setTimeout(() => console.log("Async 3"), 1000);
