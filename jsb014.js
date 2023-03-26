@@ -34,3 +34,12 @@ setTimeout(function () {
 }, 4000);
 
 setTimeout(() => console.log("Async 3"), 1000);
+
+//setInterval
+let reloj = () => {
+  let fecha = new Date();
+  let hours = fecha.getHours()
+  console.log(`${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`)
+};
+
+setInterval(reloj, 1000);
