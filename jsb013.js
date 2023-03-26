@@ -1,9 +1,9 @@
 //Arrow functions
-let miFucion = function () {
+const miFucion = function () {
   console.log("Mensaje desde funcion");
 };
 
-let miFuncionFlecha = () => {
+const  miFuncionFlecha = () => {
   console.log("Mensaje desde funcion flecha");
 };
 
