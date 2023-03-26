@@ -22,5 +22,15 @@ class Gerente extends Empleado {
   }
 }
 
+function imprimir(tipo){
+    console.log(tipo.obtenerDetalle());
+}
+
+let empleado1 = new Empleado('Juam', 2000)
+
 let gerente1 = new Gerente("Charlie Skywalker", "5000", "Ventas");
-console.log(gerente1.obtenerDetalle());
+//console.log(gerente1.obtenerDetalle());
+// polimorfismo
+
+imprimir(empleado1);
+imprimir(gerente1);
