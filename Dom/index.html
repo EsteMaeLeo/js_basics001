@@ -7,10 +7,19 @@
     <title>Ejemplo DOM con JS</title>
 </head>
 <body>
-    <h1>Ejemplo DOM con JS</h1>
-    <p>Saludos!</p>
+    <h1 id="cabecera">Ejemplo DOM con JS</h1>
+    <p id="parrafo">Saludos!</p>
     <script>
+        //recupera el texto
+        let cabecera = document.getElementById("cabecera").innerHTML
+        //desplegar el objeto
+        let cabeceraObj = document.getElementById("cabecera")
+        let parrafo = document.getElementById("parrafo").innerHTML
         console.log('saludos desde JavaScript');
+        console.log(cabecera);
+        console.log(cabeceraObj);
+        console.log(parrafo);
+
     </script>
 </body>
 </html>
