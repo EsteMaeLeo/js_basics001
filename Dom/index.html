@@ -1,30 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ejemplo DOM con JS</title>
-</head>
-<body>
-    <h1 id="cabecera">Ejemplo DOM con JS</h1>
-    <p id="parrafo1">Saludos!</p>
-    <p id="parrafo2"> Otro Parrafo</p>
+    <style>
+      .azul {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="azul" id="cabecera">Ejemplo DOM con JS</h1>
+    <p class="azul" id="parrafo1">Saludos!</p>
+    <p class="azul" id="parrafo2">Otro Parrafo</p>
     <script>
-        //recupera el texto
-        let cabecera = document.getElementById("cabecera").innerHTML;
-        //desplegar el objeto
-        let cabeceraObj = document.getElementById("cabecera");
-        let parrafo = document.getElementById("parrafo1").innerHTML;
-        console.log('saludos desde JavaScript');
-        console.log(`cabacera: ${cabecera}`);
-        console.log(cabeceraObj);
-        console.log(parrafo);
-        let parrafoObj = document.getElementById("parrafo1");
-        parrafoObj.innerHTML = "Nuevo Valor en parrafo";
+      //recupera el texto
+      let cabecera = document.getElementById("cabecera").innerHTML;
+      //desplegar el objeto
+      let cabeceraObj = document.getElementById("cabecera");
+      let parrafo = document.getElementById("parrafo1").innerHTML;
+      console.log("saludos desde JavaScript");
+      console.log(`cabacera: ${cabecera}`);
+      console.log(cabeceraObj);
+      console.log(parrafo);
+      let parrafoObj = document.getElementById("parrafo1");
+      parrafoObj.innerHTML = "Nuevo Valor en parrafo";
 
-        let parrafos = document.getElementsByTagName('p');
-        console.log(`Numero de parrafos: ${parrafos.length}`)
+      let parrafos = document.getElementsByTagName("p");
+      console.log(`Numero de parrafos: ${parrafos.length}`);
+      for (let i = 0; i < parrafos.length; i++) {
+        console.log(parrafos[i].innerHTML);
+      }
+      console.log(`------------`);
+      let elementosByClassName = document.getElementsByClassName("azul");
+      for (let elemento of elementosByClassName) {
+        console.log(elemento.innerHTML);
+      }
+      console.log(`------------`);
+      let elementosQuerry = document.querySelectorAll("p.azul"); //todos los parrafos con la clase azul
+      for (let elemento of elementosQuerry) {
+        console.log(elemento.innerHTML);
+      }
     </script>
-</body>
+  </body>
 </html>
