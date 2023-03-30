@@ -14,7 +14,9 @@
       <br />
     </form>
     <button onclick="mostrarValores()">Mostrar</button>
+    <button onclick="mostrarValor()">Mostrar Individual</button>
     <div id="valores"></div>
+    <div id="valor"></div>
     <script>
       function mostrarValores() {
         let formulario = document.forms["formulario"];
@@ -24,6 +26,16 @@
         }
         console.log(texto);
         document.getElementById("valores").innerHTML = texto;
+      }
+
+      function mostrarValor() {
+        let formulario = document.forms["formulario"];
+        let texto = "";
+        let nombre = formulario["nombre"];
+        let apellido = formulario["apellido"];
+        texto = nombre.value + "<br/>" + apellido.value;
+        console.log(texto);
+        document.getElementById("valor").innerHTML = texto;
       }
     </script>
   </body>
