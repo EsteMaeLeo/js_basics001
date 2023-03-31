@@ -20,6 +20,13 @@ const funcionSuma = (a, b) => a + b;
 
 miFucion();
 
+const listOfNumbers = [];
+
+const storeNumber = (num) => listOfNumbers.push(num);
+storeNumber(2)
+console.log(listOfNumbers)
+
+
 miFuncionFlecha();
 miFuncionFlecha2();
 
@@ -27,4 +34,4 @@ console.log(saludar());
 console.log(regresaObjeto());
 funcionParametros("saludo con paramentros");
 
-console.log(funcionSuma(19,8))
+console.log(funcionSuma(19, 8));
