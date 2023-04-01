@@ -20,11 +20,16 @@ const funcionSuma = (a, b) => a + b;
 
 miFucion();
 
+//array
 const listOfNumbers = [];
 
 const storeNumber = (num) => listOfNumbers.push(num);
 storeNumber(2)
 console.log(listOfNumbers)
+
+const doYouhaveThisNumer = num => listOfNumbers.includes(num);
+console.log(doYouhaveThisNumer(2))
+
 
 
 miFuncionFlecha();
