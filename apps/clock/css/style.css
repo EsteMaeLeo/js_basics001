@@ -1,0 +1,21 @@
+#clock {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 60px;
+  text-shadow: 0px 0px 2px #333;
+  color: white;
+}
+.clock-container{
+    background-color: rgb(5, 145, 180);
+    padding: 25px;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 20px;
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+#date{
+    letter-spacing: 10px;
+    font-size: 15px;
+}
