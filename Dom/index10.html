@@ -1,0 +1,88 @@
+<!-- on mouse out/in/down/up event-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manejo de DOM con JavaScript</title>
+  </head>
+  <body onload="entrar()">
+    <h1 id="titulo" onmouseover="rojo(this)" onmouseout="azul(this)">
+      Manejo DOM con Javascript
+    </h1>
+    <br />
+    <h1
+      id="titulo"
+      onmousedown="rojo(this)"
+      onmouseup="azul(this)"
+      onclick="verde(this)"
+    >
+      Mouse events
+    </h1>
+    <br />
+    <h1>Blur Focus</h1>
+    <label>Nombre:</label>
+    <input type="text" id="nombre" />
+    <br /><br />
+    <label>Apellido:</label>
+    <input type="text" id="apellido" />
+    <br /><br />
+    <h1>Arrow</h1>
+    <label>Nombre:</label>
+    <input type="text" id="nombre_arrow" />
+    <br /><br />
+    <label>Apellido:</label>
+    <input type="text" id="apellido_arrow" />
+    <script>
+      function rojo(titulo) {
+        console.log("red");
+        titulo.style.color = "red";
+      }
+      function azul(titulo) {
+        console.log("blue");
+        titulo.style.color = "blue";
+      }
+      function verde(titulo) {
+        console.log("green");
+        titulo.style.color = "green";
+      }
+      document.getElementById("nombre").addEventListener("focus", cambiar);
+      document.getElementById("nombre").addEventListener("blur", regresar);
+
+      document.getElementById("apellido").addEventListener("focus", cambiar);
+      document.getElementById("apellido").addEventListener("blur", regresar);
+      function cambiar(evento) {
+        evento.target.style.background = "yellow";
+      }
+      function regresar(evento) {
+        evento.target.style.background = "white";
+      }
+
+      //<!--Arrrows-->
+      document
+        .getElementById("nombre_arrow")
+        .addEventListener("focus", (evento) => {
+          evento.target.style.background = "pink";
+        });
+      document
+        .getElementById("nombre_arrow")
+        .addEventListener("blur", (evento) => {
+          evento.target.style.background = "white";
+        });
+
+      document
+        .getElementById("apellido_arrow")
+        .addEventListener("focus", (evento) => {
+          evento.target.style.background = "pink";
+        });
+      document
+        .getElementById("apellido_arrow")
+        .addEventListener("blur", (evento) => {
+          evento.target.style.background = "white";
+        });
+
+    </script>
+  </body>
+</html>

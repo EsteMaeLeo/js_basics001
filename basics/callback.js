@@ -15,7 +15,7 @@ function imprimir(mensaje) {
 
 function sumar(op1, op2, functionCallBack) {
   let res = op1 + op2;
-  //ejuctar procesos asincronico podria seguir ejecutando mientras callback
+  //ejecutar procesos asincronico podria seguir ejecutando mientras callback
   functionCallBack(`Resultado: ${res}`);
 }
 

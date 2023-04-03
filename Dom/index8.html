@@ -1,4 +1,5 @@
-<!-- on load event--> ->
+<!-- on change event-->
+->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,17 +11,17 @@
   <body onload="entrar()">
     <h1 id="titulo">Manejo DOM con Javascript</h1>
     <br />
-    <div id="mostrar"></div>
+    <label>Nombre:</label>
+    <!-- <input type="text" id="nombre" onchange="convertir()" />
     <script>
-      function entrar() {
-        alert("Entrar a pagina WEB ");
-        let texto = "";
-        if (navigator.cookieEnabled) {
-          texto = "cookies habilitadas";
-        } else {
-          texto = "cookis deshabilitadas";
-        }
-        document.getElementById("mostrar").innerHTML = texto;
+      function convertir() {
+        let nombre = document.getElementById("nombre");
+      }
+    </script>-->
+    <input type="text" onchange="convertir(this)" />
+    <script>
+      function convertir(nombreInput) {
+        nombreInput.value = nombreInput.value.toUpperCase();
       }
     </script>
   </body>
