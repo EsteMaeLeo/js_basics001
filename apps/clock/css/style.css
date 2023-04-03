@@ -12,10 +12,14 @@
     text-align: center;
     border-radius: 20px;
     margin: 0 auto;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 #date{
     letter-spacing: 10px;
     font-size: 15px;
+}
+
+.animation{
+    border:rgb(13, 12, 24) 3px solid;
 }
