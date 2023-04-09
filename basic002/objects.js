@@ -50,3 +50,5 @@ console.log(product_inside.information.countryFrom.country);
 
 const { measure, countryFrom } = product_inside.information;
 console.log(measure);
+
+
