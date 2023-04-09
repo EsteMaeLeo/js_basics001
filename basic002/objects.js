@@ -51,4 +51,35 @@ console.log(product_inside.information.countryFrom.country);
 const { measure, countryFrom } = product_inside.information;
 console.log(measure);
 
+//copy objects
+const product4 = {
+  name: "Keyboard",
+  price: 15,
+  available: true,
+};
 
+const measure2 = {
+  weight: "1kg",
+  measure: "1m",
+};
+
+console.log(product4);
+console.log(measure2);
+const result = Object.assign(product4, measure2);
+console.log(result);
+
+//spread operator
+const result2 = { ...product, ...measure2 };
+console.log(result2);
+
+//THIS reference the fields of the object
+const product_this = {
+  name: "Keyboard",
+  price: 15,
+  available: true,
+  showInfo: function () {
+    console.log(`Producto info: ${this.name} price ${this.price}`);
+  },
+};
+
+product_this.showInfo();
