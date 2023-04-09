@@ -83,3 +83,33 @@ const product_this = {
 };
 
 product_this.showInfo();
+
+//object literal
+const product_literal = {
+  name: "Keyboard",
+  price: 15,
+  available: true,
+};
+
+//object constructor
+
+function Product(name, price) {
+  this.name = name;
+  this.price = price;
+  this.available = true;
+}
+
+const product_constructor = new Product("Tablet", 300);
+console.log(product_constructor);
+
+//object key return array with the key
+console.log("object key")
+console.log(Object.keys(product_literal));
+
+//object values return array with the values
+console.log("object values")
+console.log(Object.values(product_literal));
+
+//object entries return array all info of the objects
+console.log("object entries")
+console.log(Object.entries(product_literal));
