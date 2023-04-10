@@ -1,4 +1,4 @@
-console.log("Objects on JS");
+console.log("***OBJECTS on JS*********");
 
 //objects
 //object literal
