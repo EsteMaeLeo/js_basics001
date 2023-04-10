@@ -11,8 +11,13 @@ console.log(producto3);
 
 console.log("Lenght: ", producto.length);
 
-//index of find 
+//index of find
 console.log("Index of: ", producto.indexOf("HP"));
 
 //includes return boolean
 console.log("Includes: ", producto.includes("HP"));
+
+const productCon = "Monitor AOC";
+const priceNew = "200 USD";
+
+console.log(productCon.concat(" ", priceNew));
