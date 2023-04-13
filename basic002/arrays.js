@@ -49,6 +49,7 @@ for (let i = 0; i < months.length; i++) {
 
 const shopingCar = [];
 
+//add at end
 shopingCar.push(product_new2);
 shopingCar.push(product_new3);
 
@@ -56,3 +57,17 @@ shopingCar.push(product_new3);
 shopingCar.unshift(product_new4);
 
 console.table(shopingCar);
+
+const shopingCar2 = [];
+
+//declarative form to add elements
+let resultSpread = [...shopingCar2, product_new2]
+console.table(resultSpread);
+console.table(shopingCar2);
+//console.table(product_new2);
+
+resultSpread = [...resultSpread, product_new3]
+console.table(resultSpread);
+
+resultSpread = [product_new4, ...resultSpread]
+console.table(resultSpread);

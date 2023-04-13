@@ -24,9 +24,8 @@ console.log(product);
 console.log("destruction objects");
 //const name = product.name;
 //console.log(name);
-
+//destructing objects
 const { name, price } = product;
-
 console.log(name);
 console.log(price);
 
@@ -43,6 +42,30 @@ const product_inside = {
     },
   },
 };
+
+const product_nested = {
+  name_nested: "Keyboard",
+  price_nested: 15,
+  available_nested: true,
+  information_nested: {
+    measure_nested: { weight_nested: "1kg", measure_nested: "1m" },
+    countryFrom_nested: {
+      country_nested: "China",
+    },
+  },
+};
+
+const {
+  name_nested,
+  price_nested,
+  available_nested,
+  information_nested: {
+    measure_nested: { weight_nested, measure_nested },
+    countryFrom_nested,
+  },
+} = product_nested;
+console.log("Destruct nested: ", name_nested, price_nested, weight_nested, measure_nested, countryFrom_nested);
+
 console.log(product_inside);
 console.log(product_inside.information);
 console.log(product_inside.information.measure);
@@ -70,6 +93,7 @@ console.log(result);
 
 //spread operator
 const result2 = { ...product, ...measure2 };
+console.log("//spread operator");
 console.log(result2);
 
 //THIS reference the fields of the object
@@ -103,13 +127,13 @@ const product_constructor = new Product("Tablet", 300);
 console.log(product_constructor);
 
 //object key return array with the key
-console.log("object key")
+console.log("object key");
 console.log(Object.keys(product_literal));
 
 //object values return array with the values
-console.log("object values")
+console.log("object values");
 console.log(Object.values(product_literal));
 
 //object entries return array all info of the objects
-console.log("object entries")
+console.log("object entries");
 console.log(Object.entries(product_literal));
