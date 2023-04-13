@@ -5,6 +5,19 @@ const product_new2 = {
   available: true,
 };
 
+//object
+const product_new3 = {
+  name: "cellphone",
+  price: 150,
+  available: true,
+};
+
+const product_new4 = {
+  name: "Monitor",
+  price: 150,
+  available: true,
+};
+
 //array
 console.log("**********ARAYS*******************");
 const numers = [10, 20, 30, [11, 23, 45]];
@@ -23,10 +36,23 @@ const everyAll = ["Hello World", 20, false, "ABAP"];
 
 console.log(everyAll);
 
-const months = ["january", "february", "march", "april"];
+const months = ["january", "february", "march", "april", "may"];
 console.table(months);
 console.log(months.length);
 
-for(let i =0; i<months.length; i++){
-    console.log(months[i]);
+//add end array
+months.push("june");
+
+for (let i = 0; i < months.length; i++) {
+  console.log(months[i]);
 }
+
+const shopingCar = [];
+
+shopingCar.push(product_new2);
+shopingCar.push(product_new3);
+
+//at the begining
+shopingCar.unshift(product_new4);
+
+console.table(shopingCar);
