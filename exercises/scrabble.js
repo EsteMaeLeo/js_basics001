@@ -1,8 +1,8 @@
 //array number
 const numbers10 = Array.from({ length: 26 }, (_, i) => i + 1);
-console.log(numbers10);
+//console.log(numbers10);
 const alphabet = numbers10.map((number) => String.fromCharCode(number + 64));
-console.log(alphabet);
+//console.log(alphabet);
 
 const point1 = ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"];
 const point2 = ["D", "G"];
@@ -15,7 +15,7 @@ const point10 = ["Q", "Z"];
 const word = "cabbage";
 
 const newWord = word.toLocaleUpperCase();
-console.log(newWord);
+//console.log(newWord);
 
 function newObScam(alphabet, point) {
   return (scrambble = {
@@ -42,9 +42,12 @@ alphabet.forEach((letter) => {
   }
 });
 
-function isInLetter(value)
+function isInLetter(scramblePoint, element)
 {
-    console.log(value)
+    //console.log(scramblePoint, element)
+    if (scramblePoint.alphabet == element){
+        console.log("IS")
+    }
 }
 
 const stringArray = newWord.split("");
@@ -53,7 +56,7 @@ console.log(stringArray)
 stringArray.forEach(element => {
     console.log(element)
     //const lete= scramblePoints.filter(scramblePoint  => scramblePoint.alphabet = element)
-    scramblePoints.filter(isInLetter, scramblePoint)
+    scramblePoints.filter(isInLetter)
     console.log()
 });
 
