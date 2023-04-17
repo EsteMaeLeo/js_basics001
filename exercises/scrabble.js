@@ -42,5 +42,19 @@ alphabet.forEach((letter) => {
   }
 });
 
+function isInLetter(value)
+{
+    console.log(value)
+}
+
+const stringArray = newWord.split("");
+console.log(stringArray)
+
+stringArray.forEach(element => {
+    console.log(element)
+    //const lete= scramblePoints.filter(scramblePoint  => scramblePoint.alphabet = element)
+    scramblePoints.filter(isInLetter, scramblePoint)
+    console.log()
+});
 
 console.log(scramblePoints);
