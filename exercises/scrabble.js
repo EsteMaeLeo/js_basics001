@@ -42,22 +42,18 @@ alphabet.forEach((letter) => {
   }
 });
 
-function isInLetter(scramblePoint, element)
-{
-    //console.log(scramblePoint, element)
-    if (scramblePoint.alphabet == element){
-        console.log("IS")
-    }
-}
-
 const stringArray = newWord.split("");
-console.log(stringArray)
+console.log(stringArray);
 
-stringArray.forEach(element => {
-    console.log(element)
-    //const lete= scramblePoints.filter(scramblePoint  => scramblePoint.alphabet = element)
-    scramblePoints.filter(isInLetter)
-    console.log()
+let totalPoints = 0;
+
+stringArray.forEach((letter) => {
+  let point = scramblePoints
+    .filter((scramblePoint) => scramblePoint.alphabet == letter)
+    .map((scramble) => scramble.point)
+    .reduce((acc, points) => acc + points, 0);
+
+  totalPoints += point;
 });
 
-console.log(scramblePoints);
+console.log("Total Points: ", totalPoints);
