@@ -18,6 +18,12 @@ const product_new4 = {
   available: true,
 };
 
+const product_new5 = {
+    name: "VGA Card",
+    price: 150,
+    available: true,
+  };
+
 //array
 console.log("**********ARAYS*******************");
 const numers = [10, 20, 30, [11, 23, 45]];
@@ -71,3 +77,22 @@ console.table(resultSpread);
 
 resultSpread = [product_new4, ...resultSpread]
 console.table(resultSpread);
+
+resultSpread = [product_new5, ...resultSpread]
+console.table(resultSpread);
+//make copy
+
+let resultSpread2 = [...resultSpread];
+//delete last item array
+resultSpread.pop();
+console.table(resultSpread);
+
+//delete at beginning
+resultSpread.shift();
+console.table(resultSpread);
+
+console.table(resultSpread2);
+
+//delete splice elements position
+resultSpread2.splice(1,1);
+console.table(resultSpread2);
