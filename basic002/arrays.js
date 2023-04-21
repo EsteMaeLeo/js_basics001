@@ -19,10 +19,10 @@ const product_new4 = {
 };
 
 const product_new5 = {
-    name: "VGA Card",
-    price: 150,
-    available: true,
-  };
+  name: "VGA Card",
+  price: 150,
+  available: true,
+};
 
 //array
 console.log("**********ARAYS*******************");
@@ -67,18 +67,18 @@ console.table(shopingCar);
 const shopingCar2 = [];
 
 //declarative form to add elements
-let resultSpread = [...shopingCar2, product_new2]
+let resultSpread = [...shopingCar2, product_new2];
 console.table(resultSpread);
 console.table(shopingCar2);
 //console.table(product_new2);
 
-resultSpread = [...resultSpread, product_new3]
+resultSpread = [...resultSpread, product_new3];
 console.table(resultSpread);
 
-resultSpread = [product_new4, ...resultSpread]
+resultSpread = [product_new4, ...resultSpread];
 console.table(resultSpread);
 
-resultSpread = [product_new5, ...resultSpread]
+resultSpread = [product_new5, ...resultSpread];
 console.table(resultSpread);
 //make copy
 
@@ -94,5 +94,26 @@ console.table(resultSpread);
 console.table(resultSpread2);
 
 //delete splice elements position
-resultSpread2.splice(1,1);
+resultSpread2.splice(1, 1);
 console.table(resultSpread2);
+
+const { name } = product_new5;
+
+console.log(name);
+
+//destructuring with arrays
+
+const numeros = [10, 20, 30, 40, 50];
+
+const [first, second, third] = numeros;
+
+console.log(first, second, third);
+
+const num = [10, 20, 30, 40, 50];
+
+const [, , fourth] = num;
+
+console.log(fourth);
+
+const [primero, ...tercero] = num;
+console.log(tercero);
