@@ -131,6 +131,14 @@ for (let i = 0; i < shoppAmazon.length; i++) {
 }
 
 //foreach
-shoppAmazon.forEach(function(product){
-    console.log(`${product.name} price: ${product.price}`)
-})
+shoppAmazon.forEach(function (product) {
+  console.log(`${product.name} price: ${product.price}`);
+});
+
+//map
+
+const newShopping = shoppAmazon.map(function (product) {
+  return `${product.name} price: ${product.price}`;
+});
+
+console.log(newShopping);
