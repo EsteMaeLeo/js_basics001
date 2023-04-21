@@ -117,3 +117,20 @@ console.log(fourth);
 
 const [primero, ...tercero] = num;
 console.log(tercero);
+
+const shoppAmazon = [
+  { name: "Iphone", price: 750 },
+  { name: "VGA Card", price: 250 },
+  { name: "Mouse", price: 50 },
+  { name: "Ipad", price: 750 },
+  { name: "HP Monitor 22", price: 350 },
+];
+
+for (let i = 0; i < shoppAmazon.length; i++) {
+  console.log(`${shoppAmazon[i].name} price: ${shoppAmazon[i].price}`);
+}
+
+//foreach
+shoppAmazon.forEach(function(product){
+    console.log(`${product.name} price: ${product.price}`)
+})
