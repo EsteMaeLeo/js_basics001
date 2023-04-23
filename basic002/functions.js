@@ -31,3 +31,11 @@ function saidHello(name = "Unknown", lastname = "") {
 saidHello("John", "Connor");
 saidHello("Glen");
 saidHello();
+
+//function return values
+function addReturn(number1, number2) {
+  return number1 + number2;
+}
+
+const result = addReturn(94, 78);
+console.log(result);
