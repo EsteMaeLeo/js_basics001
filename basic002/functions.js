@@ -39,3 +39,29 @@ function addReturn(number1, number2) {
 
 const result = addReturn(94, 78);
 console.log(result);
+
+//function on  the objects
+
+const player = {
+  play: function (id) {
+    console.log(`playing the song ${id}...`);
+  },
+  pause: function (id) {
+    console.log(`pause the song ${id}...`);
+  },
+  deletefunction: function (id) {
+    console.log(`deleting the song ${id}...`);
+  },
+  createPlayList: function (name1) {
+    console.log(`${name1} play list create...`);
+  },
+  deletePlayList: function (name1) {
+    console.log(`${name1} play list deleted...`);
+  },
+};
+
+player.play("2");
+player.pause("2");
+player.deletefunction("2");
+player.createPlayList("Rock songs");
+player.deletePlayList("Delete Pop songs");
