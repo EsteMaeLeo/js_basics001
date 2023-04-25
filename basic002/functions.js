@@ -65,3 +65,13 @@ player.pause("2");
 player.deletefunction("2");
 player.createPlayList("Rock songs");
 player.deletePlayList("Delete Pop songs");
+
+//arrow functions
+const learning = function () {
+  console.log("Learning Javascript");
+};
+//one line can eliminate the {}
+const learning2 = () => "Learning Javascript";
+
+learning();
+console.log(learning2());
