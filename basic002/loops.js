@@ -1,5 +1,5 @@
 //for
-for (let i = 0; i < 31; i++) {
+for (let i = 0; i < 11; i++) {
   if (i % 2 == 0) {
     console.log(`Number: ${i} is pair`);
   }
@@ -42,4 +42,15 @@ for (let i = 0; i < newShoppingEbay.length; i++) {
     continue;
   }
   console.log(`${newShoppingEbay[i].name} price: ${newShoppingEbay[i].price}`);
+}
+
+//FIZZBUZZ || 3 % 0 == Fizz 5%0 ==BUZZ 3 and 5 FIZZBUZZ
+for (let i = 1; i < 100; i++) {
+  if (i % 3 == 0 && i % 5 == 0) {
+    console.log(`${i} FIZZBUZZ`);
+  } else if (i % 3 == 0) {
+    console.log(`${i} FIZZ`);
+  } else if (i % 5 == 0) {
+    console.log(`${i} BUZZ`);
+  }
 }
