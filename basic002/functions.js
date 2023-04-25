@@ -67,11 +67,39 @@ player.createPlayList("Rock songs");
 player.deletePlayList("Delete Pop songs");
 
 //arrow functions
-const learning = function () {
-  console.log("Learning Javascript");
+const learning = function (technology, technology2) {
+  console.log(`Learning ${technology} ${technology2}`);
 };
 //one line can eliminate the {}
-const learning2 = () => "Learning Javascript";
+const learning2 = (technology, technology2) =>
+  `Learning ${technology} ${technology2}`;
 
-learning();
-console.log(learning2());
+learning("Javascript", "nodeJS");
+console.log(learning2("Javascript", "nodeJS"));
+
+//Arrow using map and foreach
+
+const shoppAmazon = [
+  { name: "Iphone", price: 750 },
+  { name: "VGA Card", price: 250 },
+  { name: "Mouse", price: 50 },
+  { name: "Ipad", price: 750 },
+  { name: "HP Monitor 22", price: 350 },
+];
+
+for (let i = 0; i < shoppAmazon.length; i++) {
+  console.log(`${shoppAmazon[i].name} price: ${shoppAmazon[i].price}`);
+}
+
+//foreach
+shoppAmazon.forEach((product) =>
+  console.log(`${product.name} price: ${product.price}`)
+);
+
+//map
+const newShopp = shoppAmazon.map(
+  (product) => `${product.name} price: ${product.price}`
+);
+
+console.log(newShopp);
+
