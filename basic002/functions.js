@@ -103,3 +103,28 @@ const newShopp = shoppAmazon.map(
 
 console.log(newShopp);
 
+const playerArrow = {
+  play: (id) => console.log(`playing the song ${id}...`),
+  pause: (id) => console.log(`pause the song ${id}...`),
+  deletefunction: (id) => console.log(`deleting the song ${id}...`),
+  createPlayList: (name1) => console.log(`${name1} play list create...`),
+  deletePlayList: (name1) => console.log(`${name1} play list deleted...`),
+
+  set newSong(song) {
+    this.song = song;
+    console.log(`Adding song: ${song}`)
+  },
+
+  get songName(){
+    console.log(`${this.song}`)
+  }
+};
+
+playerArrow.newSong = 'Echoes'
+playerArrow.songName;
+
+playerArrow.play("1");
+playerArrow.pause("1");
+playerArrow.deletefunction("1");
+playerArrow.createPlayList("Rock");
+playerArrow.deletePlayList("Pop");
