@@ -54,3 +54,60 @@ for (let i = 1; i < 100; i++) {
     console.log(`${i} BUZZ`);
   }
 }
+
+//WHILE
+let i = 0;
+while (i < 10) {
+  //condition
+  console.log(`number: ${i}`);
+  i++;
+}
+
+//DO WHILE
+i = 0;
+do {
+  console.log(`number: ${i}`);
+  i++;
+} while (i < 10); //condition a least one time do the loop
+
+//FOR EACH array a least execute acording number elements in the array
+const tasks = ["Homework", "Eat", "Development", "Coding JS"];
+
+tasks.forEach((task, index) => {
+  console.log(`${index} ${task}`);
+});
+
+newShoppingEbay.forEach((product) => {
+  console.log(product.name);
+});
+
+//MAP return new array
+const newShopProducts = newShoppingEbay.map((product) => product.name);
+console.log(newShopProducts);
+
+//FOR OF
+for (let task of tasks) {
+  console.log(task);
+}
+
+for (let product of newShoppingEbay) {
+  console.log(product.name);
+}
+
+//FOR IN is use in OBJECTS
+
+const car = {
+  model: "Audi A4",
+  year: 2023,
+  engine: 2.5,
+};
+
+for (let properties in car) {
+  console.log(`${car[properties]}`);
+}
+
+for (let [key, value] of Object.entries(car)) {
+  console.log(value);
+  console.log(key);
+}
+
