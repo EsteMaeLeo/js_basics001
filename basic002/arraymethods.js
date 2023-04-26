@@ -38,5 +38,17 @@ const index = months.findIndex((month) => month === "april");
 //NOT FOUND return -1
 console.log(index);
 
-const index2 = shopProducts.findIndex((product)=> product.name === "VGA Card");
+const index2 = shopProducts.findIndex((product) => product.name === "VGA Card");
 console.log(index2);
+
+//REDUCE
+//Before
+let total = 0;
+shopProducts.forEach((product) => (total += product.price));
+console.log(total);
+//previous value Total and actual value product, initial in 0
+let totalPay = shopProducts.reduce(
+  (total, product) => total + product.price,
+  0
+);
+console.log(totalPay);
