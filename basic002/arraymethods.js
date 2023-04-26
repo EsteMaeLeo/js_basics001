@@ -14,6 +14,7 @@ months.forEach((month) => {
   }
 });
 
+//INCLUDE and SOME check if the value is contain in the array
 const result = months.includes("january");
 console.log(result);
 
@@ -52,3 +53,66 @@ let totalPay = shopProducts.reduce(
   0
 );
 console.log(totalPay);
+
+//FILTER new array with the condition you are checking
+let resultadoFilter = shopProducts.filter((product) => product.price > 300);
+console.log(resultadoFilter);
+resultadoFilter = shopProducts.filter((product) => product.price < 300);
+console.log(resultadoFilter);
+
+resultadoFilter = shopProducts.filter((product) => product.name !== "Ipad");
+console.log(resultadoFilter);
+
+//FIND create new array with the condition Return the first Element meets criteria.
+//before
+
+let resultFind = "";
+shopProducts.forEach((product, index) => {
+  if (product.name === "HP Monitor 22") {
+    resultFind = shopProducts[index];
+  }
+});
+
+console.log(resultFind);
+
+resultFind = shopProducts.find((product) => product.name == "HP Monitor 22");
+console.log(resultFind);
+
+//EVERY all elements in the array need meet the criteria to return true
+//ALL full meet
+let resultEvery = shopProducts.every((product) => product.price < 1000);
+console.log(resultEvery);
+
+//With some is like OR
+//compare first using every will return false when compare less 200
+resultEvery = shopProducts.every((product) => product.price < 200);
+console.log(resultEvery);
+//Now with some will return TRUE
+resultEvery = shopProducts.some((product) => product.price < 200);
+console.log(resultEvery);
+
+//CONCAT
+
+const months2 = ["august", "september", "octuber"];
+const months3 = ["november", "december"];
+
+const monthConcat = months.concat(months2, months3);
+console.log(monthConcat);
+
+//with spread YOU NOT CHANGE ORIGINAL ARRAY
+const resultSpread = [...months, ...months2, ...months3];
+console.log(resultSpread);
+
+const mSpread1 = [...months, "august"];
+console.log(mSpread1);
+
+//split vs spread
+const newWord = "word";
+const stringArray = newWord.split("");
+console.log(stringArray);
+const spreadWord = [...newWord];
+console.log(spreadWord);
+
+const newProduct = { name: "Hard Drive", price: 100 };
+const newS2 = [...shopProducts, newProduct];
+console.log(newS2);
