@@ -24,3 +24,19 @@ console.log(exist);
 
 const exist2 = months.some((month) => month === "january");
 console.log(exist2);
+
+//FIND INDEX
+
+//before
+months.forEach((month, index) => {
+  if (month === "april") {
+    console.log(`January on index: ${index}`);
+  }
+});
+
+const index = months.findIndex((month) => month === "april");
+//NOT FOUND return -1
+console.log(index);
+
+const index2 = shopProducts.findIndex((product)=> product.name === "VGA Card");
+console.log(index2);
