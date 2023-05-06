@@ -54,5 +54,10 @@ function showCartHtml() {
 
 //eliminate the course tbody
 function deleteHtml() {
-  containerCart.innerHTML = "";
+  //slow
+  //containerCart.innerHTML = "";
+  //loop until has items better for performance
+  while (containerCart.firstChild) {
+    containerCart.removeChild(containerCart.firstChild);
+  }
 }
