@@ -31,8 +31,24 @@ function readCourse(course) {
 
   console.log(infoCourse);
   //adding elments to the shoppping cart
-  shoppingCart = [...shoppingCart, infoCourse];
-  console.log(shoppingCart);
+
+  //check the item exist in the shoppingcart
+  const exist = shoppingCart.some((course) => course.id === infoCourse.id);
+  console.log(exist);
+  if (exist) {
+    const courses = shoppingCart.map((course) => {
+      if (course.id === infoCourse.id) {
+        course.quantity++;
+        return course; //return update quantity
+      } else {
+        return course; // return items no duplicated
+      }
+    });
+    shoppingCart = [...courses];
+  } else {
+    shoppingCart = [...shoppingCart, infoCourse];
+    console.log(shoppingCart);
+  }
   showCartHtml();
 }
 
