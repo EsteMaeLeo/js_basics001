@@ -41,22 +41,23 @@ function showCartHtml() {
   deleteHtml();
   //loop the html
   shoppingCart.forEach((course) => {
+    const { id, img, title, price, quantity } = course;
     const row = document.createElement("tr");
     row.innerHTML = `
     <td>
-        <img src="${course.img}" width="100">
+        <img src="${img}" width="100">
     </td>
     <td>
-        ${course.title}
+        ${title}
     </td>
     <td>
-        ${course.price}
+        ${price}
     </td>  
     <td>
-        ${course.quantity}
+        ${quantity}
     </td> 
     <td>
-        <a href="#" class="borrar-curso" data-id="${course.id}" > X </a>
+        <a href="#" class="borrar-curso" data-id="${id}" > X </a>
     </td>     
     `;
     //add HTML into tbody
