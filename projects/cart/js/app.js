@@ -1,6 +1,6 @@
 const cart = document.querySelector("#carrito");
 const containerCart = document.querySelector("#lista-carrito tbody");
-const btEmptyCart = document.querySelector("#vacias-carrito");
+const btEmptyCart = document.querySelector("#vaciar-carrito");
 const listCourses = document.querySelector("#lista-cursos");
 let shoppingCart = [];
 
@@ -8,6 +8,16 @@ loadEventListeners();
 
 function loadEventListeners() {
   listCourses.addEventListener("click", addCourse);
+
+  //delete shopping cart
+  cart.addEventListener("click", deleteCourse);
+
+  btEmptyCart.addEventListener("click", emptyChar);
+}
+
+function emptyChar(){
+    shoppingCart = [];
+    deleteHtml();
 }
 
 function addCourse(e) {
@@ -50,6 +60,17 @@ function readCourse(course) {
     console.log(shoppingCart);
   }
   showCartHtml();
+}
+
+function deleteCourse(e) {
+  console.log(e.target.classList);
+  if (e.target.classList.contains("borrar-curso")) {
+    //get element you click to delete
+    const courseId = e.target.getAttribute("data-id");
+    //return the shoppingcart without the element
+    shoppingCart = shoppingCart.filter((course) => course.id !== courseId);
+    showCartHtml();
+  }
 }
 
 function showCartHtml() {
