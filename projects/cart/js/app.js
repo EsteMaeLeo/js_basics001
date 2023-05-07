@@ -44,8 +44,14 @@ function showCartHtml() {
     const row = document.createElement("tr");
     row.innerHTML = `
     <td>
+        <img src="${course.img}" width="100">
+    </td>
+    <td>
         ${course.title}
     </td>
+    <td>
+        ${course.price}
+    </td>   
     `;
     //add HTML into tbody
     containerCart.appendChild(row);
