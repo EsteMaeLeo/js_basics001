@@ -26,7 +26,7 @@ function readCourse(course) {
     img: course.querySelector("img").src,
     title: course.querySelector("h4").textContent,
     price: course.querySelector(".precio span").textContent,
-    cantidad: 1,
+    quantity: 1,
   };
 
   console.log(infoCourse);
@@ -51,7 +51,13 @@ function showCartHtml() {
     </td>
     <td>
         ${course.price}
-    </td>   
+    </td>  
+    <td>
+        ${course.quantity}
+    </td> 
+    <td>
+        <a href="#" class="borrar-curso" data-id="${course.id}" > X </a>
+    </td>     
     `;
     //add HTML into tbody
     containerCart.appendChild(row);
