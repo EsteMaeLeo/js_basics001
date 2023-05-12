@@ -5,11 +5,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const inputMsg = document.querySelector("#mensaje");
 
   //trigger in the field but after user click another
-  inputEmail.addEventListener("blur", function (e) {
-    //access the value or the text in the input
+  inputEmail.addEventListener("blur", validate);
+
+  //trigger in the field but after user click another
+  inputSubject.addEventListener("blur", validate);
+  //trigger in the field but after user click another
+  inputMsg.addEventListener("blur", validate);
+
+  function validate(e) {
     console.log(e.target.value);
-  });
-
-
-  console.log(inputMsg);
+  }
 });
