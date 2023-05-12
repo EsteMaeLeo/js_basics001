@@ -22,11 +22,14 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    if (e.target.id === "email" && !valEmail(e.target.value)) {
+      showAlert(`Email: ${e.target.value} is not valid`, e.target.parentElement);
+      return;
+    }
     cleanAlert(e.target.parentElement);
   }
 
   function showAlert(msg, reference) {
-    
     cleanAlert(reference);
     //generate HTML
     const error = document.createElement("P");
@@ -41,7 +44,14 @@ function cleanAlert(reference) {
   //validate if there is allready alert creates use reference the parent only on the div of the field
   const alert = reference.querySelector(".bg-red-600");
   if (alert) {
-    
     alert.remove();
   }
+}
+
+function valEmail(email) {
+  const regex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
+  const result = regex.test(email);
+  console.log(result);
+  return result;
 }
