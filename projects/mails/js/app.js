@@ -19,16 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(e.target.id);
     if (e.target.value.trim() === "") {
       showAlert(`Field ${e.target.id} is obligatory`, e.target.parentElement);
-    } else {
+      return;
     }
+
+    cleanAlert(e.target.parentElement);
   }
 
   function showAlert(msg, reference) {
-    //validate if there is allready alert creates use reference the parent only on the div of the field
-    const alert = reference.querySelector(".bg-red-600");
-    if(alert){
-      alert.remove();
-    }
+    
+    cleanAlert(reference);
     //generate HTML
     const error = document.createElement("P");
     error.textContent = msg;
@@ -36,3 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
     reference.appendChild(error);
   }
 });
+
+//move the reference to know which alert
+function cleanAlert(reference) {
+  //validate if there is allready alert creates use reference the parent only on the div of the field
+  const alert = reference.querySelector(".bg-red-600");
+  if (alert) {
+    
+    alert.remove();
+  }
+}
