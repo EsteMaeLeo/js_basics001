@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const inputMsg = document.querySelector("#mensaje");
   const form = document.querySelector("#formulario");
   const btnSubmit = document.querySelector('#formulario button[type="submit"]');
+  const btnReset = document.querySelector('#formulario button[type="reset"]');
 
   //trigger in the field but after user click another
   //inputEmail.addEventListener("blur", validate);
@@ -23,6 +24,17 @@ document.addEventListener("DOMContentLoaded", function () {
   inputEmail.addEventListener("input", validate);
   inputSubject.addEventListener("input", validate);
   inputMsg.addEventListener("input", validate);
+
+  btnReset.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    //reset object
+    email.email = "";
+    email.asunto = "";
+    email.mensaje = "";
+    form.reset();
+    checkEmail();
+  });
 
   function validate(e) {
     console.log(e.target.parentElement);
