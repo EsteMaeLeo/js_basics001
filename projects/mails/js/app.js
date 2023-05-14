@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   btnReset.addEventListener("click", function (e) {
     e.preventDefault();
-     //reset object
-     resetForm();
+    //reset object
+    resetForm();
   });
 
   function enviarEmail(e) {
@@ -44,6 +44,26 @@ document.addEventListener("DOMContentLoaded", function () {
       spinner.classList.add("hidden");
       //reset object
       resetForm();
+
+      //create alert
+      const alertSucess = document.createElement("P");
+      alertSucess.classList.add(
+        "bg-green-500",
+        "text-white",
+        "p-2",
+        "text-center",
+        "rounded-lg",
+        "mt-10",
+        "font-bold",
+        "text-sm",
+        "uppercase"
+      );
+      alertSucess.textContent = "Email sent suceesfully";
+      form.appendChild(alertSucess);
+
+      setTimeout(() => {
+        alertSucess.remove();
+      }, 3000);
     }, 3000);
   }
 
