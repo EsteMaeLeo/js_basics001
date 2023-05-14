@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("#formulario");
   const btnSubmit = document.querySelector('#formulario button[type="submit"]');
   const btnReset = document.querySelector('#formulario button[type="reset"]');
+  const spinner = document.querySelector("#spinner");
 
   //trigger in the field but after user click another
   //inputEmail.addEventListener("blur", validate);
@@ -25,6 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
   inputSubject.addEventListener("input", validate);
   inputMsg.addEventListener("input", validate);
 
+  form.addEventListener("submit", enviarEmail);
+
   btnReset.addEventListener("click", function (e) {
     e.preventDefault();
 
@@ -35,6 +38,12 @@ document.addEventListener("DOMContentLoaded", function () {
     form.reset();
     checkEmail();
   });
+
+  function enviarEmail(e) {
+    e.preventDefault();
+    spinner.classList.add("flex");
+    spinner.classList.remove("hidden");
+  }
 
   function validate(e) {
     console.log(e.target.parentElement);
