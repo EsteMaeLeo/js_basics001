@@ -35,12 +35,14 @@ marca.addEventListener("change", (e) => {
   dataSearch.marca = e.target.value;
   console.log(dataSearch);
 
-  autofilter();
+  carsFilter();
 });
 
 year.addEventListener("change", (e) => {
   dataSearch.year = e.target.value;
   console.log(dataSearch);
+
+  carsFilter();
 });
 
 minimo.addEventListener("change", (e) => {
@@ -90,15 +92,25 @@ function fillSelect() {
 }
 
 //function to filter by auto
-function autofilter() {
-  const result = cars.filter(filtercar);
-  console.log(result)
+function carsFilter() {
+  const result = cars.filter(filterByCar).filter(filterYear);
+  console.log(result);
 }
 
-function filtercar(car) {
+function filterByCar(car) {
   const { marca } = dataSearch;
   if (marca) {
     return car.marca === marca;
+  }
+  return car;
+}
+
+function filterYear(car) {
+  const { year } = dataSearch;
+  console.log(parseInt(year));
+  console.log(car.year);
+  if (year) {
+    return car.year === parseInt(year);
   }
   return car;
 }
