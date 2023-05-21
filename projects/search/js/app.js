@@ -59,17 +59,20 @@ maximo.addEventListener("change", (e) => {
 
 puertas.addEventListener("change", (e) => {
   dataSearch.puertas = e.target.value;
-  console.log(dataSearch);
+  //console.log(dataSearch);
+  carsFilter();
 });
 
 transmision.addEventListener("change", (e) => {
   dataSearch.transmision = e.target.value;
   console.log(dataSearch);
+  carsFilter();
 });
 
 color.addEventListener("change", (e) => {
   dataSearch.color = e.target.value;
   console.log(dataSearch);
+  carsFilter();
 });
 
 //functions
@@ -107,8 +110,10 @@ function carsFilter() {
     .filter(filterByCar)
     .filter(filterYear)
     .filter(filterMin)
-    .filter(filterMax);
-  console.log(result);
+    .filter(filterMax)
+    .filter(filterDoor)
+    .filter(filterTrans)
+    .filter(filterColor);
   showCars(result);
 }
 
@@ -146,6 +151,30 @@ function filterMax(car) {
 
   if (maximo) {
     return car.precio <= parseInt(maximo);
+  }
+  return car;
+}
+
+function filterDoor(car) {
+  const { puertas } = dataSearch;
+  if (puertas) {
+    return car.puertas === parseInt(puertas);
+  }
+  return car;
+}
+
+function filterTrans(car) {
+  const { transmision } = dataSearch;
+  if (transmision) {
+    return car.transmision === transmision;
+  }
+  return car;
+}
+
+function filterColor(car) {
+  const { color } = dataSearch;
+  if (color) {
+    return car.color === color;
   }
   return car;
 }
