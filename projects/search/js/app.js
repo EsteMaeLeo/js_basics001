@@ -24,7 +24,7 @@ const dataSearch = {
 
 //events
 document.addEventListener("DOMContentLoaded", () => {
-  showCars();
+  showCars(cars);
 
   //fill opcion of years
   fillSelect();
@@ -71,7 +71,8 @@ color.addEventListener("change", (e) => {
 });
 
 //functions
-function showCars() {
+function showCars(cars) {
+  cleanHtml();
   cars.forEach((car) => {
     const { marca, modelo, year, puertas, transmision, precio, color } = car;
     const carHtml = document.createElement("p");
@@ -79,6 +80,13 @@ function showCars() {
         ${marca} ${modelo} - ${year} - ${puertas} Puertas - Transmision: ${transmision} - Precio: ${precio} - Color: ${color}`;
     result.appendChild(carHtml);
   });
+}
+
+//clean HTML
+function cleanHtml() {
+  while (result.firstChild) {
+    result.removeChild(result.firstChild);
+  }
 }
 
 function fillSelect() {
@@ -95,10 +103,12 @@ function fillSelect() {
 function carsFilter() {
   const result = cars.filter(filterByCar).filter(filterYear);
   console.log(result);
+  showCars(result);
 }
 
+//function check brand or marca and return only same 
 function filterByCar(car) {
-  const { marca } = dataSearch;
+  const { marca } = dataSearch; //destructuring for marca
   if (marca) {
     return car.marca === marca;
   }
@@ -107,6 +117,7 @@ function filterByCar(car) {
 
 function filterYear(car) {
   const { year } = dataSearch;
+  //conver to integer
   console.log(parseInt(year));
   console.log(car.year);
   if (year) {
