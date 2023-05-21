@@ -48,11 +48,13 @@ year.addEventListener("change", (e) => {
 minimo.addEventListener("change", (e) => {
   dataSearch.minimo = e.target.value;
   console.log(dataSearch);
+  carsFilter();
 });
 
 maximo.addEventListener("change", (e) => {
   dataSearch.maximo = e.target.value;
   console.log(dataSearch);
+  carsFilter();
 });
 
 puertas.addEventListener("change", (e) => {
@@ -101,12 +103,16 @@ function fillSelect() {
 
 //function to filter by auto
 function carsFilter() {
-  const result = cars.filter(filterByCar).filter(filterYear);
+  const result = cars
+    .filter(filterByCar)
+    .filter(filterYear)
+    .filter(filterMin)
+    .filter(filterMax);
   console.log(result);
   showCars(result);
 }
 
-//function check brand or marca and return only same 
+//function check brand or marca and return only same
 function filterByCar(car) {
   const { marca } = dataSearch; //destructuring for marca
   if (marca) {
@@ -122,6 +128,24 @@ function filterYear(car) {
   console.log(car.year);
   if (year) {
     return car.year === parseInt(year);
+  }
+  return car;
+}
+
+function filterMin(car) {
+  const { minimo } = dataSearch;
+
+  if (minimo) {
+    return car.precio >= parseInt(minimo);
+  }
+  return car;
+}
+
+function filterMax(car) {
+  const { maximo } = dataSearch;
+
+  if (maximo) {
+    return car.precio <= parseInt(maximo);
   }
   return car;
 }
