@@ -13,15 +13,24 @@ localStorage.setItem("product", productString);
 const months = ["January", "February", "March"];
 localStorage.setItem("months", JSON.stringify(months));
 
+//get elements
+const name = localStorage.getItem("name");
+console.log(name);
 
-//get values
-
-const name = localStorage.getItem('name');
-console.log(name)
-
-const productStorage = localStorage.getItem('product');
+const productStorage = localStorage.getItem("product");
 console.log(productStorage);
 console.log(JSON.parse(productStorage));
 
-const monthsStorage = JSON.parse(localStorage.getItem('months'))
+//delete elements
+localStorage.removeItem("name");
+
+//update elements
+const monthsStorage = JSON.parse(localStorage.getItem("months"));
 console.log(monthsStorage);
+
+monthsStorage.push("April");
+console.log(monthsStorage);
+localStorage.setItem("months", JSON.stringify(monthsStorage));
+
+
+//delete all localStorage.clear()
