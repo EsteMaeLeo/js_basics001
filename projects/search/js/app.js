@@ -114,7 +114,21 @@ function carsFilter() {
     .filter(filterDoor)
     .filter(filterTrans)
     .filter(filterColor);
-  showCars(result);
+
+  if (result.length) {
+    showCars(result);
+  } else {
+    noResult();
+  }
+}
+
+function noResult() {
+  cleanHtml();
+  const noResult = document.createElement("div");
+  noResult.classList.add("alerta", "error");
+  noResult.textContent =
+    "No results with the search options. Try another options";
+  result.appendChild(noResult);
 }
 
 //function check brand or marca and return only same
