@@ -6,7 +6,15 @@ let tweets = [];
 eventListeners();
 
 function eventListeners() {
+  //safe create tweets
   form.addEventListener("submit", addTweet);
+
+  //load DOM
+  document.addEventListener("DOMContentLoaded", () => {
+    tweets = JSON.parse(localStorage.getItem('tweets')) || [];
+    console.log(tweets);
+    createHTML();
+  });
 }
 
 //functions
@@ -54,11 +62,17 @@ function createHTML() {
       listTweets.appendChild(li);
     });
   }
+  safeLocalstorate();
 }
 
 //clear html
-function clearHtml(){
-  while(listTweets.firstChild){
-    listTweets.removeChild(listTweets.firstChild)
+function clearHtml() {
+  while (listTweets.firstChild) {
+    listTweets.removeChild(listTweets.firstChild);
   }
+}
+
+//localstorage
+function safeLocalstorate() {
+  localStorage.setItem("tweets", JSON.stringify(tweets));
 }
