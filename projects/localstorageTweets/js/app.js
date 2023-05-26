@@ -11,7 +11,7 @@ function eventListeners() {
 
   //load DOM
   document.addEventListener("DOMContentLoaded", () => {
-    tweets = JSON.parse(localStorage.getItem('tweets')) || [];
+    tweets = JSON.parse(localStorage.getItem("tweets")) || [];
     console.log(tweets);
     createHTML();
   });
@@ -57,8 +57,17 @@ function createHTML() {
   clearHtml();
   if (tweets.length > 0) {
     tweets.forEach((tweet) => {
+      //add button eliminate
+      const btnDelete = document.createElement("a");
+      btnDelete.classList.add("borrar-tweet");
+      btnDelete.innerText = "x";
+      btnDelete.onclick = () => {
+        deleteTweet(tweet.id);
+      };
+
       const li = document.createElement("li");
       li.innerText = tweet.tweet;
+      li.appendChild(btnDelete);
       listTweets.appendChild(li);
     });
   }
@@ -69,10 +78,17 @@ function createHTML() {
 function clearHtml() {
   while (listTweets.firstChild) {
     listTweets.removeChild(listTweets.firstChild);
+  
   }
 }
 
 //localstorage
 function safeLocalstorate() {
   localStorage.setItem("tweets", JSON.stringify(tweets));
+}
+
+function deleteTweet(id){
+  console.log(id)
+  tweets = tweets.filter(tweet => tweet.id !==id);
+  createHTML();
 }
