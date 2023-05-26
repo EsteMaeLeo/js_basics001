@@ -19,6 +19,16 @@ function addTweet(e) {
     showError("Tweet cant be empty text");
     return;
   }
+  const tweetObj = {
+    id: Date.now(),
+    tweet,
+  };
+  tweets = [...tweets, tweetObj];
+  console.log(tweets);
+
+  createHTML();
+  //reset form
+  form.reset();
 }
 
 //show error
@@ -32,4 +42,23 @@ function showError(error) {
   setTimeout(() => {
     msgError.remove();
   }, 3000);
+}
+
+//generate tweets
+function createHTML() {
+  clearHtml();
+  if (tweets.length > 0) {
+    tweets.forEach((tweet) => {
+      const li = document.createElement("li");
+      li.innerText = tweet.tweet;
+      listTweets.appendChild(li);
+    });
+  }
+}
+
+//clear html
+function clearHtml(){
+  while(listTweets.firstChild){
+    listTweets.removeChild(listTweets.firstChild)
+  }
 }
