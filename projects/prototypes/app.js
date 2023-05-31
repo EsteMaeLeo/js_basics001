@@ -34,7 +34,7 @@ const CompanyJohn = new Company("ERP John", 8900, "Android, IOS, ERP Systems");
 console.log(formatCompany(CompanyJohn));
 
 //Prototypes
-console.log("PROTOTYPES")
+console.log("PROTOTYPES");
 function ClientProto(name, balance) {
   this.name = name;
   this.balance = balance;
@@ -53,13 +53,15 @@ ClientProto.prototype.typeClient = function () {
   return type;
 };
 
-ClientProto.prototype.NameBalance = function(){
-  return `Client: ${this.name} has a balance of ${this.balance}, type Client : ${this.typeClient()}`;
-}
+ClientProto.prototype.NameBalance = function () {
+  return `Client: ${this.name} has a balance of ${
+    this.balance
+  }, type Client : ${this.typeClient()}`;
+};
 
-ClientProto.prototype.withdraw = function(withdrawValue){
-  this.balance -= withdrawValue
-}
+ClientProto.prototype.withdraw = function (withdrawValue) {
+  this.balance -= withdrawValue;
+};
 
 const william = new ClientProto("William", 15000);
 console.log(william.typeClient());
@@ -67,3 +69,27 @@ console.log(william.NameBalance());
 william.withdraw(250);
 console.log(william.NameBalance());
 console.log(william);
+
+// inheritance
+console.log("inheritance");
+function People(name, balance, phone) {
+  Client.call(this, name, balance);
+  this.phone = phone;
+}
+
+//inheritance copy prototype of ClientProto
+People.prototype = Object.create(ClientProto.prototype);
+People.prototype.constructor = ClientProto;
+
+const albert = new People("Albert", 5000, 5154439988);
+console.log(albert);
+console.log(albert.typeClient());
+console.log(albert.NameBalance());
+albert.withdraw(250);
+console.log(albert.NameBalance());
+
+People.prototype.showPhone = function () {
+  return `User: ${this.name}, phone: ${this.phone}`;
+};
+
+console.log(albert.showPhone());
