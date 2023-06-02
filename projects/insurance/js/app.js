@@ -19,6 +19,23 @@ userInterface.prototype.fillOptions = () => {
     selectYear.appendChild(option);
   }
 };
+
+userInterface.prototype.showMsg = (message, type) => {
+  const div = document.createElement("div");
+  if (type === "error") {
+    div.classList.add("error");
+  } else {
+    div.classList.add("correcto");
+  }
+  div.classList.add("mensaje", "mt-10");
+  div.textContent = message;
+  const form = document.querySelector("#cotizar-seguro");
+  form.insertBefore(div, document.querySelector("#resultado"));
+
+  setTimeout(() => {
+    div.remove();
+  }, 3000);
+};
 const UI = new userInterface();
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -46,6 +63,9 @@ function insuranceQuote(e) {
   const type = document.querySelector('input[name="tipo"]:checked').value;
   console.log(type);
   if (model === "" || year === "" || type === "") {
+    UI.showMsg("All fields are required", "error");
+    return;
   } else {
   }
+  UI.showMsg("Insurance quote...", "exito");
 }
