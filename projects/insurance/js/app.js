@@ -22,5 +22,30 @@ userInterface.prototype.fillOptions = () => {
 const UI = new userInterface();
 
 document.addEventListener("DOMContentLoaded", () => {
-    UI.fillOptions();
+  UI.fillOptions();
 });
+
+loadEventListeners();
+
+function loadEventListeners() {
+  const form = document.querySelector("#cotizar-seguro");
+  form.addEventListener("submit", insuranceQuote);
+}
+
+function insuranceQuote(e) {
+  e.preventDefault();
+  console.log(e);
+
+  //read model
+  const model = document.querySelector("#marca").value;
+
+  //read year
+  const year = document.querySelector("#year").value;
+
+  //read type
+  const type = document.querySelector('input[name="tipo"]:checked').value;
+  console.log(type);
+  if (model === "" || year === "" || type === "") {
+  } else {
+  }
+}
