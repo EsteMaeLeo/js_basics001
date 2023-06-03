@@ -72,6 +72,43 @@ userInterface.prototype.showMsg = (message, type) => {
     div.remove();
   }, 3000);
 };
+
+userInterface.prototype.showResult = (insurance, total) => {
+  const { model, year, type } = insurance;
+  let text;
+  switch (model) {
+    case "1":
+      text = "American";
+      break;
+    case "2":
+      text = "Asian";
+      break;
+    case "3":
+      text = "European";
+      break;
+    default:
+      break;
+  }
+  const div = document.createElement("div");
+  div.classList.add("mt-10");
+  div.innerHTML = `
+        <p class="hearder">Quote</p>
+        <p class="font-bold">Model: <span class="font-normal">${text}</span></p>
+        <p class="font-bold">Model: <span class="font-normal">${year}</span></p>
+        <p class="font-bold">Model: <span class="font-normal">${type}</span></p>
+        <p class="font-bold">Total: <span class="font-normal">$${total}</span></p>
+    `;
+  const resultDiv = document.querySelector("#resultado");
+
+  //spiiner
+  const spiiner = document.querySelector("#cargando");
+  spiiner.style.display = "block";
+
+  setTimeout(() => {
+    spiiner.style.display = "none";
+    resultDiv.appendChild(div);
+  }, 3000);
+};
 const UI = new userInterface();
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -103,7 +140,14 @@ function insuranceQuote(e) {
     return;
   }
   UI.showMsg("Creating Insurance quote...", "exito");
-  const insurance = new Insurance(model, year, type);
 
-  insurance.insuranceQuote();
+  //remove previous quote
+  const results = document.querySelector("#resultado div");
+  if (results != null) {
+    results.remove();
+  }
+
+  const insurance = new Insurance(model, year, type);
+  let total = insurance.insuranceQuote();
+  UI.showResult(insurance, total);
 }
