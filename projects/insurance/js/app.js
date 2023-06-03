@@ -1,9 +1,45 @@
 //constructor
 
-function insurance(model, year, type) {
+function Insurance(model, year, type) {
   (this.model = model), (this.year = year);
   this.type = type;
 }
+
+Insurance.prototype.insuranceQuote = function () {
+  // Option 1= American 1.15; 2 = Asian 1.05; 3 = Europe 1.35
+  let quantity;
+  const base = 2000;
+  console.log(this.model);
+  switch (this.model) {
+    case "1":
+      quantity = base * 1.15;
+      break;
+    case "2":
+      quantity = base * 1.05;
+      break;
+    case "3":
+      quantity = base * 1.35;
+      break;
+    default:
+      break;
+  }
+  console.log(quantity);
+  const readYear = document.querySelector("#year").value;
+  console.log(readYear);
+  //for each year difference between actual year and the car year reduce 3%
+  const difference = new Date().getFullYear() - readYear;
+  quantity -= (difference * 3 * quantity) / 100;
+  console.log(quantity);
+  // Basic 30% and premium 50%
+  console.log(this.type);
+  if (this.type === "basico") {
+    quantity *= 1.3;
+  } else {
+    quantity *= 1.5;
+  }
+  console.log(quantity);
+  return quantity;
+};
 
 function userInterface() {}
 //fill years
@@ -65,7 +101,9 @@ function insuranceQuote(e) {
   if (model === "" || year === "" || type === "") {
     UI.showMsg("All fields are required", "error");
     return;
-  } else {
   }
-  UI.showMsg("Insurance quote...", "exito");
+  UI.showMsg("Creating Insurance quote...", "exito");
+  const insurance = new Insurance(model, year, type);
+
+  insurance.insuranceQuote();
 }
