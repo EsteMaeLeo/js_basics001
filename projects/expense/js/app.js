@@ -14,6 +14,11 @@ class Budget {
     this.remaining = budget;
     this.expense = [];
   }
+  newExpense(expense) {
+    //this.expense.push(expense);
+    this.expense = [...this.expense, expense];
+    console.log(this.expense);
+  }
 }
 
 class userInterface {
@@ -63,7 +68,7 @@ function askBudget() {
 function addExpense(e) {
   e.preventDefault();
   const name = document.querySelector("#gasto").value;
-  const quantity = document.querySelector("#cantidad").value;
+  const quantity = Number(document.querySelector("#cantidad").value);
 
   if (name === "" || quantity === "") {
     ui.printAlert("Both Fields are required", "error");
@@ -72,4 +77,10 @@ function addExpense(e) {
     ui.printAlert("Quantitty not valid", "error");
     return;
   }
+  //object expense joining ... using object literal
+  const expense = { name, quantity, id: Date.now() };
+  budget.newExpense(expense);
+  console.log(expense);
+  ui.printAlert("Expense Added");
+  form.reset();
 }
