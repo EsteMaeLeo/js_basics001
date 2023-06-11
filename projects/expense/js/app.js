@@ -21,9 +21,12 @@ class Budget {
     console.log(this.expense);
   }
 
-  calculateRemainin(){
-    const totalExpense = this.expense.reduce((total, expense) => total + expense.quantity, 0);
-    console.log(totalExpense)
+  calculateRemainin() {
+    const totalExpense = this.expense.reduce(
+      (total, expense) => total + expense.quantity,
+      0
+    );
+    console.log(totalExpense);
     this.remaining = this.budget - totalExpense;
   }
 }
@@ -56,29 +59,51 @@ class userInterface {
       const { quantity, name, id } = expense;
 
       //create LI
-      const newExpense = document.createElement('li')
-      newExpense.className = 'list-group-item d-flex justify-content-between align-items-center';
+      const newExpense = document.createElement("li");
+      newExpense.className =
+        "list-group-item d-flex justify-content-between align-items-center";
       //newExpense.setAttribute('data-id', id)
-      newExpense.dataset.id = id
-      console.log(newExpense)
+      newExpense.dataset.id = id;
+      console.log(newExpense);
       newExpense.innerHTML = `${name} <span class="badge badge-primary badge-pill">$ ${quantity}</span>`;
-      const btnDelete = document.createElement('button');
-      btnDelete.classList.add('btn', 'btn-danger', 'borrar-gasto');
-      btnDelete.innerHTML = 'Delete &times'
-      newExpense.appendChild(btnDelete)
+      const btnDelete = document.createElement("button");
+      btnDelete.classList.add("btn", "btn-danger", "borrar-gasto");
+      btnDelete.innerHTML = "Delete &times";
+      newExpense.appendChild(btnDelete);
 
       expenseList.appendChild(newExpense);
     });
   }
 
-  clearHtml(){
-    while(expenseList.firstChild){
-        expenseList.removeChild(expenseList.firstChild);
+  clearHtml() {
+    while (expenseList.firstChild) {
+      expenseList.removeChild(expenseList.firstChild);
     }
   }
 
-  updateRemaining(remaining){
+  updateRemaining(remaining) {
     document.querySelector("#restante").textContent = remaining;
+  }
+
+  checkBudget(budgetObj) {
+    const { budget, remaining } = budgetObj;
+
+    const remainingDiv = document.querySelector(".restante");
+
+    if (budget / 4 > remaining) {
+      console.log("75% expense");
+      remainingDiv.classList.remove("alert-success", "alert-success");
+      remainingDiv.classList.add("alert-danger");
+    } else if (budget / 2 > remaining) {
+      console.log("50% expense");
+      remainingDiv.classList.remove("alert-success");
+      remainingDiv.classList.add("alert-warning");
+    }
+
+    if (remaining <= 0) {
+      ui.printAlert("You use all your budget", "error");
+      form.querySelector('button[type="submit"]').disabled = true;
+    }
   }
 }
 
@@ -117,18 +142,21 @@ function addExpense(e) {
   }
   //object expense joining ... using object literal
   const newExpense = { name, quantity, id: Date.now() };
-  
+
   //add new expense
   budget.newExpense(newExpense);
   console.log(newExpense);
-  
+
   //message
-    ui.printAlert("Expense Added");
+  ui.printAlert("Expense Added");
   console.log(budget);
 
   const { expense, remaining } = budget;
   ui.addExpenseList(expense);
-  
+
   ui.updateRemaining(remaining);
+
+  ui.checkBudget(budget);
+
   form.reset();
 }
