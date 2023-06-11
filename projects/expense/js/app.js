@@ -17,7 +17,14 @@ class Budget {
   newExpense(expense) {
     //this.expense.push(expense);
     this.expense = [...this.expense, expense];
+    this.calculateRemainin();
     console.log(this.expense);
+  }
+
+  calculateRemainin(){
+    const totalExpense = this.expense.reduce((total, expense) => total + expense.quantity, 0);
+    console.log(totalExpense)
+    this.remaining = this.budget - totalExpense;
   }
 }
 
@@ -41,6 +48,37 @@ class userInterface {
     setTimeout(() => {
       divMsg.remove();
     }, 3000);
+  }
+
+  addExpenseList(expenses) {
+    this.clearHtml();
+    expenses.forEach((expense) => {
+      const { quantity, name, id } = expense;
+
+      //create LI
+      const newExpense = document.createElement('li')
+      newExpense.className = 'list-group-item d-flex justify-content-between align-items-center';
+      //newExpense.setAttribute('data-id', id)
+      newExpense.dataset.id = id
+      console.log(newExpense)
+      newExpense.innerHTML = `${name} <span class="badge badge-primary badge-pill">$ ${quantity}</span>`;
+      const btnDelete = document.createElement('button');
+      btnDelete.classList.add('btn', 'btn-danger', 'borrar-gasto');
+      btnDelete.innerHTML = 'Delete &times'
+      newExpense.appendChild(btnDelete)
+
+      expenseList.appendChild(newExpense);
+    });
+  }
+
+  clearHtml(){
+    while(expenseList.firstChild){
+        expenseList.removeChild(expenseList.firstChild);
+    }
+  }
+
+  updateRemaining(remaining){
+    document.querySelector("#restante").textContent = remaining;
   }
 }
 
@@ -78,9 +116,19 @@ function addExpense(e) {
     return;
   }
   //object expense joining ... using object literal
-  const expense = { name, quantity, id: Date.now() };
-  budget.newExpense(expense);
-  console.log(expense);
-  ui.printAlert("Expense Added");
+  const newExpense = { name, quantity, id: Date.now() };
+  
+  //add new expense
+  budget.newExpense(newExpense);
+  console.log(newExpense);
+  
+  //message
+    ui.printAlert("Expense Added");
+  console.log(budget);
+
+  const { expense, remaining } = budget;
+  ui.addExpenseList(expense);
+  
+  ui.updateRemaining(remaining);
   form.reset();
 }
