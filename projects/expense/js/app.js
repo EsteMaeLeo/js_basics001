@@ -29,6 +29,10 @@ class Budget {
     console.log(totalExpense);
     this.remaining = this.budget - totalExpense;
   }
+
+  deleteExpense(id) {
+    this.expense = this.expense.filter((expense) => expense.id != id);
+  }
 }
 
 class userInterface {
@@ -69,6 +73,11 @@ class userInterface {
       const btnDelete = document.createElement("button");
       btnDelete.classList.add("btn", "btn-danger", "borrar-gasto");
       btnDelete.innerHTML = "Delete &times";
+
+      btnDelete.onclick = () => {
+        deleteExpense(id);
+      };
+
       newExpense.appendChild(btnDelete);
 
       expenseList.appendChild(newExpense);
@@ -91,11 +100,11 @@ class userInterface {
     const remainingDiv = document.querySelector(".restante");
 
     if (budget / 4 > remaining) {
-      console.log("75% expense");
+
       remainingDiv.classList.remove("alert-success", "alert-success");
       remainingDiv.classList.add("alert-danger");
     } else if (budget / 2 > remaining) {
-      console.log("50% expense");
+
       remainingDiv.classList.remove("alert-success");
       remainingDiv.classList.add("alert-warning");
     }
@@ -112,7 +121,7 @@ let budget;
 
 function askBudget() {
   const budgetUser = prompt("Add your budget");
-  console.log(budgetUser);
+
   const numberBudget = Number(budgetUser);
   if (
     budgetUser === "" ||
@@ -124,7 +133,7 @@ function askBudget() {
   }
 
   budget = new Budget(numberBudget);
-  console.log(budget);
+
   ui.insertBudget(budget);
 }
 
@@ -159,4 +168,10 @@ function addExpense(e) {
   ui.checkBudget(budget);
 
   form.reset();
+}
+
+function deleteExpense(id) {
+  budget.deleteExpense(id);
+  const { expense, remaining } = budget;
+  ui.addExpenseList(expense);
 }
