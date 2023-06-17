@@ -32,6 +32,7 @@ class Budget {
 
   deleteExpense(id) {
     this.expense = this.expense.filter((expense) => expense.id != id);
+    this.calculateRemainin();
   }
 }
 
@@ -100,13 +101,14 @@ class userInterface {
     const remainingDiv = document.querySelector(".restante");
 
     if (budget / 4 > remaining) {
-
-      remainingDiv.classList.remove("alert-success", "alert-success");
+      remainingDiv.classList.remove("alert-success", "alert-warning");
       remainingDiv.classList.add("alert-danger");
     } else if (budget / 2 > remaining) {
-
       remainingDiv.classList.remove("alert-success");
       remainingDiv.classList.add("alert-warning");
+    } else {
+      remainingDiv.classList.remove("alert-warning", "alert-danger");
+      remainingDiv.classList.add("alert-success");
     }
 
     if (remaining <= 0) {
@@ -171,7 +173,13 @@ function addExpense(e) {
 }
 
 function deleteExpense(id) {
+  //delete expense from object
   budget.deleteExpense(id);
   const { expense, remaining } = budget;
+  //update HTML
   ui.addExpenseList(expense);
+
+  ui.updateRemaining(remaining);
+
+  ui.checkBudget(budget);
 }
