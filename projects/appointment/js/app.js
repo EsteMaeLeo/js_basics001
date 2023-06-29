@@ -9,6 +9,7 @@ const form = document.querySelector("#nueva-cita");
 const appoitments = document.querySelector("#citas");
 
 const appoitmentObj = {
+  id: "",
   pet: "",
   owner: "",
   phone: "",
@@ -20,6 +21,11 @@ const appoitmentObj = {
 class Appoitments {
   constructor() {
     this.appoitments = [];
+  }
+
+  addApoitment(appoitment) {
+    this.appoitments = [...this.appoitments, appoitment];
+    console.log(this.appoitments);
   }
 }
 
@@ -64,7 +70,6 @@ function dataAppoitment(e) {
   console.log(e.target.name);
   //should be same name in HTML name and object
   appoitmentObj[e.target.name] = e.target.value;
-
 }
 
 function newAppoitment(e) {
@@ -80,4 +85,21 @@ function newAppoitment(e) {
     ui.printAlert("All field are required", "error");
     return;
   }
+
+  appoitmentObj.id = Date.now();
+  appoitmentsManagement.addApoitment({ ...appoitmentObj });
+
+  resetObj();
+
+  form.reset();
+}
+
+function resetObj() {
+  appoitmentObj.pet = "";
+  appoitmentObj.id = "";
+  appoitmentObj.owner = "";
+  appoitmentObj.phone = "";
+  appoitmentObj.date = "";
+  appoitmentObj.hour = "";
+  appoitmentObj.symptoms = "";
 }
