@@ -8,7 +8,7 @@ const sympInputs = document.querySelector("#sintomas");
 const form = document.querySelector("#nueva-cita");
 const appoitments = document.querySelector("#citas");
 
-const citaObj = {
+const appoitmentObj = {
   pet: "",
   owner: "",
   phone: "",
@@ -17,18 +17,36 @@ const citaObj = {
   symptoms: "",
 };
 
-class Appoitments{
-    constructor(){
-        this.appoitments = [];
+class Appoitments {
+  constructor() {
+    this.appoitments = [];
+  }
+}
+
+class UI {
+  printAlert(msg, type) {
+    const divMsg = document.createElement("div");
+    divMsg.classList.add("text-center", "alert", "d-block", "col-12");
+
+    if (type === "error") {
+      divMsg.classList.add("alert-danger");
+    } else {
+      divMsg.classList.add("alert-success");
     }
+    divMsg.textContent = msg;
+
+    document
+      .querySelector("#contenido")
+      .insertBefore(divMsg, document.querySelector(".agregar-cita"));
+
+    setTimeout(() => {
+      divMsg.remove();
+    }, 5000);
+  }
 }
 
-class UI{
-
-}
-
-const ui = new UI;
-const appoitmentsManagement = new Appoitments(); 
+const ui = new UI();
+const appoitmentsManagement = new Appoitments();
 eventListener();
 
 function eventListener() {
@@ -38,11 +56,28 @@ function eventListener() {
   dateInput.addEventListener("input", dataAppoitment);
   timeInput.addEventListener("input", dataAppoitment);
   sympInputs.addEventListener("input", dataAppoitment);
+
+  form.addEventListener("submit", newAppoitment);
 }
 
 function dataAppoitment(e) {
   console.log(e.target.name);
   //should be same name in HTML name and object
-  citaObj[e.target.name] = e.target.value;
-  console.log(citaObj);
+  appoitmentObj[e.target.name] = e.target.value;
+
+}
+
+function newAppoitment(e) {
+  e.preventDefault();
+  const { pet, owner, phone, date, hour, symptoms } = appoitmentObj;
+  if (
+    pet === "" ||
+    owner === "" ||
+    phone === "" ||
+    date === "" ||
+    hour === ""
+  ) {
+    ui.printAlert("All field are required", "error");
+    return;
+  }
 }
