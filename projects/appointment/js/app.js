@@ -17,6 +17,18 @@ const citaObj = {
   symptoms: "",
 };
 
+class Appoitments{
+    constructor(){
+        this.appoitments = [];
+    }
+}
+
+class UI{
+
+}
+
+const ui = new UI;
+const appoitmentsManagement = new Appoitments(); 
 eventListener();
 
 function eventListener() {
