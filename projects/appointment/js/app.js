@@ -35,6 +35,12 @@ class Appoitments {
       (appotiment) => appotiment.id !== id
     );
   }
+
+  editAppoitment(editAppoitment) {
+    this.appoitments = this.appoitments.map((appoitment) =>
+      appoitment.id === editAppoitment.id ? editAppoitment : appoitment
+    );
+  }
 }
 
 class UI {
@@ -160,18 +166,20 @@ function newAppoitment(e) {
     return;
   }
 
-if(editing){
-    ui.printAlert('Appoitment successfully edited')
-    form.querySelector('button[type="submit"]').textContent = "CREATE APPOITMENT";
+  if (editing) {
+    ui.printAlert("Appoitment successfully edited");
+
+    appoitmentsManagement.editAppoitment({ ...appoitmentObj });
+
+    form.querySelector('button[type="submit"]').textContent =
+      "CREATE APPOITMENT";
     editing = false;
-}else{
+  } else {
     appoitmentObj.id = Date.now();
     //move the copy
     appoitmentsManagement.addApoitment({ ...appoitmentObj });
-    ui.printAlert('Appoitment successfully added')
-}
-
-
+    ui.printAlert("Appoitment successfully added");
+  }
 
   resetObj();
 
@@ -214,12 +222,12 @@ function editAppoitment(appoitment) {
 
   appoitmentObj.id = id;
   appoitmentObj.pet = pet;
-  appoitmentObj.owner = powneret;
+  appoitmentObj.owner = owner;
   appoitmentObj.phone = phone;
   appoitmentObj.date = date;
   appoitmentObj.hour = hour;
   appoitmentObj.symptoms = symptoms;
-  
+
   //change button
   form.querySelector('button[type="submit"]').textContent = "Save Changes";
 
