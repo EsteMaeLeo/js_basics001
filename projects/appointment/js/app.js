@@ -49,6 +49,10 @@ class UI {
       divMsg.remove();
     }, 5000);
   }
+//destructuring to the object
+  printAppoitment({appoitments}){
+    console.log(appoitments)
+  }
 }
 
 const ui = new UI();
@@ -87,11 +91,14 @@ function newAppoitment(e) {
   }
 
   appoitmentObj.id = Date.now();
+  //move the copy
   appoitmentsManagement.addApoitment({ ...appoitmentObj });
 
   resetObj();
 
   form.reset();
+
+  ui.printAppoitment(appoitmentsManagement)
 }
 
 function resetObj() {
