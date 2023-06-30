@@ -51,6 +51,7 @@ class UI {
   }
   //destructuring to the object
   printAppoitment({ appoitments }) {
+    this.cleanHtml();
     appoitments.forEach((appoitment) => {
       const { id, pet, owner, phone, date, hour, symptoms } = appoitment;
       const divAppoitment = document.createElement("div");
@@ -61,7 +62,7 @@ class UI {
       petParagraph.classList.add("card-title", "font-weight-bolder");
       petParagraph.textContent = pet;
 
-     const ownerParagraph = document.createElement("p");
+      const ownerParagraph = document.createElement("p");
       ownerParagraph.classList.add("card-title", "font-weight-bolder");
       ownerParagraph.innerHTML = ` <span class="font-weight-bolder">Owner: </span> ${owner}`;
 
@@ -91,6 +92,12 @@ class UI {
       appoitmentsContainer.appendChild(divAppoitment);
     });
   }
+  cleanHtml() {
+    while (appoitmentsContainer.firstChild) {
+      appoitmentsContainer.removeChild(appoitmentsContainer.firstChild);
+    }
+  }
+
 }
 
 const ui = new UI();
