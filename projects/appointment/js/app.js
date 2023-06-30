@@ -6,7 +6,7 @@ const timeInput = document.querySelector("#hora");
 const sympInputs = document.querySelector("#sintomas");
 
 const form = document.querySelector("#nueva-cita");
-const appoitments = document.querySelector("#citas");
+const appoitmentsContainer = document.querySelector("#citas");
 
 const appoitmentObj = {
   id: "",
@@ -49,9 +49,47 @@ class UI {
       divMsg.remove();
     }, 5000);
   }
-//destructuring to the object
-  printAppoitment({appoitments}){
-    console.log(appoitments)
+  //destructuring to the object
+  printAppoitment({ appoitments }) {
+    appoitments.forEach((appoitment) => {
+      const { id, pet, owner, phone, date, hour, symptoms } = appoitment;
+      const divAppoitment = document.createElement("div");
+      divAppoitment.classList.add("cita", "p-3");
+      divAppoitment.dataset.id = id;
+
+      const petParagraph = document.createElement("p");
+      petParagraph.classList.add("card-title", "font-weight-bolder");
+      petParagraph.textContent = pet;
+
+     const ownerParagraph = document.createElement("p");
+      ownerParagraph.classList.add("card-title", "font-weight-bolder");
+      ownerParagraph.innerHTML = ` <span class="font-weight-bolder">Owner: </span> ${owner}`;
+
+      const phoneParagraph = document.createElement("p");
+      phoneParagraph.classList.add("card-title", "font-weight-bolder");
+      phoneParagraph.innerHTML = ` <span class="font-weight-bolder">Phone: </span> ${phone}`;
+
+      const dateParagraph = document.createElement("p");
+      dateParagraph.classList.add("card-title", "font-weight-bolder");
+      dateParagraph.innerHTML = ` <span class="font-weight-bolder">Phone: </span> ${date}`;
+
+      const hourParagraph = document.createElement("p");
+      hourParagraph.classList.add("card-title", "font-weight-bolder");
+      hourParagraph.innerHTML = ` <span class="font-weight-bolder">Phone: </span> ${hour}`;
+
+      const symptomsParagraph = document.createElement("p");
+      symptomsParagraph.classList.add("card-title", "font-weight-bolder");
+      symptomsParagraph.innerHTML = ` <span class="font-weight-bolder">Phone: </span> ${symptoms}`;
+
+      divAppoitment.appendChild(petParagraph);
+      divAppoitment.appendChild(ownerParagraph);
+      divAppoitment.appendChild(phoneParagraph);
+      divAppoitment.appendChild(dateParagraph);
+      divAppoitment.appendChild(hourParagraph);
+      divAppoitment.appendChild(symptomsParagraph);
+
+      appoitmentsContainer.appendChild(divAppoitment);
+    });
   }
 }
 
@@ -98,7 +136,7 @@ function newAppoitment(e) {
 
   form.reset();
 
-  ui.printAppoitment(appoitmentsManagement)
+  ui.printAppoitment(appoitmentsManagement);
 }
 
 function resetObj() {
