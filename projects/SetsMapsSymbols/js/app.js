@@ -48,3 +48,26 @@ clientMap.set("name", "Carl");
 clientMap.set("type", "Platinum");
 clientMap.set("balance", "4500");
 console.log(clientMap);
+
+console.log(clientMap.size);
+console.log(clientMap.has("name"));
+console.log(clientMap.get("name"));
+clientMap.delete("balance");
+console.log(clientMap.has("balance"));
+console.log(clientMap.get("balance"));
+clientMap.clear();
+console.log(clientMap);
+
+const patient = new Map([
+  ["name", "Terry"],
+  ["room", 430],
+]);
+console.log(patient);
+patient.set("dr", "Dr Jown");
+console.log(patient);
+patient.set("name", "Tonny");
+console.log(patient);
+
+patient.forEach((data, index)=>{
+    console.log(data, index)
+})
