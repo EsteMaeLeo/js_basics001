@@ -71,3 +71,26 @@ console.log(patient);
 patient.forEach((data, index)=>{
     console.log(data, index)
 })
+
+// WEKMAP
+const product = {
+    id: 10
+}
+
+const wekmap = new WeakMap();
+wekmap.set(product, 'Mouse');
+
+console.log(wekmap.has(product));
+console.log(wekmap.get(product));
+console.log(wekmap);
+
+//SYMBOLS 
+const sym = Symbol();
+const sym2 = Symbol();
+
+if(sym === sym2){
+    console.log('Symbols same')
+}else{
+    console.log('Symbols are different')
+}
+
