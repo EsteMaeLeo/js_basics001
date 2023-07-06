@@ -219,3 +219,14 @@ for(let keys of orders.keys()){
 for(let keys of data.keys()){
     console.log(keys)
 }
+
+//default
+for(let city of cities){
+    console.log(city)
+}
+for(let orden of orders){
+    console.log(orden)
+}
+for(let dat of data){
+    console.log(dat)
+}
