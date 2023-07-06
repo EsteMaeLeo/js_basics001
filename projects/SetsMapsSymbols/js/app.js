@@ -68,29 +68,40 @@ console.log(patient);
 patient.set("name", "Tonny");
 console.log(patient);
 
-patient.forEach((data, index)=>{
-    console.log(data, index)
-})
+patient.forEach((data, index) => {
+  console.log(data, index);
+});
 
 // WEKMAP
 const product = {
-    id: 10
-}
+  id: 10,
+};
 
 const wekmap = new WeakMap();
-wekmap.set(product, 'Mouse');
+wekmap.set(product, "Mouse");
 
 console.log(wekmap.has(product));
 console.log(wekmap.get(product));
 console.log(wekmap);
 
-//SYMBOLS 
+//SYMBOLS
 const sym = Symbol();
 const sym2 = Symbol();
 
-if(sym === sym2){
-    console.log('Symbols same')
-}else{
-    console.log('Symbols are different')
+if (sym === sym2) {
+  console.log("Symbols same");
+} else {
+  console.log("Symbols are different");
 }
 
+//Symbol cant be interact by for
+const name = Symbol();
+const lastname = Symbol();
+
+const person = {};
+person[name] = "John";
+person[lastname] = "Williams";
+person.type = "Platinum";
+person.balance = 3000;
+
+console.log(person);
