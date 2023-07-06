@@ -117,3 +117,28 @@ clientSym[nameClient] = "Charles";
 console.log(clientSym);
 console.log(clientSym[nameClient]);
 console.log(nameClient);
+
+
+//loops
+
+function createLoop(shoppingCart){
+    let i = 0;
+    return {
+        next: ()=>{
+            const end = (i >= shoppingCart.length);
+            const value = !end ? shoppingCart[i++] : undefined;
+            return{
+                end,
+                value
+            }
+        }
+    }
+}
+
+const shoppingCart = ['Product 1', 'Product 2', 'Product 3'];
+
+const loopCart = createLoop(shoppingCart);
+console.log(loopCart.next());
+console.log(loopCart.next());
+console.log(loopCart.next());
+console.log(loopCart.next());
