@@ -118,27 +118,57 @@ console.log(clientSym);
 console.log(clientSym[nameClient]);
 console.log(nameClient);
 
+//iterators
 
-//loops
-
-function createLoop(shoppingCart){
-    let i = 0;
-    return {
-        next: ()=>{
-            const end = (i >= shoppingCart.length);
-            const value = !end ? shoppingCart[i++] : undefined;
-            return{
-                end,
-                value
-            }
-        }
-    }
+function createLoop(shoppingCart) {
+  let i = 0;
+  return {
+    next: () => {
+      const end = i >= shoppingCart.length;
+      const value = !end ? shoppingCart[i++] : undefined;
+      return {
+        end,
+        value,
+      };
+    },
+  };
 }
 
-const shoppingCart = ['Product 1', 'Product 2', 'Product 3'];
+const shoppingCart = ["Product 1", "Product 2", "Product 3"];
 
 const loopCart = createLoop(shoppingCart);
 console.log(loopCart.next());
 console.log(loopCart.next());
 console.log(loopCart.next());
 console.log(loopCart.next());
+
+//Generators
+
+function* createGenerator() {
+  yield 1;
+  yield "William";
+  yield 9 + 9;
+  yield true;
+}
+
+const iterator = createGenerator();
+
+console.log(iterator);
+console.log(iterator.next().value);
+console.log(iterator.next());
+console.log(iterator.next().value);
+console.log(iterator.next());
+console.log(iterator.next());
+
+function* createShopping(cart) {
+  for (let i = 0; i < cart.length; i++) {
+    yield cart[i];
+  }
+}
+
+const genShoppingCart = ["Product 1", "Product 2", "Product 3"];
+const iteratorShopping = createShopping(genShoppingCart);
+console.log(iteratorShopping.next());
+console.log(iteratorShopping.next());
+console.log(iteratorShopping.next());
+console.log(iteratorShopping.next());
