@@ -105,3 +105,15 @@ person.type = "Platinum";
 person.balance = 3000;
 
 console.log(person);
+
+for (let i in person) {
+  console.log(i);
+}
+
+//add description of symbol
+const nameClient = Symbol("Client Name");
+const clientSym = {};
+clientSym[nameClient] = "Charles";
+console.log(clientSym);
+console.log(clientSym[nameClient]);
+console.log(nameClient);
