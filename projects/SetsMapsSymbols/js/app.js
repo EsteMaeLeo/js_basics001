@@ -172,3 +172,50 @@ console.log(iteratorShopping.next());
 console.log(iteratorShopping.next());
 console.log(iteratorShopping.next());
 console.log(iteratorShopping.next());
+
+const cities = ["London", "Madrid", "Atlanta", "Bogota"];
+const orders = new Set([200, 300, 400, 600]);
+const data = new Map();
+
+data.set("name", "William");
+data.set("job", "Program Manager");
+
+//entries
+for(let entry of cities.entries()){
+    console.log(entry)
+}
+
+console.log(orders)
+for(let entry of orders.entries()){
+    console.log(entry)
+}
+console.log(data)
+for(let entry of data.entries()){
+    console.log(entry)
+}
+
+//values
+for(let value of cities.values()){
+    console.log(value)
+}
+
+for(let value of orders.values()){
+    console.log(value)
+}
+
+for(let value of data.values()){
+    console.log(value)
+}
+
+//keys iterator
+for(let keys of cities.keys()){
+    console.log(keys)
+}
+
+for(let keys of orders.keys()){
+    console.log(keys)
+}
+
+for(let keys of data.keys()){
+    console.log(keys)
+}
