@@ -22,3 +22,7 @@ export class Client {
     return `Client: ${this.name} - Savings ${this.saving}`
   }
 }
+
+export default function newFunction(){
+    console.log('Export default dont require {} and only one ')
+}
