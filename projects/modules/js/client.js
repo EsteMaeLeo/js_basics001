@@ -12,3 +12,13 @@ export function hasBudget(budget) {
     console.log("Dont have Budget assigned");
   }
 }
+
+export class Client {
+  constructor(name, saving) {
+    this.name = name;
+    this.saving = saving;
+  }
+  showInfo(){
+    return `Client: ${this.name} - Savings ${this.saving}`
+  }
+}
