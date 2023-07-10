@@ -1,5 +1,12 @@
+let DB;
+
 document.addEventListener("DOMContentLoaded", () => {
   crmDB();
+
+  setInterval(() =>{
+    createClient()
+  },5000)
+
 });
 
 function crmDB() {
@@ -14,6 +21,8 @@ function crmDB() {
   //create success
   crmDB.onsuccess = function () {
     console.log("DB create successfully");
+
+    DB = crmDB.result;
   };
 
   //configuration
@@ -32,4 +41,8 @@ function crmDB() {
     objectStore.createIndex("email", "email", { unique: true });
     objectStore.createIndex("phone", "phone", { unique: false });
   };
+}
+
+function createClient(){
+    let transaction = DB.transaction(['crmDB'], 'readwrite');
 }
