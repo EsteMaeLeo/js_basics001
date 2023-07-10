@@ -1,5 +1,5 @@
-import Appoitments from "./class/appoitment";
-import UI from "./class/ui";
+import Appoitments from "./class/appoitment.js";
+import UI from "./class/ui.js";
 import {
   petInput,
   ownerInput,
