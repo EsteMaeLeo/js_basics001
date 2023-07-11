@@ -133,5 +133,24 @@ export function createDB() {
     console.log(DB);
   };
 
+  //define schema
+  createDB.onupgradeneeded = function(e){
+    const db = e.target.result;
 
+    const objectStore = db.createObjectStore('appoitments',{
+      //index
+      keyPath : 'id',
+      autoIncrement: true
+
+    }) ;
+
+    objectStore.createIndex('id', 'id', {unique:false});
+    objectStore.createIndex('pet', 'pet', {unique:false});
+    objectStore.createIndex('owner', 'owner', {unique:false});
+    objectStore.createIndex('phone', 'phone', {unique:false});
+    objectStore.createIndex('date', 'date', {unique:false});
+    objectStore.createIndex('hour', 'hour', {unique:false});
+    objectStore.createIndex('symptoms', 'symptoms', {unique:false});
+  }
+  console.log("DB Create")
 }
