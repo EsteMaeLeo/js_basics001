@@ -10,9 +10,11 @@ import {
   form,
 } from "./selector.js";
 
-let DB;
+export let DB;
 
 const ui = new UI();
+console.log('UI Print Appoitment');
+
 const appoitmentsManagement = new Appoitments();
 
 const appoitmentObj = {
@@ -77,7 +79,7 @@ export function newAppoitment(e) {
 
   form.reset();
 
-  ui.printAppoitment(appoitmentsManagement);
+  ui.printAppoitment();
 }
 
 export function resetObj() {
@@ -96,7 +98,7 @@ export function deleteAppoitment(id) {
   //show message
   ui.printAlert("Appoitment deleted");
   //refresh
-  ui.printAppoitment(appoitmentsManagement);
+  ui.printAppoitment();
 }
 
 export function editAppoitment(appoitment) {
@@ -140,6 +142,9 @@ export function createDB() {
   createDB.onsuccess = function () {
     console.log("DB Created successfully");
     DB = createDB.result;
+
+    //Call print but INDEXEDB is ready 
+    ui.printAppoitment()
 
     console.log(DB);
   };
