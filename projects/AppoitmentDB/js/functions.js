@@ -59,7 +59,18 @@ export function newAppoitment(e) {
     appoitmentObj.id = Date.now();
     //move the copy
     appoitmentsManagement.addApoitment({ ...appoitmentObj });
-    ui.printAlert("Appoitment successfully added");
+
+    //add in the indexedDB
+    //let transaction = DB.transaction(['crmDB'], 'readwrite');
+    const transaction = DB.transaction(["appoitments"], "readwrite");
+    //enable the objectstore
+    const objectStore = transaction.objectStore("appoitments");
+    //add DB
+    objectStore.add(appoitmentObj);
+    transaction.oncomplete = function () {
+      console.log("Appoitment created on DB");
+      ui.printAlert("Appoitment successfully added");
+    };
   }
 
   resetObj();
@@ -134,23 +145,22 @@ export function createDB() {
   };
 
   //define schema
-  createDB.onupgradeneeded = function(e){
+  createDB.onupgradeneeded = function (e) {
     const db = e.target.result;
 
-    const objectStore = db.createObjectStore('appoitments',{
+    const objectStore = db.createObjectStore("appoitments", {
       //index
-      keyPath : 'id',
-      autoIncrement: true
+      keyPath: "id",
+      autoIncrement: true,
+    });
 
-    }) ;
-
-    objectStore.createIndex('id', 'id', {unique:false});
-    objectStore.createIndex('pet', 'pet', {unique:false});
-    objectStore.createIndex('owner', 'owner', {unique:false});
-    objectStore.createIndex('phone', 'phone', {unique:false});
-    objectStore.createIndex('date', 'date', {unique:false});
-    objectStore.createIndex('hour', 'hour', {unique:false});
-    objectStore.createIndex('symptoms', 'symptoms', {unique:false});
-  }
-  console.log("DB Create")
+    objectStore.createIndex("id", "id", { unique: false });
+    objectStore.createIndex("pet", "pet", { unique: false });
+    objectStore.createIndex("owner", "owner", { unique: false });
+    objectStore.createIndex("phone", "phone", { unique: false });
+    objectStore.createIndex("date", "date", { unique: false });
+    objectStore.createIndex("hour", "hour", { unique: false });
+    objectStore.createIndex("symptoms", "symptoms", { unique: false });
+  };
+  console.log("DB Create");
 }
