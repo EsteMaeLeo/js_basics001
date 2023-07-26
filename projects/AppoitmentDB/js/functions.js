@@ -50,8 +50,6 @@ export function newAppoitment(e) {
   }
 
   if (editing) {
-    ui.printAlert("Appoitment successfully edited");
-
     appoitmentsManagement.editAppoitment({ ...appoitmentObj });
 
     //editing on IndexDB
@@ -59,9 +57,12 @@ export function newAppoitment(e) {
     const objectStore = transaction.objectStore("appoitments");
     objectStore.put(appoitmentObj);
 
-    form.querySelector('button[type="submit"]').textContent =
-      "CREATE APPOITMENT";
-    editing = false;
+    transaction.oncomplete = () => {
+      ui.printAlert("Appoitment successfully edited");
+      form.querySelector('button[type="submit"]').textContent =
+        "CREATE APPOITMENT";
+      editing = false;
+    };
   } else {
     appoitmentObj.id = Date.now();
     //move the copy
