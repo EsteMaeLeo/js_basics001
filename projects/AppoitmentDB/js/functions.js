@@ -13,7 +13,7 @@ import {
 export let DB;
 
 const ui = new UI();
-console.log('UI Print Appoitment');
+console.log("UI Print Appoitment");
 
 const appoitmentsManagement = new Appoitments();
 
@@ -53,6 +53,11 @@ export function newAppoitment(e) {
     ui.printAlert("Appoitment successfully edited");
 
     appoitmentsManagement.editAppoitment({ ...appoitmentObj });
+
+    //editing on IndexDB
+    const transaction = DB.transaction(["appoitments"], "readwrite");
+    const objectStore = transaction.objectStore("appoitments");
+    objectStore.put(appoitmentObj);
 
     form.querySelector('button[type="submit"]').textContent =
       "CREATE APPOITMENT";
@@ -143,8 +148,8 @@ export function createDB() {
     console.log("DB Created successfully");
     DB = createDB.result;
 
-    //Call print but INDEXEDB is ready 
-    ui.printAppoitment()
+    //Call print but INDEXEDB is ready
+    ui.printAppoitment();
 
     console.log(DB);
   };
