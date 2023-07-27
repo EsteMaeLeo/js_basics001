@@ -100,11 +100,21 @@ export function resetObj() {
 
 export function deleteAppoitment(id) {
   //delete
-  appoitmentsManagement.deleteAppoitment(id);
-  //show message
-  ui.printAlert("Appoitment deleted");
-  //refresh
-  ui.printAppoitment();
+  //appoitmentsManagement.deleteAppoitment(id);
+  const transaction = DB.transaction(["appoitments"], "readwrite");
+  const objectStore = transaction.objectStore("appoitments");
+  objectStore.delete(id);
+
+  transaction.oncomplete = () => {
+    console.log(`${id} Deleted`);
+    //show message
+    ui.printAlert("Appoitment deleted");
+    //refresh
+    ui.printAppoitment();
+  };
+  transaction.onerror = () => {
+    console.log("Error on delete");
+  };
 }
 
 export function editAppoitment(appoitment) {
