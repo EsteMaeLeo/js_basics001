@@ -22,6 +22,7 @@ class UI {
     }, 5000);
   }
   //destructuring to the object
+  //  printAppoitment(appoitment) {
   printAppoitment() {
     this.cleanHtml();
 
@@ -36,8 +37,9 @@ class UI {
       }
       console.log(total);
 
+    //using openCursor for IndexDB    
     objectStore.openCursor().onsuccess = function (e) {
-      console.log(e.target.result);
+      console.log('Cursor ', e.target.result);
       const cursor = e.target.result;
       if (cursor) {
    
