@@ -35,6 +35,16 @@
 
       return;
     }
+
+    //create object literal enhancement.. in this case key and value has the same name
+    const client ={
+        name,
+        email,
+        phone,
+        company
+    }
+
+    console.log(client)
   }
 
   function printAlert(msg, type) {
