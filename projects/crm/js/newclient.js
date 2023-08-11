@@ -10,7 +10,7 @@
   });
 
   function conectDB() {
-    const openDB = window.indexedDB.open("CRM", 1);
+    const openDB = window.indexedDB.open("crm", 1);
 
     openDB.onerror = function () {
       console.log("Error OPEN DB");
@@ -37,14 +37,32 @@
     }
 
     //create object literal enhancement.. in this case key and value has the same name
-    const client ={
-        name,
-        email,
-        phone,
-        company
-    }
+    const client = {
+      id: Date.now(),
+      name,
+      email,
+      phone,
+      company,
+    };
 
-    console.log(client)
+    console.log(client);
+    createNewClient(client);
+  }
+
+  function createNewClient(client) {
+    const transaction = DB.transaction(["crm"], "readwrite");
+    //const transaction = DB.transaction(["appoitments"], "readwrite");
+    const objectStore = transaction.objectStore('crm');
+
+    objectStore.add(client);
+
+    transaction.onerror = function () {
+      console.log("Error");
+    };
+
+    transaction.oncomplete = function () {
+      console.log("New client added");
+    };
   }
 
   function printAlert(msg, type) {
