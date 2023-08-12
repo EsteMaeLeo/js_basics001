@@ -58,10 +58,12 @@
 
     transaction.onerror = function () {
       console.log("Error");
+      printAlert("Email duplicated")
     };
 
     transaction.oncomplete = function () {
       console.log("New client added");
+      printAlert("New client added")
     };
   }
 
