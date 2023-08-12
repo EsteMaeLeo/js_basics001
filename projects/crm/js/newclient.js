@@ -52,18 +52,22 @@
   function createNewClient(client) {
     const transaction = DB.transaction(["crm"], "readwrite");
     //const transaction = DB.transaction(["appoitments"], "readwrite");
-    const objectStore = transaction.objectStore('crm');
+    const objectStore = transaction.objectStore("crm");
 
     objectStore.add(client);
 
     transaction.onerror = function () {
       console.log("Error");
-      printAlert("Email duplicated")
+      printAlert("Email duplicated");
     };
 
     transaction.oncomplete = function () {
       console.log("New client added");
-      printAlert("New client added")
+      printAlert("New client added");
+
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 3000);
     };
   }
 
