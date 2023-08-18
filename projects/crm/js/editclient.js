@@ -1,8 +1,9 @@
 (function () {
   let DB;
 
-  document.addEventListener("DOMContentLoaded", () => {
+  const nameInput = document.querySelector('#nombre')
 
+  document.addEventListener("DOMContentLoaded", () => {
     connectDB();
     //check the id from URL
     const parameterURL = new URLSearchParams(window.location.search);
@@ -10,19 +11,30 @@
     const idClient = parameterURL.get("id");
     console.log(idClient);
     if (idClient) {
-      setTimeout(()=>{
+      setTimeout(() => {
         getClient(idClient);
-      }, 1000)
-      
+      }, 100);
     }
   });
 
   function getClient(id) {
     console.log(id);
-    const transaction = DB.transaction(['crm'], 'readwrite');
+    const transaction = DB.transaction(["crm"], "readwrite");
 
-    const objectStore = transaction.objectStore('crm')
-    console.log(objectStore)
+    const objectStore = transaction.objectStore("crm");
+    console.log(objectStore);
+    const client = objectStore.openCursor();
+    client.onsuccess = function(e){
+      const cursor = e.target.result;
+      if(cursor){
+
+        if(cursor.value.id === Number(id)){
+          console.log('ID:', cursor.value)
+          fillForm(cursor.value);
+        }
+        cursor.continue();
+      }
+    }
   }
 
   function connectDB() {
@@ -35,5 +47,11 @@
     openDB.onsuccess = function () {
       DB = openDB.result;
     };
+  }
+
+  function fillForm(dataClient){
+    const {name} = dataClient;
+
+    nameInput.value = name;
   }
 })();
