@@ -1,7 +1,8 @@
 //set local functions and variables
+const form = document.querySelector("#formulario");
 (function () {
-  let DB;
-  const form = document.querySelector("#formulario");
+
+  
 
   document.addEventListener("DOMContentLoaded", () => {
     conectDB();
@@ -38,6 +39,7 @@
   }
 
   function createNewClient(client) {
+    //const transaction = DB.transaction(["crm"], "readwrite");
     const transaction = DB.transaction(["crm"], "readwrite");
     //const transaction = DB.transaction(["appoitments"], "readwrite");
     const objectStore = transaction.objectStore("crm");
