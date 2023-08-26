@@ -1,7 +1,13 @@
-const countries = [];
+const applyDiscount = new Promise((resolve, reject) => {
+  const discount = true;
 
-function initProcess(){
+  if (discount) {
+    resolve("Discount applied");
+  } else {
+    reject("Discount cant be applied");
+  }
+});
 
-}
+applyDiscount
 
-initProcess()
+console.log(applyDiscount)
