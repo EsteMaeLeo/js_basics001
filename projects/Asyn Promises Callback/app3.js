@@ -9,5 +9,14 @@ const applyDiscount = new Promise((resolve, reject) => {
 });
 
 applyDiscount
+    .then(result =>{
+        console.log(result)
+    })
+    .catch(error =>{
+        console.log(error)
+    })
 
-console.log(applyDiscount)
+//console.log(applyDiscount)
+//fulfilled promise 
+//reject promise 
+// pending not fulfilled or reject
