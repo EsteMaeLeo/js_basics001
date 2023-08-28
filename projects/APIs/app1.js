@@ -8,10 +8,14 @@ notifyBtn.addEventListener("click", () => {
 });
 
 checkNotify.addEventListener("click", () => {
-  if(Notification.permission === "granted") {
-    new Notification("this is the Notification",{
-        icon:'img/twitter.png',
-        body: 'Sending notifications is easy just allowed'
+  if (Notification.permission === "granted") {
+    const newNotify = new Notification("this is the Notification", {
+      icon: "img/twitter.png",
+      body: "Sending notifications is easy just allowed",
     });
+
+    newNotify.onclick = function(){
+        window.open('https://github.com/EsteMaeLeo')
+    };
   }
 });
