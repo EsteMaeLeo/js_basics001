@@ -14,8 +14,19 @@ checkNotify.addEventListener("click", () => {
       body: "Sending notifications is easy just allowed",
     });
 
-    newNotify.onclick = function(){
-        window.open('https://github.com/EsteMaeLeo')
+    newNotify.onclick = function () {
+      window.open("https://github.com/EsteMaeLeo");
     };
   }
 });
+
+window.addEventListener("online", updateStatus);
+window.addEventListener("offline", updateStatus);
+
+function updateStatus() {
+  if (navigator.onLine) {
+    console.log("is connected");
+  } else {
+    console.log("is not connected");
+  }
+}
