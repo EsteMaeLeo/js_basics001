@@ -30,3 +30,13 @@ function updateStatus() {
     console.log("is not connected");
   }
 }
+
+const openBtn = document.querySelector("#full-screen");
+const closeBtn = document.querySelector("#exit-full-screen");
+
+openBtn.addEventListener("click", fullScreen);
+closeBtn.addEventListener("click", closeScreen);
+
+function fullScreen() {}
+
+function closeScreen() {}
