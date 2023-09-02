@@ -38,19 +38,55 @@ openBtn.addEventListener("click", fullScreen);
 closeBtn.addEventListener("click", closeScreen);
 
 function fullScreen() {
-    document.documentElement.requestFullscreen();
+  document.documentElement.requestFullscreen();
 }
 
 function closeScreen() {
-    document.exitFullscreen();
+  document.exitFullscreen();
 }
 
-document.addEventListener('visibilitychange', ()=>{
-    //console.log(document.visibilityState);
-    if(document.visibilityState ==='visible'){
-        console.log('visible')
-    }else{
-        console.log('not visible')
-    }
-})
+document.addEventListener("visibilitychange", () => {
+  //console.log(document.visibilityState);
+  if (document.visibilityState === "visible") {
+    console.log("visible");
+  } else {
+    console.log("not visible");
+  }
+});
 
+const exit = document.querySelector("#exit");
+const micro = document.querySelector("#microphone");
+
+micro.addEventListener("click", speechApi);
+
+function speechApi() {
+  const speechRecog = webkitSpeechRecognition;
+
+  const recognition = new speechRecog();
+
+  recognition.start();
+
+  recognition.onstart = function () {
+    exit.classList.add("mostrar");
+    exit.textContent = "Listining...";
+  };
+
+  recognition.onspeechend = function () {
+    exit.textContent = "stop recording";
+    recognition.stop();
+  };
+
+  recognition.onresult = function (e) {
+    console.log(e.results);
+
+    const { confidence, transcript } = e.results[0][0];
+
+    const speech = document.createElement("p");
+    speech.innerHTML = `Record: $transcript`;
+
+    const confe = document.createElement("p");
+    confe.innerHTML = `Confidence ${parseInt(confidence * 100)} %`;
+
+    exit.appendChild(speech);
+  };
+}
