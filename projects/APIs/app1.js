@@ -44,3 +44,13 @@ function fullScreen() {
 function closeScreen() {
     document.exitFullscreen();
 }
+
+document.addEventListener('visibilitychange', ()=>{
+    //console.log(document.visibilityState);
+    if(document.visibilityState ==='visible'){
+        console.log('visible')
+    }else{
+        console.log('not visible')
+    }
+})
+
