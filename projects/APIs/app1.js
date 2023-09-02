@@ -37,6 +37,10 @@ const closeBtn = document.querySelector("#exit-full-screen");
 openBtn.addEventListener("click", fullScreen);
 closeBtn.addEventListener("click", closeScreen);
 
-function fullScreen() {}
+function fullScreen() {
+    document.documentElement.requestFullscreen();
+}
 
-function closeScreen() {}
+function closeScreen() {
+    document.exitFullscreen();
+}
