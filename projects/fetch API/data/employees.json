@@ -1,0 +1,20 @@
+[
+    {
+        "id" : 1,
+        "nombre" : "Kyla Chaston",
+        "empresa" : "HP",
+        "trabajo" : "Sr. Consultant"
+    },
+    {
+         "id" : 2,
+         "nombre" : "Robb Eccersley",
+         "empresa" : "HP",
+         "trabajo" : "Sr. Project Manager"
+    },
+    {
+         "id" : 3,
+         "nombre" : "Libbey Peedell",
+         "empresa" : "HP",
+         "trabajo" : "IT Manager"
+    }
+]
