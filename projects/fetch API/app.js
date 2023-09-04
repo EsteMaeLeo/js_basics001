@@ -14,7 +14,7 @@ function getDataJson() {
       console.log(response.url);
       console.log(response.type);
 
-      return response.text();
+      return response.json();
     })
     .then((data) => {
       console.log(data);
