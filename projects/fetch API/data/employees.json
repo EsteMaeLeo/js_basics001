@@ -1,20 +1,20 @@
 [
     {
         "id" : 1,
-        "nombre" : "Kyla Chaston",
-        "empresa" : "HP",
-        "trabajo" : "Sr. Consultant"
+        "name" : "Kyla Chaston",
+        "company" : "HP",
+        "job" : "Sr. Consultant"
     },
     {
          "id" : 2,
-         "nombre" : "Robb Eccersley",
-         "empresa" : "HP",
-         "trabajo" : "Sr. Project Manager"
+         "name" : "Robb Eccersley",
+         "company" : "HP",
+         "job" : "Sr. Project Manager"
     },
     {
          "id" : 3,
-         "nombre" : "Libbey Peedell",
-         "empresa" : "HP",
-         "trabajo" : "IT Manager"
+         "name" : "Libbey Peedell",
+         "company" : "HP",
+         "job" : "IT Manager"
     }
 ]

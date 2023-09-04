@@ -16,12 +16,23 @@ function getDataJson() {
 
       return response.json();
     })
-    .then((data) => {
-      console.log(data);
+    .then((result) => {
+      console.log(result);
+      showHTML(result);
     })
     .catch((error) => {
       console.log(error);
     });
+}
+
+function showHTML({ id, name, company, job }) {
+  const container = document.querySelector(".container");
+
+  container.innerHTML = `
+        <p>ID: ${id}</p>
+        <p>Name: ${name}</p>
+        <p>Company: ${company}</p>
+        <p>Job Title: ${job}</p>`;
 }
 
 function getData() {

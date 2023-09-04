@@ -1,6 +1,6 @@
 {
     "id" : 1,
-    "nombre" : "Kyla Chaston",
-    "empresa" : "HP",
-    "trabajo" : "Sr. Consultant"
+    "name" : "Kyla Chaston",
+    "company" : "HP",
+    "job" : "Sr. Consultant"
 }
