@@ -1,8 +1,38 @@
 const loadTxtBtn = document.querySelector("#loadTxt");
 const loadJsonBtn = document.querySelector("#loadJSON");
+const loadJsonArrayBtn = document.querySelector("#loadArray");
 
 loadTxtBtn.addEventListener("click", getData);
 loadJsonBtn.addEventListener("click", getDataJson);
+loadJsonArrayBtn.addEventListener("click", getDataJsonArray);
+
+function getDataJsonArray() {
+  const url = "data/employees.json";
+  fetch(url)
+    .then((response) => response.json())
+    .then((result) => showHTMLArray(result))
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+function showHTMLArray(employees) {
+  const container = document.querySelector(".container");
+
+  let html = "";
+  employees.forEach((employee) => {
+    const { id, name, company, job } = employee;
+
+    html += `
+    <p>ID: ${id}</p>
+    <p>Name: ${name}</p>
+    <p>Company: ${company}</p>
+    <p>Job Title: ${job}</p>
+    `;
+  });
+
+  container.innerHTML = html;
+}
 
 function getDataJson() {
   const url = "data/employee.json";
