@@ -12,7 +12,7 @@ function getDataAPI() {
   const url = "https://picsum.photos/list";
   fetch(url)
     .then((response) => response.json())
-    .then((result) => showHTMLArray(result))
+    .then((result) => console.log(result))
     .catch((error) => {
       console.log(error);
     });
