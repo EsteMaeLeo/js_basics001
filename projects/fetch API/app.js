@@ -1,10 +1,22 @@
 const loadTxtBtn = document.querySelector("#loadTxt");
 const loadJsonBtn = document.querySelector("#loadJSON");
 const loadJsonArrayBtn = document.querySelector("#loadArray");
+const loadApiBtn = document.querySelector("#loadApi");
 
 loadTxtBtn.addEventListener("click", getData);
 loadJsonBtn.addEventListener("click", getDataJson);
 loadJsonArrayBtn.addEventListener("click", getDataJsonArray);
+loadApiBtn.addEventListener("click", getDataAPI);
+
+function getDataJsonArray() {
+  const url = "https://picsum.photos/list";
+  fetch(url)
+    .then((response) => response.json())
+    .then((result) => showHTMLArray(result))
+    .catch((error) => {
+      console.log(error);
+    });
+}
 
 function getDataJsonArray() {
   const url = "data/employees.json";
