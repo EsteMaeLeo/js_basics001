@@ -8,7 +8,7 @@ loadJsonBtn.addEventListener("click", getDataJson);
 loadJsonArrayBtn.addEventListener("click", getDataJsonArray);
 loadApiBtn.addEventListener("click", getDataAPI);
 
-function getDataJsonArray() {
+function getDataAPI() {
   const url = "https://picsum.photos/list";
   fetch(url)
     .then((response) => response.json())
