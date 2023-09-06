@@ -20,23 +20,31 @@ function searchWeather(e) {
 
 function showError(msg) {
   console.log(msg);
+  const alert = document.querySelector(".bg-red-100");
 
-  const alert = document.createElement("div");
-  alert.classList.add(
-    "bg-red-100",
-    "border-red-400",
-    "text-red-700",
-    "px-4",
-    "py-3",
-    "rounded",
-    "max-w-md",
-    "mx-auto",
-    "mt-6",
-    "text-center"
-  );
+  if (!alert) {
+    const alert = document.createElement("div");
+    alert.classList.add(
+      "bg-red-100",
+      "border-red-400",
+      "text-red-700",
+      "px-4",
+      "py-3",
+      "rounded",
+      "max-w-md",
+      "mx-auto",
+      "mt-6",
+      "text-center"
+    );
 
-  alert.innerHTML = `
+    alert.innerHTML = `
     <strong class="font-bold">Error!</strong>
     <span class="block">${msg}</span>`;
-  container.appendChild(alert);
+    container.appendChild(alert);
+
+    //delete alert after time
+    setTimeout(() => {
+      alert.remove();
+    }, 5000);
+  }
 }
