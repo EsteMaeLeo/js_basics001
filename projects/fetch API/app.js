@@ -12,10 +12,27 @@ function getDataAPI() {
   const url = "https://picsum.photos/list";
   fetch(url)
     .then((response) => response.json())
-    .then((result) => console.log(result))
+    .then((result) => showApiHTML(result))
     .catch((error) => {
       console.log(error);
     });
+}
+
+function showApiHTML(data) {
+  const container = document.querySelector(".container");
+
+  let html = "";
+
+  data.forEach((info => {
+    const{id, author, post_url} = info;
+    html +=`
+        <p>ID: ${id}</p>
+        <p>Author: ${author}</p>
+        <a href="${post_url}" target="_blank">See Picture</a>`;
+
+  }));
+
+  container.innerHTML = html;
 }
 
 function getDataJsonArray() {
