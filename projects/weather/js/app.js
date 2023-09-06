@@ -16,6 +16,7 @@ function searchWeather(e) {
     showError("Both fields are mandatory");
     return;
   }
+  getDataAPI(city, country);
 }
 
 function showError(msg) {
@@ -47,4 +48,12 @@ function showError(msg) {
       alert.remove();
     }, 5000);
   }
+}
+
+function getDataAPI(city, country){
+    
+    const appId="98cc685a511e4cdddd0311ce79a8e339";
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${appId}`;
+
+    console.log(url)
 }
