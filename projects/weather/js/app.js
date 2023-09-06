@@ -55,5 +55,17 @@ function getDataAPI(city, country){
     const appId="98cc685a511e4cdddd0311ce79a8e339";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${appId}`;
 
+    fetch(url).then((response) => response.json())
+    .then((result) => showHTMLArray(result))
+    .catch((error) => {
+      console.log(error);
+    });
     console.log(url)
+}
+
+function showHTMLArray(data){
+    if (data.length != 0) {
+        console.log(data)
+    }
+    
 }
