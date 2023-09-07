@@ -57,19 +57,42 @@ function getDataAPI(city, country) {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
+      cleanHTML();
       if (data.cod === "404") {
         showError("City not found");
+        return;
       }
       showHTML(data);
     })
     .catch((error) => {
       console.log(error);
     });
-  console.log(url);
 }
 
 function showHTML(data) {
+  const {
+    main: { temp, temp_max, temp_min },
+  } = data;
+
   if (data.length != 0) {
     console.log(data);
+    const tempC = temp - 273.15;
+    console.log(tempC, temp_max, temp_min);
+
+    const current = document.createElement("p");
+    current.innerHTML = `${tempC} &#8451`;
+    current.classList.add("font-bold", "text-6xl");
+
+    const resultDiv = document.createElement("div");
+    resultDiv.classList.add("text-center", "text-white");
+    resultDiv.appendChild(current);
+
+    result.appendChild(resultDiv);
+  }
+}
+
+function cleanHTML() {
+  while (result.firstChild) {
+    result.removeChild(result.firstChild);
   }
 }
