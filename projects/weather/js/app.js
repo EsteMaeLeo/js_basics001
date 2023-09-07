@@ -76,7 +76,7 @@ function showHTML(data) {
 
   if (data.length != 0) {
     console.log(data);
-    const tempC = temp - 273.15;
+    const tempC =  kelvinCelsius(temp);
     console.log(tempC, temp_max, temp_min);
 
     const current = document.createElement("p");
@@ -89,6 +89,10 @@ function showHTML(data) {
 
     result.appendChild(resultDiv);
   }
+}
+
+function kelvinCelsius(degree){
+    return degree - 273.15
 }
 
 function cleanHTML() {
