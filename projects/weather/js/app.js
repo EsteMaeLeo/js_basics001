@@ -71,29 +71,49 @@ function getDataAPI(city, country) {
 
 function showHTML(data) {
   const {
+    name,
     main: { temp, temp_max, temp_min },
   } = data;
 
   if (data.length != 0) {
     console.log(data);
-    const tempC =  kelvinCelsius(temp);
-    console.log(tempC, temp_max, temp_min);
+    const tempC = kelvinCelsius(temp);
+    const max = kelvinCelsius(temp_max);
+    const min = kelvinCelsius(temp_min);
+    console.log(tempC, max, min);
+
+    const nameC = document.createElement("p");
+    nameC.innerHTML = `City: ${name}`;
+    nameC.classList.add("font-bold", "text-2xl");
 
     const current = document.createElement("p");
     current.innerHTML = `${tempC} &#8451`;
     current.classList.add("font-bold", "text-6xl");
 
+    const tempMax = document.createElement("p");
+    tempMax.innerHTML = `Max: ${max} &#8451`;
+    tempMax.classList.add("text-xl");
+
+    const tempMin = document.createElement("p");
+    tempMin.innerHTML = `Min: ${min} &#8451`;
+    tempMin.classList.add("text-xl");
+
     const resultDiv = document.createElement("div");
     resultDiv.classList.add("text-center", "text-white");
+    resultDiv.appendChild(nameC);
     resultDiv.appendChild(current);
+    resultDiv.appendChild(tempMax);
+    resultDiv.appendChild(tempMin);
 
     result.appendChild(resultDiv);
   }
 }
 
-function kelvinCelsius(degree){
-    return degree - 273.15
-}
+/*function kelvinCelsius(degree) {
+  return parseInt(degree - 273.15);
+}*/
+
+const kelvinCelsius = (degree) => parseInt(degree - 273.15);
 
 function cleanHTML() {
   while (result.firstChild) {
