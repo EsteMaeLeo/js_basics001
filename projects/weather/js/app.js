@@ -56,14 +56,14 @@ function getDataAPI(city, country){
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${appId}`;
 
     fetch(url).then((response) => response.json())
-    .then((result) => showHTMLArray(result))
+    .then((data) => showHTML(data))
     .catch((error) => {
       console.log(error);
     });
     console.log(url)
 }
 
-function showHTMLArray(data){
+function showHTML(data){
     if (data.length != 0) {
         console.log(data)
     }
