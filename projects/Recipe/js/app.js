@@ -1,8 +1,22 @@
 const category = document.querySelector(".form-select");
+const selectCategory = document.querySelector("#categorias");
 
 function initApp() {
   getCategory();
-  console.log(category);
+  selectCategory.addEventListener("change", selectionCategory);
+}
+
+function selectionCategory(e) {
+  e.preventDefault();
+  /*both work because get the selected category */
+  console.log(selectCategory.value);
+  console.log(e.target.value);
+  const url =
+    "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + e.target.value;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error));
 }
 
 function getCategory() {
@@ -16,7 +30,7 @@ function getCategory() {
 function createCategoryList(data) {
   console.log(data);
   data.categories.forEach((datacat) => {
-    const {strCategory} = datacat
+    const { strCategory } = datacat;
     console.log(datacat.strCategory);
     const option = document.createElement("OPTION");
     console.log(option);
@@ -24,6 +38,5 @@ function createCategoryList(data) {
     option.textContent = datacat.strCategory;
     category.appendChild(option);
   });
-  
 }
 document.addEventListener("DOMContentLoaded", initApp);
