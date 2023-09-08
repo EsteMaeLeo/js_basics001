@@ -16,10 +16,12 @@ function getCategory() {
 function createCategoryList(data) {
   console.log(data);
   data.categories.forEach((datacat) => {
+    const {strCategory} = datacat
     console.log(datacat.strCategory);
-    const option = document.createElement("option");
+    const option = document.createElement("OPTION");
     console.log(option);
-    option.text = datacat.strCategory;
+    option.value = strCategory;
+    option.textContent = datacat.strCategory;
     category.appendChild(option);
   });
   
