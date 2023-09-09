@@ -15,8 +15,15 @@ function selectionCategory(e) {
     "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + e.target.value;
   fetch(url)
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => getMeals(data))
     .catch((error) => console.log(error));
+}
+
+function getMeals(data){
+    console.log(data)
+    data.meals.forEach(food =>{
+        console.log(food)
+    })
 }
 
 function getCategory() {
