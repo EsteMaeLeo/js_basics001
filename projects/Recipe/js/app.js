@@ -37,15 +37,28 @@ function getMeals(data) {
     img.classList.add("card-img-top");
     img.alt = `Recipe image ${strMeal}`;
     img.src = strMealThumb;
-    container.appendChild(img);
 
     const cardBody = document.createElement("DIV");
     cardBody.classList.add("card-body");
-    container.appendChild(cardBody);
-    console.log(container);
+
+    const heading = document.createElement("H3");
+    heading.classList.add("card-title", "mb-3");
+    heading.textContent = strMeal;
+
+    const button = document.createElement("BUTTON");
+    button.classList.add("btn");
+
+    cardBody.appendChild(heading);
+    cardBody.appendChild(button);
+
+    card.appendChild(img);
+    card.appendChild(button);
+
+    container.appendChild(card);
 
     result.appendChild(container);
   });
+  console.log(result);
 }
 
 function getCategory() {
