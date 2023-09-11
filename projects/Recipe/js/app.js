@@ -21,15 +21,26 @@ function selectionCategory(e) {
 
 function getMeals(data) {
   console.log(data);
+  const result = document.querySelector('#resultado'); 
+  console.log(result)
   data.meals.forEach((food) => {
     //console.log(food)
+    const { idMeal, strMeal, strMealThumb } = food;
     const container = document.createElement("DIV");
 
     container.classList.add("col-md-4");
     const card = document.createElement("DIV");
     card.classList.add("card", "mb-4");
     container.appendChild(card);
-    console.log(container)
+
+    const img = document.createElement("IMG");
+    img.classList.add("card-img-top");
+    container.appendChild(img);
+    img.alt = `Recipe image ${strMeal}`;
+    img.src = strMealThumb
+    console.log(container);
+
+    result.appendChild(container)
   });
 }
 
