@@ -21,8 +21,8 @@ function selectionCategory(e) {
 
 function getMeals(data) {
   console.log(data);
-  const result = document.querySelector('#resultado'); 
-  console.log(result)
+  const result = document.querySelector("#resultado");
+  console.log(result);
   data.meals.forEach((food) => {
     //console.log(food)
     const { idMeal, strMeal, strMealThumb } = food;
@@ -35,12 +35,16 @@ function getMeals(data) {
 
     const img = document.createElement("IMG");
     img.classList.add("card-img-top");
-    container.appendChild(img);
     img.alt = `Recipe image ${strMeal}`;
-    img.src = strMealThumb
+    img.src = strMealThumb;
+    container.appendChild(img);
+
+    const cardBody = document.createElement("DIV");
+    cardBody.classList.add("card-body");
+    container.appendChild(cardBody);
     console.log(container);
 
-    result.appendChild(container)
+    result.appendChild(container);
   });
 }
 
