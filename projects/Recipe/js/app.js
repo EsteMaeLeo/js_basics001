@@ -11,8 +11,9 @@ function selectionCategory(e) {
   /*both work because get the selected category */
   console.log(selectCategory.value);
   console.log(e.target.value);
+  const category = e.target.value;
   const url =
-    "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + e.target.value;
+    `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
   fetch(url)
     .then((response) => response.json())
     .then((data) => getMeals(data))
