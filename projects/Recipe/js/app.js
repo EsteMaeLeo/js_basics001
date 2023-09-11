@@ -46,13 +46,14 @@ function getMeals(data) {
     heading.textContent = strMeal;
 
     const button = document.createElement("BUTTON");
-    button.classList.add("btn");
+    button.classList.add("btn", 'w-100', 'btn-danger');
+    button.textContent= 'Check Recipe'
 
     cardBody.appendChild(heading);
     cardBody.appendChild(button);
 
     card.appendChild(img);
-    card.appendChild(button);
+    card.appendChild(cardBody);
 
     container.appendChild(card);
 
