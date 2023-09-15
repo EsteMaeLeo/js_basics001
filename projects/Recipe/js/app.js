@@ -15,18 +15,23 @@ function selectionCategory(e) {
   const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
   fetch(url)
     .then((response) => response.json())
-    .then((data) => getMeals(data))
+    .then((data) => getMeals(data.meals))
     .catch((error) => console.log(error));
 }
 
-function getMeals(data) {
-  
+function getMeals(recipe) {
   const result = document.querySelector("#resultado");
 
   cleanHTML(result);
 
-  console.log(result);
-  data.meals.forEach((food) => {
+  const heading = document.createElement("H2");
+  heading.classList.add("text-center", "text-black", "my-5");
+  heading.textContent = recipe.length ? "Recipes" : "No data";
+  result.appendChild(heading);
+  
+  console.log(recipe.length );
+  
+  recipe.forEach((food) => {
     //console.log(food)
     const { idMeal, strMeal, strMealThumb } = food;
     const container = document.createElement("DIV");
