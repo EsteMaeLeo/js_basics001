@@ -28,9 +28,9 @@ function getMeals(recipe) {
   heading.classList.add("text-center", "text-black", "my-5");
   heading.textContent = recipe.length ? "Recipes" : "No data";
   result.appendChild(heading);
-  
-  console.log(recipe.length );
-  
+
+  console.log(recipe.length);
+
   recipe.forEach((food) => {
     //console.log(food)
     const { idMeal, strMeal, strMealThumb } = food;
@@ -56,6 +56,12 @@ function getMeals(recipe) {
     const button = document.createElement("BUTTON");
     button.classList.add("btn", "w-100", "btn-danger");
     button.textContent = "Check Recipe";
+    button.dataset.bsTarget = "#modal";
+    button.dataset.bsToggle = "modal";
+
+    button.onclick = function () {
+      selectRecipe(idMeal);
+    };
 
     cardBody.appendChild(heading);
     cardBody.appendChild(button);
@@ -68,6 +74,15 @@ function getMeals(recipe) {
     result.appendChild(container);
   });
   console.log(result);
+}
+
+function selectRecipe(idMeal) {
+  console.log(idMeal);
+  url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error));
 }
 
 function cleanHTML(selector) {
