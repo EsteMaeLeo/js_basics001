@@ -20,8 +20,11 @@ function selectionCategory(e) {
 }
 
 function getMeals(data) {
-  console.log(data);
+  
   const result = document.querySelector("#resultado");
+
+  cleanHTML(result);
+
   console.log(result);
   data.meals.forEach((food) => {
     //console.log(food)
@@ -46,8 +49,8 @@ function getMeals(data) {
     heading.textContent = strMeal;
 
     const button = document.createElement("BUTTON");
-    button.classList.add("btn", 'w-100', 'btn-danger');
-    button.textContent= 'Check Recipe'
+    button.classList.add("btn", "w-100", "btn-danger");
+    button.textContent = "Check Recipe";
 
     cardBody.appendChild(heading);
     cardBody.appendChild(button);
@@ -60,6 +63,12 @@ function getMeals(data) {
     result.appendChild(container);
   });
   console.log(result);
+}
+
+function cleanHTML(selector) {
+  while (selector.firstChild) {
+    selector.removeChild(selector.firstChild);
+  }
 }
 
 function getCategory() {
