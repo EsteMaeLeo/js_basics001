@@ -1,6 +1,6 @@
 const category = document.querySelector(".form-select");
 const selectCategory = document.querySelector("#categorias");
-const modalBootstrap = new bootstrap.Modal('#modal',{})
+const modalBootstrap = new bootstrap.Modal("#modal", {});
 
 function initApp() {
   getCategory();
@@ -93,22 +93,24 @@ function cleanHTML(selector) {
 }
 
 function getDetailRecipe(data) {
+  const { idMeal, strInstructions, strMeal, strMealThumb } = data;
 
-  const {idMeal, strInstructions, strMeal, strMealThumb} = data;   
-  
-  const modalTitle = document.querySelector('.modal .modal-title')
-  const body = document.querySelector(".modal .modal-body");
+  const modalTitle = document.querySelector(".modal .modal-title");
+  const modalBody = document.querySelector(".modal .modal-body");
+  console.log(strMealThumb);
+  modalTitle.textContent = strMeal;
+  modalBody.innerHTML = `
+    <img class='img-fluid' src='${strMealThumb}' alt='${strMeal}' />
+    <h3 class='my-3'>Instructions</h3>
+    <p>${strInstructions}</p>`;
+  modalBootstrap.show();
 
-  modalTitle.textContent =strMeal;
-
-  modalBootstrap.show();  
-  
   console.log(strMeal);
   //console.log(strInstructions);
   /*data.meals.forEach((meal) => {
     const h3 = document.createElement("H3");
     h3.textContent = meal.strInstructions;
-    body.appendChild(h3)
+    modalBody.appendChild(h3)
     console.log(meal.strInstructions);
   });*/
 }
