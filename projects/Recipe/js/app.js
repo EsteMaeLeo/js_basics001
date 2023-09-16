@@ -81,7 +81,7 @@ function selectRecipe(idMeal) {
   url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
   fetch(url)
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => getDetailRecipe(data))
     .catch((error) => console.log(error));
 }
 
@@ -89,6 +89,15 @@ function cleanHTML(selector) {
   while (selector.firstChild) {
     selector.removeChild(selector.firstChild);
   }
+}
+
+function getDetailRecipe(data){
+    const body = document.querySelector(".toast-body");
+    console.log(body)
+    console.log(data.meals[0].strInstructions)
+    data.meals.forEach(meal=>{
+        console.log(meal.strInstructions)
+    })
 }
 
 function getCategory() {
