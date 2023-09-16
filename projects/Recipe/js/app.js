@@ -91,13 +91,16 @@ function cleanHTML(selector) {
   }
 }
 
-function getDetailRecipe(data){
-    const body = document.querySelector(".toast-body");
-    console.log(body)
-    console.log(data.meals[0].strInstructions)
-    data.meals.forEach(meal=>{
-        console.log(meal.strInstructions)
-    })
+function getDetailRecipe(data) {
+  const body = document.querySelector(".modal-body");
+  console.log(body);
+  console.log(data.meals[0].strInstructions);
+  data.meals.forEach((meal) => {
+    const h3 = document.createElement("H3");
+    h3.textContent = meal.strInstructions;
+    body.appendChild(h3)
+    console.log(meal.strInstructions);
+  });
 }
 
 function getCategory() {
