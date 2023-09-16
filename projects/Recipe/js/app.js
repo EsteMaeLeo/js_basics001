@@ -1,5 +1,6 @@
 const category = document.querySelector(".form-select");
 const selectCategory = document.querySelector("#categorias");
+const modalBootstrap = new bootstrap.Modal('#modal',{})
 
 function initApp() {
   getCategory();
@@ -81,7 +82,7 @@ function selectRecipe(idMeal) {
   url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
   fetch(url)
     .then((response) => response.json())
-    .then((data) => getDetailRecipe(data))
+    .then((data) => getDetailRecipe(data.meals[0]))
     .catch((error) => console.log(error));
 }
 
@@ -92,15 +93,24 @@ function cleanHTML(selector) {
 }
 
 function getDetailRecipe(data) {
-  const body = document.querySelector(".modal-body");
-  console.log(body);
-  console.log(data.meals[0].strInstructions);
-  data.meals.forEach((meal) => {
+
+  const {idMeal, strInstructions, strMeal, strMealThumb} = data;   
+  
+  const modalTitle = document.querySelector('.modal .modal-title')
+  const body = document.querySelector(".modal .modal-body");
+
+  modalTitle.textContent =strMeal;
+
+  modalBootstrap.show();  
+  
+  console.log(strMeal);
+  //console.log(strInstructions);
+  /*data.meals.forEach((meal) => {
     const h3 = document.createElement("H3");
     h3.textContent = meal.strInstructions;
     body.appendChild(h3)
     console.log(meal.strInstructions);
-  });
+  });*/
 }
 
 function getCategory() {
