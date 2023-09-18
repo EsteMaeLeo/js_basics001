@@ -105,7 +105,12 @@ function getDetailRecipe(data) {
     <p>${strInstructions}</p>`;
   modalBootstrap.show();
 
-  console.log(strMeal);
+  console.log(data);
+  for (let i = 1; i <= 20; i++) {
+    if (data[`strIngredient${i}`]) {
+      console.log(data[`strIngredient${i}`]);
+    }
+  }
   //console.log(strInstructions);
   /*data.meals.forEach((meal) => {
     const h3 = document.createElement("H3");
