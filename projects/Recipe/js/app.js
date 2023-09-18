@@ -102,15 +102,24 @@ function getDetailRecipe(data) {
   modalBody.innerHTML = `
     <img class='img-fluid' src='${strMealThumb}' alt='${strMeal}' />
     <h3 class='my-3'>Instructions</h3>
-    <p>${strInstructions}</p>`;
+    <p>${strInstructions}</p>
+    <h3 class='my-3'> Ingredients and Quantities`;
   modalBootstrap.show();
 
-  console.log(data);
+  const listGroup = document.createElement("UL");
   for (let i = 1; i <= 20; i++) {
     if (data[`strIngredient${i}`]) {
       console.log(data[`strIngredient${i}`]);
+      const ingredient = data[`strIngredient${i}`];
+      const quantity = data[`strMeasure${i}`];
+
+      const ingredientList = document.createElement("LI");
+      ingredientList.textContent = `${ingredient} - ${quantity}`;
+      listGroup.appendChild(ingredientList);
     }
   }
+  modalBody.appendChild(listGroup);
+
   //console.log(strInstructions);
   /*data.meals.forEach((meal) => {
     const h3 = document.createElement("H3");
