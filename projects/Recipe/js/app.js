@@ -120,6 +120,19 @@ function getDetailRecipe(data) {
   }
   modalBody.appendChild(listGroup);
 
+  const modalFooter = document.querySelector(".modal-footer");
+  cleanHTML(modalFooter);
+
+  //close and favorite
+  const btnFavorite = document.createElement("BUTTON");
+  btnFavorite.classList.add("btn", "btn-danger", "col");
+  btnFavorite.textContent = "Favorite";
+  modalFooter.appendChild(btnFavorite);
+
+  const btnClose = document.createElement('BUTTON')
+  btnClose.classList.add("btn", "btn-secondary", "col");
+  btnClose.textContent = "Close";
+  modalFooter.appendChild(btnClose);
   //console.log(strInstructions);
   /*data.meals.forEach((meal) => {
     const h3 = document.createElement("H3");
