@@ -129,9 +129,22 @@ function getDetailRecipe(data) {
   btnFavorite.textContent = "Favorite";
   modalFooter.appendChild(btnFavorite);
 
-  const btnClose = document.createElement('BUTTON')
+  //safe localstorage
+  btnFavorite.onclick = function () {
+    addFavorite({
+      id: idMeal,
+      tittle: strMeal,
+      img: strMealThumb,
+    });
+  };
+
+  const btnClose = document.createElement("BUTTON");
   btnClose.classList.add("btn", "btn-secondary", "col");
   btnClose.textContent = "Close";
+  btnClose.onclick = function () {
+    modalBootstrap.hide();
+  };
+
   modalFooter.appendChild(btnClose);
   //console.log(strInstructions);
   /*data.meals.forEach((meal) => {
@@ -140,6 +153,18 @@ function getDetailRecipe(data) {
     modalBody.appendChild(h3)
     console.log(meal.strInstructions);
   });*/
+}
+
+function addFavorite(recipe) {
+  const favorites = JSON.parse(localStorage.getItem("favorites")) ?? [];
+  console.log(favorites)
+  const findId = favorites.find(favorite => favorite.id === recipe.id)
+  if(!findId){
+    localStorage.setItem('favorites', JSON.stringify([...favorites, recipe]))
+  }else{
+    console.log('id same')
+  }
+  
 }
 
 function getCategory() {
