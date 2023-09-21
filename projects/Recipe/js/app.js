@@ -126,13 +126,16 @@ function getDetailRecipe(data) {
   //close and favorite
   const btnFavorite = document.createElement("BUTTON");
   btnFavorite.classList.add("btn", "btn-danger", "col");
-  btnFavorite.textContent = "Favorite";
+  btnFavorite.textContent = existSomeFavorite(idMeal)
+    ? "Delete Favorite"
+    : "Add Favorite";
   modalFooter.appendChild(btnFavorite);
 
   //safe localstorage
   btnFavorite.onclick = function () {
     if (existSomeFavorite(idMeal)) {
       deleteFavorite(idMeal);
+      btnFavorite.textContent = "Add Favorite";
       return;
     }
 
@@ -141,6 +144,7 @@ function getDetailRecipe(data) {
       tittle: strMeal,
       img: strMealThumb,
     });
+    btnFavorite.textContent = "Delete Favorite";
   };
 
   const btnClose = document.createElement("BUTTON");
@@ -169,11 +173,10 @@ function addFavorite(recipe) {
 
 function deleteFavorite(id) {
   const favorites = JSON.parse(localStorage.getItem("favorites")) ?? [];
-  const newFavorite = favorites.filter(favorite => favorite.id !== id)
-  console.log(newFavorite)
+  const newFavorite = favorites.filter((favorite) => favorite.id !== id);
+  console.log(newFavorite);
 
   localStorage.setItem("favorites", JSON.stringify(newFavorite));
-
 }
 
 function existFindFavorite(recipe) {
