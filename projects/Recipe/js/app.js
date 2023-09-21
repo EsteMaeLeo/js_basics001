@@ -131,6 +131,11 @@ function getDetailRecipe(data) {
 
   //safe localstorage
   btnFavorite.onclick = function () {
+    if (existSomeFavorite(idMeal)) {
+      deleteFavorite(idMeal);
+      return;
+    }
+
     addFavorite({
       id: idMeal,
       tittle: strMeal,
@@ -157,14 +162,33 @@ function getDetailRecipe(data) {
 
 function addFavorite(recipe) {
   const favorites = JSON.parse(localStorage.getItem("favorites")) ?? [];
-  console.log(favorites)
-  const findId = favorites.find(favorite => favorite.id === recipe.id)
-  if(!findId){
-    localStorage.setItem('favorites', JSON.stringify([...favorites, recipe]))
-  }else{
-    console.log('id same')
+  console.log(favorites);
+  localStorage.setItem("favorites", JSON.stringify([...favorites, recipe]));
+  //existFindFavorite(recipe);
+}
+
+function deleteFavorite(id) {
+  const favorites = JSON.parse(localStorage.getItem("favorites")) ?? [];
+  const newFavorite = favorites.filter(favorite => favorite.id !== id)
+  console.log(newFavorite)
+
+  localStorage.setItem("favorites", JSON.stringify(newFavorite));
+
+}
+
+function existFindFavorite(recipe) {
+  const favorites = JSON.parse(localStorage.getItem("favorites")) ?? [];
+  const findId = favorites.find((favorite) => favorite.id === recipe.id);
+  if (!findId) {
+    localStorage.setItem("favorites", JSON.stringify([...favorites, recipe]));
+  } else {
+    console.log("id same");
   }
-  
+}
+
+function existSomeFavorite(id) {
+  const favorites = JSON.parse(localStorage.getItem("favorites")) ?? [];
+  return favorites.some((favorite) => favorite.id === id);
 }
 
 function getCategory() {
