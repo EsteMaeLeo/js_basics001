@@ -136,6 +136,7 @@ function getDetailRecipe(data) {
     if (existSomeFavorite(idMeal)) {
       deleteFavorite(idMeal);
       btnFavorite.textContent = "Add Favorite";
+      showToast("Favorite deleted");
       return;
     }
 
@@ -145,6 +146,7 @@ function getDetailRecipe(data) {
       img: strMealThumb,
     });
     btnFavorite.textContent = "Delete Favorite";
+    showToast("Favorite added");
   };
 
   const btnClose = document.createElement("BUTTON");
@@ -187,6 +189,14 @@ function existFindFavorite(recipe) {
   } else {
     console.log("id same");
   }
+}
+
+function showToast(msg) {
+  const toastDiv = document.querySelector("#toast");
+  const toastBody = document.querySelector(".toast-body");
+  const toast = new bootstrap.Toast(toastDiv);
+  toastBody.textContent = msg;
+  toast.show();
 }
 
 function existSomeFavorite(id) {
