@@ -1,10 +1,17 @@
 const category = document.querySelector(".form-select");
 const selectCategory = document.querySelector("#categorias");
 const modalBootstrap = new bootstrap.Modal("#modal", {});
-
+const favoritesDiv = document.querySelector(".favoritos");
+ 
 function initApp() {
-  getCategory();
-  selectCategory.addEventListener("change", selectionCategory);
+  if (selectCategory) {
+    getCategory();
+    selectCategory.addEventListener("change", selectionCategory);
+  }
+
+  if (favoritesDiv) {
+    getFavorites();
+  }
 }
 
 function selectionCategory(e) {
@@ -44,15 +51,15 @@ function getMeals(recipe) {
 
     const img = document.createElement("IMG");
     img.classList.add("card-img-top");
-    img.alt = `Recipe image ${strMeal}`;
-    img.src = strMealThumb;
+    img.alt = `Recipe image ${strMeal ?? recipe.tittle}`;
+    img.src = strMealThumb ?? food.img;
 
     const cardBody = document.createElement("DIV");
     cardBody.classList.add("card-body");
 
     const heading = document.createElement("H3");
     heading.classList.add("card-title", "mb-3");
-    heading.textContent = strMeal;
+    heading.textContent = strMeal ?? food.tittle;
 
     const button = document.createElement("BUTTON");
     button.classList.add("btn", "w-100", "btn-danger");
@@ -61,7 +68,7 @@ function getMeals(recipe) {
     button.dataset.bsToggle = "modal";
 
     button.onclick = function () {
-      selectRecipe(idMeal);
+      selectRecipe(idMeal ?? food.id);
     };
 
     cardBody.appendChild(heading);
@@ -224,4 +231,48 @@ function createCategoryList(data) {
     category.appendChild(option);
   });
 }
+
+function getFavorites() {
+  const favorites = JSON.parse(localStorage.getItem("favorites")) ?? [];
+  if (favorites.length) {
+    console.log(favorites);
+    /*favorites.forEach((favorite) => {
+      const { id, img, tittle } = favorite;
+      const container = document.createElement("DIV");
+
+      container.classList.add("col-md-4");
+      const card = document.createElement("DIV");
+      card.classList.add("card", "mb-4");
+      container.appendChild(card);
+
+      const imgElement = document.createElement("IMG");
+      imgElement.classList.add("card-img-top");
+      imgElement.alt = `Recipe image ${tittle}`;
+      imgElement.src = img;
+
+      const cardBody = document.createElement("DIV");
+      cardBody.classList.add("card-body");
+
+      const heading = document.createElement("H3");
+      heading.classList.add("card-title", "mb-3");
+      heading.textContent = tittle;
+
+      cardBody.appendChild(heading);
+
+      card.appendChild(imgElement);
+      card.appendChild(cardBody);
+
+      container.appendChild(card);
+
+      favoritesDiv.appendChild(container);
+    });*/
+    getMeals(favorites)
+  }else{
+    const noFav = document.createElement('P')
+    noFav.textContent = 'No favorites found'
+    noFav.classList.add('fs-4', 'text-center', 'font-bold', 'mt-5')
+    favoritesDiv.appendChild(noFav);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", initApp);
