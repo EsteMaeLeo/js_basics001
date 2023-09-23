@@ -8,12 +8,23 @@ window.onload = () => {
 function valForm(e) {
   e.preventDefault();
 
-  const wordSearch = document.querySelector("#termino").ariaValueMax;
+  const wordSearch = document.querySelector("#termino").value;
   if (!wordSearch) {
     console.log("Search is empty please provide a search word");
     showAlert("Search is empty please provide a search word");
     return;
   }
+  searchImg(wordSearch);
+}
+
+function searchImg(wordSearch) {
+  const key = "39618957-229b962459be4fa4b5566cba9";
+  const url = `https://pixabay.com/api/?key=${key}&q=${wordSearch}&image_type=photo`;
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((result) => console.log(result))
+    .catch((error) => console.log(error));
 }
 
 function showAlert(msg) {
