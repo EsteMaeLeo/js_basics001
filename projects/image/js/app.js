@@ -23,8 +23,25 @@ function searchImg(wordSearch) {
 
   fetch(url)
     .then((response) => response.json())
-    .then((result) => console.log(result))
+    .then((result) => showImages(result.hits))
     .catch((error) => console.log(error));
+}
+
+function showImages(images) {
+  cleanHTML(result);
+
+  images.forEach((imagen) => {
+    const { previewURL } = imagen;
+
+    result.innerHTML += `
+            <img class='w-full' src=${previewURL}>`;
+  });
+}
+
+function cleanHTML(element) {
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
 }
 
 function showAlert(msg) {
