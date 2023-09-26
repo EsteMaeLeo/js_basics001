@@ -19,7 +19,7 @@ function valForm(e) {
 
 function searchImg(wordSearch) {
   const key = "39618957-229b962459be4fa4b5566cba9";
-  const url = `https://pixabay.com/api/?key=${key}&q=${wordSearch}&image_type=photo`;
+  const url = `https://pixabay.com/api/?key=${key}&q=${wordSearch}&per_page=30`;
 
   fetch(url)
     .then((response) => response.json())
@@ -33,7 +33,7 @@ function showImages(images) {
   images.forEach((imagen) => {
     const { previewURL, likes, views, largeImageURL, fullHDURL } = imagen;
 
-    result.innerHTML += `<div class=w-1/2 md:w-1/3 lg:w-1/4 mb-4">
+    result.innerHTML += `<div class="w-1/2 md:w-1/3 lg:w-1/4 mb-4">
                 <div class='bg-white'>    
                     <img class='w-full' src=${previewURL}>
                 
