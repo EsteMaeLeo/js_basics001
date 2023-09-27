@@ -5,6 +5,7 @@ const page = document.querySelector("#paginacion");
 const regPerPage = 40;
 let totalPages = 0;
 let iterator;
+let actualPage = 1;
 
 window.onload = () => {
   form.addEventListener("submit", valForm);
@@ -19,12 +20,15 @@ function valForm(e) {
     showAlert("Search is empty please provide a search word");
     return;
   }
-  searchImg(wordSearch);
+  searchImg();
 }
 
-function searchImg(wordSearch) {
+function searchImg() {
+
+  const wordSearch = document.querySelector("#termino").value;
+
   const key = "39618957-229b962459be4fa4b5566cba9";
-  const url = `https://pixabay.com/api/?key=${key}&q=${wordSearch}&per_page=${regPerPage}`;
+  const url = `https://pixabay.com/api/?key=${key}&q=${wordSearch}&per_page=${regPerPage}&page=${actualPage}`;
 
   fetch(url)
     .then((response) => response.json())
@@ -54,7 +58,7 @@ function showImages(images) {
     const { previewURL, likes, views, largeImageURL, fullHDURL } = imagen;
     //mt-16 grid lg:grid-cols-4 md:grid-cols-3 sm-grid-cols-2 grid-cols-1 sm:gap-4 gap-14 w-1/2 md:w-1/3 lg:w-1/4 mb-4
     result.innerHTML += `    
-    <div class="bg-white border border-gray-200  rounded rounded-lg shadow shadow-lg  p-5 m-5 gap-5 overflow-hidden  dark:bg-gray-800 dark:border-gray-700"> 
+    <div class="bg-white border border-gray-200  rounded rounded-lg shadow shadow-lg  p-2 m-2 overflow-hidden  dark:bg-gray-800 dark:border-gray-700"> 
     <div className="flex flex-column">       
     <img class='w-48 h-48 object-contain rounded-t-lg'src=${previewURL}>
 
@@ -97,9 +101,14 @@ function printPager() {
       "mr-2",
       "font-bold",
       "mb-1",
-      "uppercase",
       "rounded"
     );
+
+    buttonPage.onclick=()=>{
+        actualPage = value
+        console.log(actualPage)
+        searchImg()
+    }
 
     page.appendChild(buttonPage);
   }
