@@ -83,6 +83,7 @@ function showImages(images) {
   printPager();
 }
 
+//show pages button
 function printPager() {
   iterator = createPager(totalPages);
 

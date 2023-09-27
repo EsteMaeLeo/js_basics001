@@ -29,12 +29,16 @@ async function getFoods(category) {
 
 function displayFoods(category, foodList) {
 
-  console.log(foodList);
-  const div = document.createElement("DIV");
+  const container = document.createElement('DIV');
+  divFoods.classList.add("container","mx-auto")  
+  container.classList.add("border-gray-200",  "rounded" ,"rounded-lg", "shadow", "shadow-lg","p-2", "m-2" )
   const h2 = document.createElement("H2");
-  h2.classList.add("font-bold");
+  h2.classList.add("font-bold", "text-center", "text-2xl");
   h2.textContent = category;
-  divFoods.appendChild(h2)
+
+  container.appendChild(h2)
+
+  divFoods.appendChild(container)
 
   foodList.forEach((food) => {
     const { idMeal, strMeal, strMealThumb } = food;
