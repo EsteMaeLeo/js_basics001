@@ -53,8 +53,9 @@ function showImages(images) {
     const { previewURL, likes, views, largeImageURL, fullHDURL } = imagen;
     //mt-16 grid lg:grid-cols-4 md:grid-cols-3 sm-grid-cols-2 grid-cols-1 sm:gap-4 gap-14 w-1/2 md:w-1/3 lg:w-1/4 mb-4
     result.innerHTML += `    
-    <div class="justify-start items-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-5 m-5 gap-5 bg-white border rounded overflow-hidden shadow-lg"> 
-            <img class='object-contain rounded-t-lg'src=${previewURL}>
+    <div class="bg-white border border-gray-200  rounded rounded-lg shadow shadow-lg  p-5 m-5 gap-5 overflow-hidden  dark:bg-gray-800 dark:border-gray-700"> 
+    <div className="flex flex-column">       
+    <img class='w-48 h-48 object-contain rounded-t-lg'src=${previewURL}>
 
             <div class='p-4 m-4'>    
                 <p class="font-bold">${likes}<span class="font-light"> Like</span></p>
@@ -66,10 +67,11 @@ function showImages(images) {
             </div>
         </div>
         </div>
+        </div>
         `;
   });
   //result.innerHTML += `</div>`;
-  printPager();
+  printPager() 
 
   console.log(iterator.next());
 }
