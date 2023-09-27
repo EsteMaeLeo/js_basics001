@@ -1,6 +1,8 @@
 const result = document.querySelector("#resultado");
 const form = document.querySelector("#formulario");
 const regPerPage = 40;
+let totalPages = 0;
+let iterator;
 
 window.onload = () => {
   form.addEventListener("submit", valForm);
@@ -25,7 +27,7 @@ function searchImg(wordSearch) {
   fetch(url)
     .then((response) => response.json())
     .then((result) => {
-      const totalPages = calcPages(result.totalHits);
+      totalPages = calcPages(result.totalHits);
       console.log(totalPages);
       showImages(result.hits);
     })
@@ -36,9 +38,17 @@ function calcPages(total) {
   return parseInt(Math.ceil(total / regPerPage));
 }
 
+//generator for element acording number pages
+function* createPager(total) {
+  for (let i = 1; i <= total; i++) {
+    console.log(i);
+    yield i;
+  }
+}
+
 function showImages(images) {
   cleanHTML(result);
- // result.textContent += `<div class='max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-10'>`;
+  // result.textContent += `<div class='max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-10'>`;
   images.forEach((imagen) => {
     const { previewURL, likes, views, largeImageURL, fullHDURL } = imagen;
     //mt-16 grid lg:grid-cols-4 md:grid-cols-3 sm-grid-cols-2 grid-cols-1 sm:gap-4 gap-14 w-1/2 md:w-1/3 lg:w-1/4 mb-4
@@ -55,9 +65,17 @@ function showImages(images) {
 
             </div>
         </div>
+        </div>
         `;
   });
-  result.innerHTML += `</div>`
+  //result.innerHTML += `</div>`;
+  printPager();
+
+  console.log(iterator.next());
+}
+
+function printPager() {
+  iterator = createPager(totalPages);
 }
 
 function cleanHTML(element) {
