@@ -1,5 +1,6 @@
 const result = document.querySelector("#resultado");
 const form = document.querySelector("#formulario");
+const regPerPage = 40;
 
 window.onload = () => {
   form.addEventListener("submit", valForm);
@@ -23,8 +24,16 @@ function searchImg(wordSearch) {
 
   fetch(url)
     .then((response) => response.json())
-    .then((result) => showImages(result.hits))
+    .then((result) => {
+      const totalPages = calcPages(result.totalHits);
+      console.log(totalPages);
+      showImages(result.hits);
+    })
     .catch((error) => console.log(error));
+}
+
+function calcPages(total) {
+  return parseInt(Math.ceil(total / regPerPage));
 }
 
 function showImages(images) {
