@@ -1,5 +1,7 @@
 const result = document.querySelector("#resultado");
 const form = document.querySelector("#formulario");
+const page = document.querySelector("#paginacion");
+
 const regPerPage = 40;
 let totalPages = 0;
 let iterator;
@@ -22,7 +24,7 @@ function valForm(e) {
 
 function searchImg(wordSearch) {
   const key = "39618957-229b962459be4fa4b5566cba9";
-  const url = `https://pixabay.com/api/?key=${key}&q=${wordSearch}&per_page=30`;
+  const url = `https://pixabay.com/api/?key=${key}&q=${wordSearch}&per_page=${regPerPage}`;
 
   fetch(url)
     .then((response) => response.json())
@@ -41,7 +43,6 @@ function calcPages(total) {
 //generator for element acording number pages
 function* createPager(total) {
   for (let i = 1; i <= total; i++) {
-    console.log(i);
     yield i;
   }
 }
@@ -71,13 +72,37 @@ function showImages(images) {
         `;
   });
   //result.innerHTML += `</div>`;
-  printPager() 
-
-  console.log(iterator.next());
+  //clean paging
+  while (page.firstChild) {
+    page.removeChild(page.firstChild);
+  }
+  printPager();
 }
 
 function printPager() {
   iterator = createPager(totalPages);
+
+  while (true) {
+    const { value, done } = iterator.next();
+    if (done) return;
+    const buttonPage = document.createElement("A");
+    buttonPage.href = "#";
+    buttonPage.dataset.page = value;
+    buttonPage.textContent = value;
+    buttonPage.classList.add(
+      "siguiente",
+      "bg-yellow-200",
+      "px-4",
+      "py-1",
+      "mr-2",
+      "font-bold",
+      "mb-1",
+      "uppercase",
+      "rounded"
+    );
+
+    page.appendChild(buttonPage);
+  }
 }
 
 function cleanHTML(element) {
