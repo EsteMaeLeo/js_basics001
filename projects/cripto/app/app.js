@@ -2,22 +2,28 @@ const criptoselect = document.querySelector("#criptomonedas");
 
 //on promise
 
-const obtainCripto = cripto => new Promise(resolve =>{
-    resolve(cripto)
+const obtainCrypto = cryptos => new Promise(resolve =>{
+    resolve(cryptos)
 })
 
 document.addEventListener("DOMContentLoaded", () => {
-  selectCripto();
+  consultCrypto();
 });
 
-function selectCripto() {
+function consultCrypto() {
   const url =
     "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=20&tsym=USD";
 
   fetch(url)
     .then((response) => response.json())
-    .then((result) => obtainCripto(result.Data))
-    .then(cripto => console.log(cripto))
+    .then((result) => obtainCrypto(result.Data))
+    .then(cryptos => selectCrypto(cryptos))
     .catch((error) => console.log(error));
 }
 
+function selectCrypto(cryptos){
+
+    cryptos.forEach(crypto => {
+        console.log(crypto)
+    });
+}
