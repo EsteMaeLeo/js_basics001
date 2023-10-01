@@ -2,9 +2,10 @@ const criptoselect = document.querySelector("#criptomonedas");
 
 //on promise
 
-const obtainCrypto = cryptos => new Promise(resolve =>{
-    resolve(cryptos)
-})
+const obtainCrypto = (cryptos) =>
+  new Promise((resolve) => {
+    resolve(cryptos);
+  });
 
 document.addEventListener("DOMContentLoaded", () => {
   consultCrypto();
@@ -17,13 +18,18 @@ function consultCrypto() {
   fetch(url)
     .then((response) => response.json())
     .then((result) => obtainCrypto(result.Data))
-    .then(cryptos => selectCrypto(cryptos))
+    .then((cryptos) => selectCrypto(cryptos))
     .catch((error) => console.log(error));
 }
 
-function selectCrypto(cryptos){
-
-    cryptos.forEach(crypto => {
-        console.log(crypto)
-    });
+function selectCrypto(cryptos) {
+  cryptos.forEach((crypto) => {
+    console.log(crypto);
+    const { FullName, Name } = crypto.CoinInfo;
+console.log(FullName)
+    const option = document.createElement("OPTION");
+    option.value = Name;
+    option.textContent = FullName;
+    criptoselect.appendChild(option);
+  });
 }
