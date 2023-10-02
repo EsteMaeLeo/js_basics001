@@ -37,7 +37,7 @@ function consultCrypto() {
 function selectCrypto(cryptos) {
   cryptos.forEach((crypto) => {
     const { FullName, Name } = crypto.CoinInfo;
-    console.log(FullName);
+
     const option = document.createElement("OPTION");
     option.value = Name;
     option.textContent = FullName;
@@ -46,10 +46,10 @@ function selectCrypto(cryptos) {
 }
 
 function readValue(e) {
-  console.log(e.target.value);
+
   objSearch[e.target.name] = e.target.value;
   //objSearch.currency = e.target.value
-  console.log(objSearch);
+
 }
 
 function submitform(e) {
@@ -67,14 +67,21 @@ function submitform(e) {
 
 function fetchCrypto() {
   const { currency, crypto } = objSearch;
-  const url = `https://min-api.cryptocompare.com/data/price?fsym=${crypto}&tsyms=${currency}`
-  
-  const urlFullData = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${crypto}&tsyms=${currency}`
-  
+  console.log(currency)
+  const url = `https://min-api.cryptocompare.com/data/price?fsym=${crypto}&tsyms=${currency}`;
+
+  const urlFullData = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${crypto}&tsyms=${currency}`;
+
   fetch(urlFullData)
-  .then(response => response.json())
-  .then( quote =>console.log(quote.DISPLAY))
-  .catch((error) => console.log(error));
+    .then((response) => response.json())
+    .then((quote) =>  showQuoteHTML(quote))
+    .catch((error) => console.log(error));
+}
+
+function showQuoteHTML(quote) {
+ const { currency, crypto } = objSearch;
+  console.log(quote.DISPLAY[crypto][currency]);
+  
 }
 function showAlert(msg) {
   const existAlert = document.querySelector(".error");
