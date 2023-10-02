@@ -46,16 +46,30 @@ function selectCrypto(cryptos) {
 }
 
 function readValue(e) {
-    console.log(e.target.value);
-    objSearch[e.target.name] = e.target.value
-    //objSearch.currency = e.target.value
+  console.log(e.target.value);
+  objSearch[e.target.name] = e.target.value;
+  //objSearch.currency = e.target.value
   console.log(objSearch);
 }
 
 function submitform(e) {
-    e.preventDefault();
-    console.log(currencySelect)
+  e.preventDefault();
 
+  const { currency, crypto } = objSearch;
+  console.log(currency);
+  if (currency === "" || crypto === "") {
+    showAlert("Fields are mandatory");
+    return;
+  }
 }
 
+function showAlert(msg) {
+  const div = document.createElement("DIV");
+  div.classList.add("error");
+  div.textContent = msg;
+  form.appendChild(div);
 
+  setTimeout(() => {
+    div.remove();
+  }, 3000);
+}
