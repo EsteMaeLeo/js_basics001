@@ -1,7 +1,7 @@
 const criptoselect = document.querySelector("#criptomonedas");
 const form = document.querySelector("#formulario");
 const currencySelect = document.querySelector("#moneda");
-
+const result = document.querySelector("#resultado");
 const objSearch = {
   currency: "",
   crypto: "",
@@ -46,10 +46,8 @@ function selectCrypto(cryptos) {
 }
 
 function readValue(e) {
-
   objSearch[e.target.name] = e.target.value;
   //objSearch.currency = e.target.value
-
 }
 
 function submitform(e) {
@@ -67,21 +65,52 @@ function submitform(e) {
 
 function fetchCrypto() {
   const { currency, crypto } = objSearch;
-  console.log(currency)
+  console.log(currency);
   const url = `https://min-api.cryptocompare.com/data/price?fsym=${crypto}&tsyms=${currency}`;
 
   const urlFullData = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${crypto}&tsyms=${currency}`;
 
   fetch(urlFullData)
     .then((response) => response.json())
-    .then((quote) =>  showQuoteHTML(quote))
+    .then((quote) => showQuoteHTML(quote))
     .catch((error) => console.log(error));
 }
 
 function showQuoteHTML(quote) {
- const { currency, crypto } = objSearch;
+  cleanHTML();
+  const { currency, crypto } = objSearch;
   console.log(quote.DISPLAY[crypto][currency]);
-  
+
+  const { PRICE, HIGHDAY, LOWDAY, CHANGEPCT24HOUR, LASTUPDATE } =
+    quote.DISPLAY[crypto][currency];
+
+  const price = document.createElement("p");
+  price.classList.add("precio");
+  price.innerHTML = `Price is <span>${PRICE}</span>`;
+
+  const priceHigh = document.createElement("p");
+  priceHigh.innerHTML = `Highest Price of the day: <span>${HIGHDAY}</span>`;
+
+  const priceLow = document.createElement("p");
+  priceLow.innerHTML = `Lowest Price of the day: <span>${LOWDAY}</span>`;
+
+  const lastHour = document.createElement("p");
+  lastHour.innerHTML = `Variation for the last 24 hours: <span>${CHANGEPCT24HOUR}%</span>`;
+
+  const lastUpdate = document.createElement("p");
+  lastUpdate.innerHTML = `Last update: <span>${LASTUPDATE}</span>`;
+
+  result.appendChild(price);
+  result.appendChild(priceHigh);
+  result.appendChild(priceLow);
+  result.appendChild(lastHour);
+  result.appendChild(lastUpdate);
+}
+
+function cleanHTML() {
+  while (result.firstChild) {
+    result.removeChild(result.firstChild);
+  }
 }
 function showAlert(msg) {
   const existAlert = document.querySelector(".error");
