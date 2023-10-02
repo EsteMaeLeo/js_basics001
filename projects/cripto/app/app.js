@@ -27,6 +27,8 @@ function consultCrypto() {
   const url =
     "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=20&tsym=USD";
 
+  //showSpinner();
+
   fetch(url)
     .then((response) => response.json())
     .then((result) => obtainCrypto(result.Data))
@@ -70,6 +72,8 @@ function fetchCrypto() {
 
   const urlFullData = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${crypto}&tsyms=${currency}`;
 
+  showSpinner();
+
   fetch(urlFullData)
     .then((response) => response.json())
     .then((quote) => showQuoteHTML(quote))
@@ -112,6 +116,26 @@ function cleanHTML() {
     result.removeChild(result.firstChild);
   }
 }
+
+function showSpinner() {
+  cleanHTML();
+  const spinner = document.createElement("DIV");
+  spinner.classList.add("sk-cube-grid");
+  spinner.innerHTML = `<div class="sk-cube-grid">
+    <div class="sk-cube sk-cube1"></div>
+    <div class="sk-cube sk-cube2"></div>
+    <div class="sk-cube sk-cube3"></div>
+    <div class="sk-cube sk-cube4"></div>
+    <div class="sk-cube sk-cube5"></div>
+    <div class="sk-cube sk-cube6"></div>
+    <div class="sk-cube sk-cube7"></div>
+    <div class="sk-cube sk-cube8"></div>
+    <div class="sk-cube sk-cube9"></div>
+  </div>`;
+
+  result.appendChild(spinner)
+}
+
 function showAlert(msg) {
   const existAlert = document.querySelector(".error");
   if (!existAlert) {
