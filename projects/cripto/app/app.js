@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", submitform);
 
   currencySelect.addEventListener("change", readValue);
+  criptoselect.addEventListener("change", readValue);
 });
 
 function consultCrypto() {
@@ -46,8 +47,8 @@ function selectCrypto(cryptos) {
 
 function readValue(e) {
     console.log(e.target.value);
-    //objSearch.crypto[e.target.name] = e.target.value
-    objSearch.currency = e.target.value
+    objSearch[e.target.name] = e.target.value
+    //objSearch.currency = e.target.value
   console.log(objSearch);
 }
 
