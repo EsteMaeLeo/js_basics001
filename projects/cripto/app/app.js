@@ -1,4 +1,5 @@
 const criptoselect = document.querySelector("#criptomonedas");
+const form = document.querySelector("#formulario");
 
 //on promise
 
