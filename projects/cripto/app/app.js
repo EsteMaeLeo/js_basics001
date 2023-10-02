@@ -10,6 +10,8 @@ const obtainCrypto = (cryptos) =>
 
 document.addEventListener("DOMContentLoaded", () => {
   consultCrypto();
+
+  form.addEventListener("submit", submitform)
 });
 
 function consultCrypto() {
@@ -33,4 +35,9 @@ console.log(FullName)
     option.textContent = FullName;
     criptoselect.appendChild(option);
   });
+}
+
+
+function submitform(e){
+    e.preventDefault()
 }
