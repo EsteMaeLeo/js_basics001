@@ -61,15 +61,31 @@ function submitform(e) {
     showAlert("Fields are mandatory");
     return;
   }
+
+  fetchCrypto();
 }
 
+function fetchCrypto() {
+  const { currency, crypto } = objSearch;
+  const url = `https://min-api.cryptocompare.com/data/price?fsym=${crypto}&tsyms=${currency}`
+  
+  const urlFullData = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${crypto}&tsyms=${currency}`
+  
+  fetch(urlFullData)
+  .then(response => response.json())
+  .then( quote =>console.log(quote.DISPLAY))
+  .catch((error) => console.log(error));
+}
 function showAlert(msg) {
-  const div = document.createElement("DIV");
-  div.classList.add("error");
-  div.textContent = msg;
-  form.appendChild(div);
+  const existAlert = document.querySelector(".error");
+  if (!existAlert) {
+    const div = document.createElement("DIV");
+    div.classList.add("error");
+    div.textContent = msg;
+    form.appendChild(div);
 
-  setTimeout(() => {
-    div.remove();
-  }, 3000);
+    setTimeout(() => {
+      div.remove();
+    }, 3000);
+  }
 }
