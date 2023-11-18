@@ -34,4 +34,49 @@ function saveClient() {
     }
     return;
   }
+
+  //asign form data to client
+  client = { ...client, table, time };
+
+  console.log(client);
+  //hide modal
+  const modalForm = document.querySelector("#formulario");
+  const modalBootstrap = bootstrap.Modal.getInstance(modalForm);
+  modalBootstrap.hide();
+
+  //show sections
+  showSections();
+
+  //Get food from API JSON-Server
+  getFood();
+}
+
+function showSections() {
+  const hideSections = document.querySelectorAll(".d-none");
+  hideSections.forEach((section) => section.classList.remove("d-none"));
+}
+
+function getFood() {
+  const url = "http://localhost:3000/platillos/";
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((result) => showFood(result))
+    .catch((error) => console.log(error));
+}
+
+function showFood(foodList) {
+  const content = document.querySelector("#platillos .contenido");
+
+  foodList.forEach((food) => {
+    const row = document.createElement("DIV");
+    row.classList.add("row");
+
+    const name = document.createElement("DIV");
+    name.classList.add("col-md-4");
+    name.textContent = food.nombre;
+
+    row.appendChild(name);
+    content.appendChild(row);
+  });
 }
