@@ -14,7 +14,7 @@
       },
       {
         "id": 3,
-        "nombre": "Rebanada de Pay de Limón",
+        "nombre": "Rebanada de Pie de Limón",
         "precio": 30,
         "categoria": 3
       },
@@ -26,8 +26,8 @@
       },
       {
         "id": 5,
-        "nombre": "Jugo de Naranja",
-        "precio": 15,
+        "nombre": "Jugo de Frutas",
+        "precio": 5,
         "categoria": 2
       },
       {
@@ -45,19 +45,19 @@
       {
         "id": 8,
         "nombre": "Jugo de Naranja",
-        "precio": 15,
+        "precio": 5,
         "categoria": 2
       },
       {
         "id": 9,
         "nombre": "Tequila",
-        "precio": 40,
+        "precio": 4,
         "categoria": 2
       },
       {
         "id": 10,
         "nombre": "Rebanada de Pie de Queso",
-        "precio": 30,
+        "precio": 15,
         "categoria": 3
       },
       {
@@ -69,7 +69,7 @@
       {
         "id": 12,
         "nombre": "Café Capuchino",
-        "precio": 40,
+        "precio": 5,
         "categoria": 2
       }
     ]

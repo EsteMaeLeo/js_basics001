@@ -90,16 +90,23 @@ function showFood(foodList) {
     category.classList.add("col-md-3");
     category.textContent = categories[food.categoria];
 
-    const inputaQuantity = document.createElement("INPUT");
-    inputaQuantity.type = "number";
-    inputaQuantity.min = 0;
-    inputaQuantity.value = 0;
-    inputaQuantity.id = `product-${food.id}`;
-    inputaQuantity.classList.add("form-control");
+    const inputQuantity = document.createElement("INPUT");
+    inputQuantity.type = "number";
+    inputQuantity.min = 0;
+    inputQuantity.value = 0;
+    inputQuantity.id = `product-${food.id}`;
+    inputQuantity.classList.add("form-control");
+
+    //function detect quantity and food
+    inputQuantity.onchange = function () {
+      const quantity = parseInt(inputQuantity.value);
+      console.log(quantity);
+      addFood({ ...food, quantity });
+    };
 
     const addInput = document.createElement("DIV");
     addInput.classList.add("col-md-2");
-    addInput.appendChild(inputaQuantity);
+    addInput.appendChild(inputQuantity);
 
     row.appendChild(name);
     row.appendChild(price);
@@ -107,4 +114,30 @@ function showFood(foodList) {
     row.appendChild(addInput);
     content.appendChild(row);
   });
+}
+
+function addFood(food) {
+  //extract order
+  const { order } = client;
+
+  if (food.quantity > 0) {
+    //check if product already exist
+    if (order.some((product) => product.id === food.id)) {
+      //update the quantity
+      const orderUpdated = order.map((product) => {
+        if (product.id === food.id) {
+          product.quantity = food.quantity;
+        }
+        return product;
+      });
+
+      //assign new array to client.order
+      client.order = [...orderUpdated];
+    } else {
+      //order not exist assign to the array
+      client.order = [...order, food];
+    }
+  }
+
+  console.log(client);
 }
