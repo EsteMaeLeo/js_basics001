@@ -4,6 +4,12 @@ let client = {
   order: [],
 };
 
+const categories = {
+  1: "Comida",
+  2: "Bebidas",
+  3: "Postres",
+};
+
 const btnSaveOrderClient = document.querySelector("#guardar-cliente");
 
 btnSaveOrderClient.addEventListener("click", saveClient);
@@ -70,13 +76,35 @@ function showFood(foodList) {
 
   foodList.forEach((food) => {
     const row = document.createElement("DIV");
-    row.classList.add("row");
+    row.classList.add("row", "py-3", "border-top");
 
     const name = document.createElement("DIV");
     name.classList.add("col-md-4");
     name.textContent = food.nombre;
 
+    const price = document.createElement("DIV");
+    price.classList.add("col-md-3", "fw-bold");
+    price.textContent = `$${food.precio}`;
+
+    const category = document.createElement("DIV");
+    category.classList.add("col-md-3");
+    category.textContent = categories[food.categoria];
+
+    const inputaQuantity = document.createElement("INPUT");
+    inputaQuantity.type = "number";
+    inputaQuantity.min = 0;
+    inputaQuantity.value = 0;
+    inputaQuantity.id = `product-${food.id}`;
+    inputaQuantity.classList.add("form-control");
+
+    const addInput = document.createElement("DIV");
+    addInput.classList.add("col-md-2");
+    addInput.appendChild(inputaQuantity);
+
     row.appendChild(name);
+    row.appendChild(price);
+    row.appendChild(category);
+    row.appendChild(addInput);
     content.appendChild(row);
   });
 }
