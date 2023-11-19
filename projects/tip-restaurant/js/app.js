@@ -144,4 +144,50 @@ function addFood(food) {
   }
 
   console.log(client);
+  cleanHtml();
+  showSumary(client);
+}
+
+function showSumary(client) {
+  const content = document.querySelector("#resumen .contenido");
+
+  const sumary = document.createElement("DIV");
+  sumary.classList.add("col-md-6", "card", "py-5", "px-3", "shadow");
+
+  const table = document.createElement("P");
+  table.textContent = "Mesa: ";
+  table.classList.add("fw-bold");
+
+  const tableSpan = document.createElement("SPAN");
+  tableSpan.textContent = client.table;
+  tableSpan.classList.add("fw-normal");
+
+  const time = document.createElement("P");
+  time.textContent = "Hora: ";
+  time.classList.add("fw-bold");
+
+  const timeSpan = document.createElement("SPAN");
+  timeSpan.textContent = client.time;
+  timeSpan.classList.add("fw-normal");
+
+  const heading = document.createElement("H3");
+  heading.textContent = "Product List";
+  heading.classList.add("my-4", "text-center");
+
+  table.appendChild(tableSpan);
+  time.appendChild(timeSpan);
+
+  sumary.append(table);
+  sumary.append(time);
+  sumary.append(heading);
+
+  content.appendChild(sumary);
+}
+
+function cleanHtml() {
+  const content = document.querySelector("#resumen .contenido");
+
+  while (content.firstChild) {
+    content.removeChild(content.firstChild);
+  }
 }
