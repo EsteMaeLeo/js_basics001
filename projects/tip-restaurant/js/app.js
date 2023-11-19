@@ -137,6 +137,10 @@ function addFood(food) {
       //order not exist assign to the array
       client.order = [...order, food];
     }
+  } else {
+    //delete element equal to 0
+    const result = order.filter((product) => product.id !== food.id);
+    client.order = [...result];
   }
 
   console.log(client);
