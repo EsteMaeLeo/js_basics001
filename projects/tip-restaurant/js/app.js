@@ -171,17 +171,67 @@ function showSumary(client) {
   timeSpan.classList.add("fw-normal");
 
   const heading = document.createElement("H3");
-  heading.textContent = "Product List";
-  heading.classList.add("my-4", "text-center"); 
+  heading.textContent = "Item List";
+  heading.classList.add("my-4", "text-center");
 
   //product list
-  const group = document.createElement('UL')
-  group.classList.add('list-group')
+  const group = document.createElement("UL");
+  group.classList.add("list-group");
 
-  const {order} = client;
-  order.forEach(product=>{
-    console.log(product)
-  })
+  const { order } = client;
+  order.forEach((product) => {
+    const { nombre, quantity, precio, id } = product;
+    const list = document.createElement("LI");
+    list.classList.add("list-group-item");
+
+    const nameEl = document.createElement("H4");
+    nameEl.classList.add("my-4");
+    nameEl.textContent = nombre;
+
+    const quantityEl = document.createElement("P");
+    quantityEl.classList.add("fw-bold");
+    quantityEl.textContent = "Quantity: ";
+
+    const quantityValue = document.createElement("SPAN");
+    quantityValue.classList.add("fw-normal");
+    quantityValue.textContent = quantity;
+
+    const precioEl = document.createElement("P");
+    precioEl.classList.add("fw-bold");
+    precioEl.textContent = "Price: ";
+
+    const precioValue = document.createElement("SPAN");
+    precioValue.classList.add("fw-normal");
+    precioValue.textContent = `$${precio}`;
+
+    const subTotalEl = document.createElement("P");
+    subTotalEl.classList.add("fw-bold");
+    subTotalEl.textContent = "Total per Item: ";
+
+    const subTotalValue = document.createElement("SPAN");
+    subTotalValue.classList.add("fw-normal");
+    subTotalValue.textContent = `$${precio * quantity}`;
+
+    quantityEl.appendChild(quantityValue);
+    precioEl.appendChild(precioValue);
+    subTotalEl.appendChild(subTotalValue);
+
+    const btnDelete = document.createElement("BUTTON");
+    btnDelete.classList.add("btn", "btn-danger");
+    btnDelete.textContent = "Delete Item";
+
+    btnDelete.onclick = function () {
+      deleteITem(id);
+    };
+
+    list.appendChild(nameEl);
+    list.appendChild(quantityEl);
+    list.appendChild(precioEl);
+    list.appendChild(subTotalEl);
+    list.appendChild(btnDelete);
+
+    group.appendChild(list);
+  });
 
   table.appendChild(tableSpan);
   time.appendChild(timeSpan);
@@ -189,6 +239,7 @@ function showSumary(client) {
   sumary.append(table);
   sumary.append(time);
   sumary.append(heading);
+  sumary.append(group);
 
   content.appendChild(sumary);
 }
@@ -199,4 +250,12 @@ function cleanHtml() {
   while (content.firstChild) {
     content.removeChild(content.firstChild);
   }
+}
+
+function deleteITem(id) {
+  const { order } = client;
+  const result = order.filter((product) => product.id !== id);
+  client.order = [...result];
+  cleanHtml();
+  showSumary(client);
 }
