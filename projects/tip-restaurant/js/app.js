@@ -172,7 +172,16 @@ function showSumary(client) {
 
   const heading = document.createElement("H3");
   heading.textContent = "Product List";
-  heading.classList.add("my-4", "text-center");
+  heading.classList.add("my-4", "text-center"); 
+
+  //product list
+  const group = document.createElement('UL')
+  group.classList.add('list-group')
+
+  const {order} = client;
+  order.forEach(product=>{
+    console.log(product)
+  })
 
   table.appendChild(tableSpan);
   time.appendChild(timeSpan);
