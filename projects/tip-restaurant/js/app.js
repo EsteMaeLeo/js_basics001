@@ -146,13 +146,11 @@ function addFood(food) {
   console.log(client);
   cleanHtml();
 
-  if(client.order.length){
+  if (client.order.length) {
     showSumary(client);
-  }else{
-    cleanEmptyOrder()
+  } else {
+    cleanEmptyOrder();
   }
-
-  
 }
 
 function showSumary(client) {
@@ -264,7 +262,18 @@ function deleteITem(id) {
   const result = order.filter((product) => product.id !== id);
   client.order = [...result];
   cleanHtml();
-  showSumary(client);
+
+  if (client.order.length) {
+    showSumary(client);
+  } else {
+    cleanEmptyOrder();
+  }
+
+  //at moment delete product reset value in the form
+  const itemDeleted = `#product-${id}`;
+  console.log(itemDeleted);
+  const inputDeleted = document.querySelector(itemDeleted);
+  inputDeleted.value = 0;
 }
 
 function cleanEmptyOrder() {
