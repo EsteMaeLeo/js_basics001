@@ -145,7 +145,14 @@ function addFood(food) {
 
   console.log(client);
   cleanHtml();
-  showSumary(client);
+
+  if(client.order.length){
+    showSumary(client);
+  }else{
+    cleanEmptyOrder()
+  }
+
+  
 }
 
 function showSumary(client) {
@@ -258,4 +265,15 @@ function deleteITem(id) {
   client.order = [...result];
   cleanHtml();
   showSumary(client);
+}
+
+function cleanEmptyOrder() {
+  const content = document.querySelector("#resumen .contenido");
+
+  const text = document.createElement("P");
+
+  text.classList.add("text-center");
+
+  text.textContent = "Añade los elementos del pedido";
+  content.appendChild(text);
 }
