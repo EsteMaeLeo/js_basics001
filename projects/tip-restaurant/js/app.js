@@ -247,6 +247,12 @@ function showSumary(client) {
   sumary.append(group);
 
   content.appendChild(sumary);
+
+  showTips()
+}
+
+function showTips(){
+    
 }
 
 function cleanHtml() {
