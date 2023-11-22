@@ -260,7 +260,7 @@ function showTips() {
   const formDiv = document.createElement("DIV");
   formDiv.classList.add("card", "py-2", "px-3", "shadow");
   const heading = document.createElement("H3");
-  heading.classList.add("my-4");
+  heading.classList.add("my-4", "text-center");
   heading.textContent = "Tips";
 
   form.appendChild(formDiv);
