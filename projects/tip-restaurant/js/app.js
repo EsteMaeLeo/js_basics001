@@ -157,7 +157,7 @@ function showSumary(client) {
   const content = document.querySelector("#resumen .contenido");
 
   const sumary = document.createElement("DIV");
-  sumary.classList.add("col-md-6", "card", "py-5", "px-3", "shadow");
+  sumary.classList.add("col-md-6", "card", "py-2", "px-3", "shadow");
 
   const table = document.createElement("P");
   table.textContent = "Mesa: ";
@@ -241,9 +241,10 @@ function showSumary(client) {
   table.appendChild(tableSpan);
   time.appendChild(timeSpan);
 
+  sumary.append(heading);
   sumary.append(table);
   sumary.append(time);
-  sumary.append(heading);
+  
   sumary.append(group);
 
   content.appendChild(sumary);
@@ -254,7 +255,17 @@ function showSumary(client) {
 function showTips() {
   const content = document.querySelector("#resumen .contenido");
   const form = document.createElement("DIV");
-  const heading = document.createElement('H3')
+  form.classList.add("col-md-6", "formulario");
+
+  const formDiv = document.createElement("DIV");
+  formDiv.classList.add("card", "py-2", "px-3", "shadow");
+  const heading = document.createElement("H3");
+  heading.classList.add("my-4");
+  heading.textContent = "Tips";
+
+  form.appendChild(formDiv);
+  formDiv.appendChild(heading);
+  content.appendChild(form);
 }
 
 function cleanHtml() {
