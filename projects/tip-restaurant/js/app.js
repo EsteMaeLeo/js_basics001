@@ -248,11 +248,13 @@ function showSumary(client) {
 
   content.appendChild(sumary);
 
-  showTips()
+  showTips();
 }
 
-function showTips(){
-    
+function showTips() {
+  const content = document.querySelector("#resumen .contenido");
+  const form = document.createElement("DIV");
+  const heading = document.createElement('H3')
 }
 
 function cleanHtml() {
