@@ -244,7 +244,7 @@ function showSumary(client) {
   sumary.append(heading);
   sumary.append(table);
   sumary.append(time);
-  
+
   sumary.append(group);
 
   content.appendChild(sumary);
@@ -262,9 +262,60 @@ function showTips() {
   const heading = document.createElement("H3");
   heading.classList.add("my-4", "text-center");
   heading.textContent = "Tips";
+  //radio button
+  const radio10 = document.createElement("INPUT");
+  radio10.type = "radio";
+  radio10.name = "tip";
+  radio10.value = "10";
+  radio10.classList.add("form-check-input");
+
+  const radio10Label = document.createElement("LABEL");
+  radio10Label.textContent = "10%";
+  radio10Label.classList.add("form-check-label");
+
+  const radio10Div = document.createElement("DIV");
+  radio10Div.classList.add("form-check");
+
+  radio10Div.appendChild(radio10);
+  radio10Div.appendChild(radio10Label);
+
+  const radio15 = document.createElement("INPUT");
+  radio15.type = "radio";
+  radio15.name = "tip";
+  radio15.value = "15";
+  radio15.classList.add("form-check-input");
+
+  const radio15Label = document.createElement("LABEL");
+  radio15Label.textContent = "15%";
+  radio15Label.classList.add("form-check-label");
+
+  const radio15Div = document.createElement("DIV");
+  radio15Div.classList.add("form-check");
+
+  radio15Div.appendChild(radio15);
+  radio15Div.appendChild(radio15Label);
+
+  const radio18 = document.createElement("INPUT");
+  radio18.type = "radio";
+  radio18.name = "tip";
+  radio18.value = "18";
+  radio18.classList.add("form-check-input");
+
+  const radio18Label = document.createElement("LABEL");
+  radio18Label.textContent = "15%";
+  radio18Label.classList.add("form-check-label");
+
+  const radio18Div = document.createElement("DIV");
+  radio18Div.classList.add("form-check");
+
+  radio18Div.appendChild(radio18);
+  radio18Div.appendChild(radio18Label);
 
   form.appendChild(formDiv);
   formDiv.appendChild(heading);
+  formDiv.appendChild(radio10Div);
+  formDiv.appendChild(radio15Div);
+  formDiv.appendChild(radio18Div);
   content.appendChild(form);
 }
 
