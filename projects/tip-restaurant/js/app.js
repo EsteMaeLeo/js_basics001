@@ -268,6 +268,7 @@ function showTips() {
   radio10.name = "tip";
   radio10.value = "10";
   radio10.classList.add("form-check-input");
+  radio10.onclick = calculateTip;
 
   const radio10Label = document.createElement("LABEL");
   radio10Label.textContent = "10%";
@@ -284,6 +285,7 @@ function showTips() {
   radio15.name = "tip";
   radio15.value = "15";
   radio15.classList.add("form-check-input");
+  radio15.onclick = calculateTip;
 
   const radio15Label = document.createElement("LABEL");
   radio15Label.textContent = "15%";
@@ -300,6 +302,7 @@ function showTips() {
   radio18.name = "tip";
   radio18.value = "18";
   radio18.classList.add("form-check-input");
+  radio18.onclick = calculateTip;
 
   const radio18Label = document.createElement("LABEL");
   radio18Label.textContent = "15%";
@@ -317,6 +320,70 @@ function showTips() {
   formDiv.appendChild(radio15Div);
   formDiv.appendChild(radio18Div);
   content.appendChild(form);
+}
+
+function calculateTip() {
+  const { order } = client;
+  let subtotal = 0;
+
+  order.forEach((item) => {
+    subtotal += item.quantity * item.precio;
+  });
+  const tipSelected = parseInt(
+    document.querySelector('[name="tip"]:checked').value
+  );
+  let tip = (subtotal * tipSelected) / 100;
+  let totalPay = subtotal + tip;
+
+  showTotalHtml(subtotal, tip, totalPay);
+}
+
+function showTotalHtml(subtotal, tip, total) {
+  const divTotal = document.createElement("DIV");
+  divTotal.classList.add("total-pagar", "my-5");
+
+  const subtotalP = document.createElement("P");
+  subtotalP.classList.add("fs-4", "fw-bold", "mt-2");
+  subtotalP.textContent = "Subtotal items: ";
+
+  const subtotalSpan = document.createElement("SPAN");
+  subtotalSpan.classList.add("fw-normal");
+  subtotalSpan.textContent = `$${subtotal}`;
+
+  subtotalP.appendChild(subtotalSpan);
+
+  const tipP = document.createElement("P");
+  tipP.classList.add("fs-4", "fw-bold", "mt-2");
+  tipP.textContent = "Tip items: ";
+
+  const tipSpan = document.createElement("SPAN");
+  tipSpan.classList.add("fw-normal");
+  tipSpan.textContent = `$${tip}`;
+
+  tipP.appendChild(tipSpan);
+
+  const totalP = document.createElement("P");
+  totalP.classList.add("fs-4", "fw-bold", "mt-2");
+  totalP.textContent = "Tip items: ";
+
+  const totalSpan = document.createElement("SPAN");
+  totalSpan.classList.add("fw-normal");
+  totalSpan.textContent = `$${total}`;
+
+  totalP.appendChild(totalSpan);
+
+  //delete last reseult
+  const divTotalPrev = document.querySelector(".total-pagar");
+  if (divTotalPrev) {
+    divTotalPrev.remove();
+  }
+
+  divTotal.appendChild(subtotalP);
+  divTotal.appendChild(tipP);
+  divTotal.appendChild(totalP);
+
+  const form = document.querySelector(".formulario > div");
+  form.appendChild(divTotal);
 }
 
 function cleanHtml() {
