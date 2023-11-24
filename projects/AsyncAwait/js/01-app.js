@@ -12,9 +12,11 @@ function downloadClient() {
   });
 }
 
-function execute() {
+async function execute() {
   try {
-    
+    const response = await downloadClient();
+    console.log(2 + 2);
+    console.log(response);
   } catch (error) {
     console.log(error);
   }
