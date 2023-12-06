@@ -19,7 +19,16 @@
     };
 
     console.log(!Object.values(cliente).every((input) => input !== ""));
+
+    if (val(client)) {
+      console.log("All fields are mandatory");
+      return;
+    }
+
+    console.log("Validation OK");
   }
 
-  function val(obj){}
+  function val(obj) {
+    return Object.values(obj).every((obj) => obj !== "");
+  }
 })();
