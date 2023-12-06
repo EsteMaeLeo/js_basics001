@@ -18,7 +18,7 @@
       company,
     };
 
-    console.log(!Object.values(cliente).every((input) => input !== ""));
+    console.log(!Object.values(client).every((input) => input !== ""));
 
     if (val(client)) {
       console.log("All fields are mandatory");
@@ -29,6 +29,6 @@
   }
 
   function val(obj) {
-    return Object.values(obj).every((obj) => obj !== "");
+    return !Object.values(obj).every((input) => input !== "");
   }
 })();
