@@ -18,6 +18,8 @@
       company,
     };
 
-    console.log(client);
+    console.log(!Object.values(cliente).every((input) => input !== ""));
   }
+
+  function val(obj){}
 })();
