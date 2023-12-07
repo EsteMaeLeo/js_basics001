@@ -1,4 +1,5 @@
 import { showAlert } from "./funciones.js";
+import { newClient } from "./API.js";
 
 (function () {
   const form = document.querySelector("#formulario");
@@ -27,7 +28,7 @@ import { showAlert } from "./funciones.js";
       return;
     }
 
-    console.log("Validation OK");
+    newClient(client);
   }
 
   function val(obj) {
