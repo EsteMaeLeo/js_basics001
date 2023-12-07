@@ -17,4 +17,14 @@ const newClient = (client) => {
   }
 };
 
-export { newClient };
+const getClient = async () => {
+  try {
+    const result = await fetch(url);
+    const client = await result.json();
+    return client;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { newClient, getClient };
