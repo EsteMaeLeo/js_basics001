@@ -1,3 +1,5 @@
+import { showAlert } from "./funciones.js";
+
 (function () {
   const form = document.querySelector("#formulario");
 
@@ -21,7 +23,7 @@
     console.log(!Object.values(client).every((input) => input !== ""));
 
     if (val(client)) {
-      console.log("All fields are mandatory");
+      showAlert("All fields are mandatory");
       return;
     }
 
