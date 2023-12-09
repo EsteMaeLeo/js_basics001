@@ -1,13 +1,6 @@
 {
   "clientes": [
     {
-      "nombre": "William Smith",
-      "email": "correo2@correo.com",
-      "telefono": "12",
-      "empresa": "12212",
-      "id": 26
-    },
-    {
       "name": "Carl",
       "email": "carl@2.com",
       "phone": "5008001234567",

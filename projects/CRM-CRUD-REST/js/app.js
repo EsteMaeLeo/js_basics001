@@ -1,9 +1,11 @@
-import { getClient } from "./API.js";
+import { getClient, deleteClient } from "./API.js";
 
 (function () {
   const list = document.querySelector("#listado-clientes");
 
   document.addEventListener("DOMContentLoaded", showClients);
+
+  list.addEventListener('click', confirmDelete)
 
   async function showClients() {
     const clients = await getClient();
@@ -31,5 +33,19 @@ import { getClient } from "./API.js";
 
       list.appendChild(row);
     });
+  }
+
+  function confirmDelete(e){
+      if(e.target.classList.contains('eliminar')){
+        const clientId= parseInt(e.target.dataset.cliente)
+
+        const confirmDelete = confirm("Please confirm delete the client")
+
+        if(confirmDelete){
+            deleteClient(clientId)
+        }
+
+        
+      }
   }
 })();
