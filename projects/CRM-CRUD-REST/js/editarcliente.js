@@ -1,4 +1,5 @@
 import { getClientId } from "./API.js";
+import { showAlert, val } from "./funciones.js";
 
 (function () {
   const inputName = document.querySelector("#nombre");
@@ -16,6 +17,9 @@ import { getClientId } from "./API.js";
     const client = await getClientId(idClient);
     console.log(client);
     showClient(client);
+
+    const form = document.querySelector("#formulario");
+    form.addEventListener("submit", valClient);
   });
 
   function showClient(client) {
@@ -26,5 +30,24 @@ import { getClientId } from "./API.js";
     inputPhone.value = phone;
     inputCompany.value = company;
     inputId.value = id;
+  }
+
+  function valClient(e) {
+    e.preventDefault();
+
+    const client = {
+      name: inputName.value,
+      email: inputEmail.value,
+      phone: inputPhone.value,
+      company: inputCompany.value,
+      id: parseInt(inputId.value),
+    };
+
+    console.log(!Object.values(client).every((input) => input !== ""));
+
+    if (val(client)) {
+      showAlert("All fields are mandatory");
+      return;
+    }
   }
 })();

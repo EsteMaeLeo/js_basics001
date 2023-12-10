@@ -29,4 +29,8 @@ function showAlert(message) {
   }
 }
 
-export { showAlert };
+function val(obj) {
+  return !Object.values(obj).every((input) => input !== "");
+}
+
+export { showAlert, val };
