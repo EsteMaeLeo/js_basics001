@@ -37,4 +37,16 @@ const deleteClient = async (id) => {
   }
 };
 
-export { newClient, getClient, deleteClient };
+const getClientId = async (id) => {
+  
+   console.log(id);  
+   try {
+    const result = await fetch(`${url}/${id}`);
+    const client = await result.json();
+    console.log(client)
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { newClient, getClient, deleteClient, getClientId };
