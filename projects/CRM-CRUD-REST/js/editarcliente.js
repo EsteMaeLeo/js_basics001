@@ -1,4 +1,4 @@
-import { getClientId } from "./API.js";
+import { getClientId, editClient } from "./API.js";
 import { showAlert, val } from "./funciones.js";
 
 (function () {
@@ -49,5 +49,7 @@ import { showAlert, val } from "./funciones.js";
       showAlert("All fields are mandatory");
       return;
     }
+
+    editClient(client);
   }
 })();

@@ -42,11 +42,26 @@ const getClientId = async (id) => {
   try {
     const result = await fetch(`${url}/${id}`);
     const client = await result.json();
-    
+
     return client;
   } catch (error) {
     console.log(error);
   }
 };
 
-export { newClient, getClient, deleteClient, getClientId };
+const editClient = async (client) => {
+  try {
+    await fetch(`${url}/${client.id}`, {
+      method: "PUT",
+      body: JSON.stringify(client),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    window.location.href = 'index.html'
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { newClient, getClient, deleteClient, getClientId, editClient };
