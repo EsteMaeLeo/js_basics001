@@ -38,12 +38,12 @@ const deleteClient = async (id) => {
 };
 
 const getClientId = async (id) => {
-  
-   console.log(id);  
-   try {
+  console.log(id);
+  try {
     const result = await fetch(`${url}/${id}`);
     const client = await result.json();
-    console.log(client)
+    
+    return client;
   } catch (error) {
     console.log(error);
   }
