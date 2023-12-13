@@ -1,4 +1,4 @@
-const carrito = [
+const carrito2 = [
     { nombre: 'Monitor 20 Pulgadas', precio: 500},
     { nombre: 'Televisión 50 Pulgadas', precio: 700},
     { nombre: 'Tablet', precio: 300},
