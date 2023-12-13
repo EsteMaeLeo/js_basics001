@@ -13,6 +13,8 @@ const resultC1 = carrito3.filter((product) => {
   return product.precio > 400;
 });
 
+console.log("--Filter--");
+
 console.log(resultC1);
 
 const mayor400 = (product) => {
