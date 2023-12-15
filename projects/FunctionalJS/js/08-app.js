@@ -1,15 +1,29 @@
 //closures  make available variable in function out the function scope
 
-console.log("--closures--")
+console.log("--closures--");
 
-const ClientClosure = 'William'
+const clientClosure = "William";
 
-function showClientClosure(){
-    const ClientClosure = 'Joseph'
+function showClientClosure() {
+  const clientClosure = "Joseph";
 
-    console.log(ClientClosure)
+  console.log(clientClosure);
 }
 
-console.log(ClientClosure)
+console.log(clientClosure);
 
-showClientClosure()
+showClientClosure();
+
+function getClientClosure() {
+  const clientClosure = "Joseph Closure";
+
+  function showNameClosure() {
+    console.log(clientClosure);
+  }
+
+  return showNameClosure;
+}
+
+const clientShowClosure = getClientClosure();
+
+clientShowClosure();
