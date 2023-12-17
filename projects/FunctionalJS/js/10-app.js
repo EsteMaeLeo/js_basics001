@@ -15,7 +15,7 @@ const saveEmail = (info) => ({
 
 const showEmail = (info) => ({
   getEmail() {
-    console.log(`Name: ${info.name}`);
+    console.log(`Email: ${info.email}`);
   },
 });
 
@@ -26,7 +26,7 @@ function clientComp(name, email, company) {
     company,
   };
 
-  return Object.assign(info, showName(info), saveEmail(info));
+  return Object.assign(info, showName(info), saveEmail(info),  showEmail(info));
 }
 
 function employeeComp(name, email, job) {
@@ -36,13 +36,16 @@ function employeeComp(name, email, job) {
     job,
   };
 
-  return Object.assign(info, showName(info), saveEmail(info));
+  return Object.assign(info, showName(info), saveEmail(info),  showEmail(info));
 }
 
 console.log("--composition--");
 const newClient = clientComp("Jhon Hopkins", null, "Apple");
 newClient.getName();
 newClient.setEmail("john@email.com");
+newClient.getEmail();
+
 const newEmployee = employeeComp("Peter Potter", null, "Manager");
 newEmployee.getName();
 newEmployee.setEmail("petter@email.com");
+newEmployee.getEmail();
