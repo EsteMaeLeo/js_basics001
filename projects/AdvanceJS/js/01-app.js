@@ -42,3 +42,16 @@ const order = [1, 2, 3, 4];
 
 console.log(order.toString());
 console.log(JSON.stringify(order));
+
+//Implicit binding
+console.log("--Implicit binding---");
+
+const user = {
+  name: "Petter",
+  age: 44,
+  information() {
+    console.log(`User name is ${this.name} and age is ${this.age}`);
+  },
+};
+
+user.information();
