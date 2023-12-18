@@ -63,3 +63,28 @@ const user = {
 
 user.information();
 user.pet.information();
+
+//Explicit binding
+console.log("--Explicit binding---");
+
+function person(el1, el2) {
+  console.log(`Name is ${this.name} and listen ${el1} and ${el2}`);
+}
+
+const info = {
+  name: "Joseph",
+};
+
+const music = ["Metal", "Rock", "Progresive Rock"];
+
+console.log("--Explicit binding using call---");
+person.call(info, music[0], music[1]);
+
+console.log("--Explicit binding using apply---");
+//apply can use whole array
+person.apply(info, music);
+
+//bind create new function
+console.log("--Explicit binding using bind---");
+const newFn = person.bind(info, music[0], music[1]);
+newFn();
