@@ -88,3 +88,22 @@ person.apply(info, music);
 console.log("--Explicit binding using bind---");
 const newFn = person.bind(info, music[0], music[1]);
 newFn();
+
+console.log("--Explicit binding NEW BINDING---");
+
+function Auto(model, color) {
+  this.model = model;
+  this.color = color;
+}
+
+const auto = new Auto("BMW", "White");
+console.log(auto);
+
+console.log("--Explicit binding WINDOW BINDING---");
+//define GLOBAL WINDOW in the browser
+window.color = "black";
+function hello() {
+  console.log(color);
+}
+
+hello();
