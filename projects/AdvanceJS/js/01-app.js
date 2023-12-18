@@ -52,6 +52,14 @@ const user = {
   information() {
     console.log(`User name is ${this.name} and age is ${this.age}`);
   },
+  pet: {
+    name: "Firulais",
+    age: 5,
+    information() {
+      console.log(`Pet name is: ${this.name}, age is ${this.age}`);
+    },
+  },
 };
 
 user.information();
+user.pet.information();
