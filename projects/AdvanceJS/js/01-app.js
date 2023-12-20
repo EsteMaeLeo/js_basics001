@@ -107,3 +107,24 @@ function hello() {
 }
 
 hello();
+
+console.log("--EVENT LOOP---");
+
+console.log("First");
+
+setTimeout(() => {
+  console.log("Second");
+}, 0);
+
+console.log("Third");
+
+setTimeout(() => {
+  console.log("fourth");
+}, 0);
+
+new Promise(function (resolve) {
+  resolve("Unknown...");
+}).then(console.log);
+
+console.log("last");
+console.log("last");
