@@ -128,3 +128,19 @@ new Promise(function (resolve) {
 
 console.log("last");
 console.log("last");
+
+function hello() {
+  console.log("Hello");
+}
+
+hello();
+
+console.log("--SELF Window---");
+
+window.onload = () => {
+  console.log("Window Loaded");
+};
+
+self.onload = () => {
+  console.log("SELF Window Loaded");
+};
