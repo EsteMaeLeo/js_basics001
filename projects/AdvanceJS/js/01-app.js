@@ -112,7 +112,7 @@ console.log("--EVENT LOOP---");
 
 console.log("First");
 
-setTimeout(() => {
+/*setTimeout(() => {
   console.log("Second");
 }, 0);
 
@@ -133,7 +133,7 @@ function hello() {
   console.log("Hello");
 }
 
-hello();
+hello();*/
 
 console.log("--SELF Window---");
 
@@ -144,3 +144,15 @@ window.onload = () => {
 self.onload = () => {
   console.log("SELF Window Loaded");
 };
+
+const product = {
+  name: "Monitor 27 inches",
+  price: 250,
+  available: true,
+  showInfo: function () {
+    const self = this
+    return `Producto: ${self.name} has price of: ${self.price}`;
+  },
+};
+
+console.log(product.showInfo());
