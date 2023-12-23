@@ -6,7 +6,7 @@ const files = [
   "css/bootstrap.css",
   "css/styles.css",
   "js/app.js",
-  "js/apv.js"
+  "js/apv.js",
 ];
 
 //install the service worker
@@ -25,11 +25,18 @@ self.addEventListener("install", (e) => {
 //activate service worker
 self.addEventListener("activate", (e) => {
   console.log("Service Worker activated");
-  console.log(e);
+
 });
 
 //event fetch to download files
 
 self.addEventListener("fetch", (e) => {
   console.log("fetch event ", e);
+
+  e.respondWith(
+    caches.match(e.request).then((response) => {
+      console.log(response);
+      return response;
+    })
+  );
 });
