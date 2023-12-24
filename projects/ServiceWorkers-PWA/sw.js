@@ -3,7 +3,7 @@ const nameCache = "apv-v1";
 const files = [
   "/",
   "index.html",
-  "/error.html",
+  "error.html",
   "css/bootstrap.css",
   "css/styles.css",
   "js/app.js",
@@ -31,13 +31,13 @@ self.addEventListener("activate", (e) => {
 //event fetch to download files
 
 self.addEventListener("fetch", (e) => {
-
+console.log(e.request)
   e.respondWith(
     caches
       .match(e.request)
       .then((response) => {
         return response;
       })
-      .catch(() => caches.match("/error.html"))
+      .catch(() => caches.match("error.html"))
   );
 });
