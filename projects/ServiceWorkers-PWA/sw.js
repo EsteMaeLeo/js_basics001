@@ -30,7 +30,7 @@ self.addEventListener("activate", (e) => {
 
 //event fetch to download files
 
-self.addEventListener("fetch", (e) => {
+/*self.addEventListener("fetch", (e) => {
 console.log(e.request)
   e.respondWith(
     caches
@@ -40,4 +40,22 @@ console.log(e.request)
       })
       .catch(() => caches.match("error.html"))
   );
-});
+});*/
+const CACHE_NAME = 'offline';
+self.addEventListener("fetch", (e) => {
+    console.log(e.request)
+      e.respondWith(
+        caches
+          .match(e.request)
+          .then((response) => {
+            return response;
+          })
+          .catch((error) => {
+            console.log('Fetch failed; returning offline page instead.', error);
+
+            const cache =  caches.open(CACHE_NAME);
+            const cachedResponse =  cache.match("/error.html");
+            return cachedResponse;
+          })
+      );
+    });
