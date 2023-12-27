@@ -42,9 +42,10 @@ console.log(e.request)
   );
 });*/
 const CACHE_NAME = 'offline';
+const OFFLINE_URL = 'error.html';
 self.addEventListener("fetch", (e) => {
-    console.log(e.request)
-      e.respondWith(
+  
+      /*e.respondWith(
         caches
           .match(e.request)
           .then((response) => {
@@ -57,5 +58,30 @@ self.addEventListener("fetch", (e) => {
             const cachedResponse =  cache.match("/error.html");
             return cachedResponse;
           })
-      );
+      );*/
+      
+    e.respondWith((async () => {
+        try {
+          // First, try to use the navigation preload response if it's supported.
+          const preloadResponse = await e.preloadResponse;
+          if (preloadResponse) {
+            return preloadResponse;
+          }
+          console.log(e.request)
+          const networkResponse = await fetch(e.request);
+          console.log(networkResponse)
+          return networkResponse;
+        } catch (error) {
+          // catch is only triggered if an exception is thrown, which is likely
+          // due to a network error.
+          // If fetch() returns a valid HTTP response with a response code in
+          // the 4xx or 5xx range, the catch() will NOT be called.
+          console.log('Fetch failed; returning offline page instead.', error);
+  
+          const cache = await caches.open(CACHE_NAME);
+          const cachedResponse = await cache.match(OFFLINE_URL);
+          return cachedResponse;
+        }
+      })());
     });
+
