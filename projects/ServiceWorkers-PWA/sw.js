@@ -77,8 +77,12 @@ self.addEventListener("fetch", (e) => {
       .match(e.request)
       .then((response) => {
         console.log(response);
+        if(response===undefined){
+            caches.match("error.html")
+            return
+        }
         return response;
       })
-      .catch(() => caches.match("error.html"))
+      //.catch(() => caches.match("error.html"))
   );
 });
