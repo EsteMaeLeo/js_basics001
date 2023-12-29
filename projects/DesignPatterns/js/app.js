@@ -24,3 +24,25 @@ class Client extends Person {
 const client = new Client("Mike Knight", "email@email.com", "Google");
 console.log("Constructor Pattern");
 console.log(client);
+
+console.log("Singleton");
+
+let instance = null;
+
+class personSingleton {
+  constructor(name, email) {
+    if (!instance) {
+      this.name = name;
+      this.email = email;
+      instance = this;
+    } else {
+      return instance;
+    }
+  }
+}
+
+const personS1 = new personSingleton("Mike Knight", "email@email.com", "Google");
+console.log("PersonS1: ", personS1);
+
+const personS2 = new personSingleton("Karen  Knight", "email@email.com", "Google");
+console.log("PersonS1: ", personS2);
