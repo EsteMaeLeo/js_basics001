@@ -43,64 +43,18 @@ self.addEventListener("activate", (e) => {
   );
 });
 
-/*
-self.addEventListener("activate", (e) => {
-  // delete any caches that aren't in expectedCaches
-  // which will get rid of static-v1
-  e.waitUntil(
-    caches
-      .keys()
-      .then((keyList) =>
-        Promise.all(
-          keyList.map((key) => {
-            if (!nameCache.includes(key)) {
-              return caches.delete(key);
-            }
-          })
-        )
-      )
-      .then(() => {
-        console.log("V2 now ready to handle fetches!");
-      })
-  );
-});*/
-
-//event fetch to download files
-
-/*self.addEventListener("fetch", (e) => {
-console.log(e.request)
-  e.respondWith(
-    caches
-      .match(e.request)
-      .then((response) => {
-        return response;
-      })
-      .catch(() => caches.match("error.html"))
-  );
-});
-
-temp
-        if(cacheResponse===undefined){
-            caches.match("error.html")
-            .then((response) => {
-                return response;
-              })
-            //return
-        }
-
-*/
-
 const OFFLINE_URL = "error.html";
 
 self.addEventListener("fetch", (e) => {
   console.log(location.origin);
   console.log(e.request);
   e.respondWith(
-    caches.match(e.request).then((cacheResponse) => {
-      console.log(cacheResponse);
-
-      return cacheResponse || fetch(e.request);
-    })
+    caches
+      .match(e.request)
+      .then((cacheResponse) => {
+        return cacheResponse || fetch(e.request);
+      })
+      .catch(() => caches.match("error.html"))
     //.catch(() => caches.match("error.html"))
   );
 });
