@@ -1,4 +1,4 @@
-const nameCache = "apv-v1";
+const nameCache = "apv-v3";
 
 const files = [
   "/",
