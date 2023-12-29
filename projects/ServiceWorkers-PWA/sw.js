@@ -29,6 +29,18 @@ self.addEventListener("install", (e) => {
 
 self.addEventListener("activate", (e) => {
   console.log("Service Worker activated");
+
+  //delete old cache
+  e.waitUntil(
+    caches.keys().then((keys) => {
+      console.log(keys);
+      return Promise.all(
+        keys
+          .filter((key) => key !== nameCache) //return array with not equal names caches
+          .map((key) => caches.delete(key)) //delete each none equal
+      );
+    })
+  );
 });
 
 /*
@@ -84,13 +96,11 @@ self.addEventListener("fetch", (e) => {
   console.log(location.origin);
   console.log(e.request);
   e.respondWith(
-    caches
-      .match(e.request)
-      .then((cacheResponse) => {
-        console.log(cacheResponse);
+    caches.match(e.request).then((cacheResponse) => {
+      console.log(cacheResponse);
 
-        return cacheResponse || fetch(e.request);
-      })
-      //.catch(() => caches.match("error.html"))
+      return cacheResponse || fetch(e.request);
+    })
+    //.catch(() => caches.match("error.html"))
   );
 });
