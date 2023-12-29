@@ -12,7 +12,7 @@ const files = [
 
 console.log(files);
 
-//install the service worker
+//install the service work
 
 self.addEventListener("install", (e) => {
   console.log("Servicer worker installed");
@@ -65,7 +65,18 @@ console.log(e.request)
       })
       .catch(() => caches.match("error.html"))
   );
-});*/
+});
+
+temp
+        if(cacheResponse===undefined){
+            caches.match("error.html")
+            .then((response) => {
+                return response;
+              })
+            //return
+        }
+
+*/
 
 const OFFLINE_URL = "error.html";
 
@@ -75,13 +86,10 @@ self.addEventListener("fetch", (e) => {
   e.respondWith(
     caches
       .match(e.request)
-      .then((response) => {
-        console.log(response);
-        if(response===undefined){
-            caches.match("error.html")
-            return
-        }
-        return response;
+      .then((cacheResponse) => {
+        console.log(cacheResponse);
+
+        return cacheResponse || fetch(e.request);
       })
       //.catch(() => caches.match("error.html"))
   );
