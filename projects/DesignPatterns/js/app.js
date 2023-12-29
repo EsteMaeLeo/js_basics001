@@ -41,8 +41,59 @@ class personSingleton {
   }
 }
 
-const personS1 = new personSingleton("Mike Knight", "email@email.com", "Google");
+const personS1 = new personSingleton(
+  "Mike Knight",
+  "email@email.com",
+  "Google"
+);
 console.log("PersonS1: ", personS1);
 
-const personS2 = new personSingleton("Karen  Knight", "email@email.com", "Google");
+const personS2 = new personSingleton(
+  "Karen  Knight",
+  "email@email.com",
+  "Google"
+);
 console.log("PersonS1: ", personS2);
+
+//factory create objects with some conditions
+console.log("Factory");
+
+class inputHTML {
+  constructor(type, name) {
+    this.type = type;
+    this.name = name;
+  }
+  createInput() {
+    return `<input type="${this.type}" name="${this.name}" id="${this.name}">`;
+  }
+}
+
+class HTMLFactory {
+  createElement(type, name) {
+    switch (type) {
+      case "text":
+        return new inputHTML("text", name);
+      case "tel":
+        return new inputHTML("tel", name);
+      case "email":
+        return new inputHTML("email", name);
+      default:
+        return;
+    }
+  }
+}
+
+const element = new HTMLFactory();
+const inputText = element.createElement("text", "name-client");
+console.log("HTMLFactory: ", element);
+console.log(inputText.createInput());
+
+const element2 = new HTMLFactory();
+const inputText2 = element.createElement("tel", "tel-client");
+console.log("HTMLFactory: ", element2);
+console.log(inputText2.createInput());
+
+const element3 = new HTMLFactory();
+const inputText3 = element.createElement("email", "email-client");
+console.log("HTMLFactory: ", element3);
+console.log(inputText3.createInput());
