@@ -7,7 +7,7 @@ class Person {
   }
 }
 
-console.log("CLASS PATTERN");
+console.log("****** CLASS PATTERN ******");
 
 const person1 = new Person("John Williams", "email@email.com");
 console.log(person1);
@@ -25,7 +25,7 @@ const client = new Client("Mike Knight", "email@email.com", "Google");
 console.log("Constructor Pattern");
 console.log(client);
 
-console.log("Singleton");
+console.log("****** Singleton ****** ");
 
 let instance = null;
 
@@ -56,7 +56,7 @@ const personS2 = new personSingleton(
 console.log("PersonS1: ", personS2);
 
 //factory create objects with some conditions
-console.log("Factory");
+console.log("****** Factory ****** ");
 
 class inputHTML {
   constructor(type, name) {
@@ -97,3 +97,25 @@ const element3 = new HTMLFactory();
 const inputText3 = element.createElement("email", "email-client");
 console.log("HTMLFactory: ", element3);
 console.log(inputText3.createInput());
+
+//module pattern
+console.log("****** module pattern ****** ");
+
+const showClient = (name) => {
+  console.log(name);
+};
+
+//previous ECM6
+const module1 = (function () {
+  const name = "William";
+
+  function hello() {
+    console.log("Hello: ", name);
+  }
+  return {
+    name,
+    hello,
+  };
+})();
+
+export { showClient };
