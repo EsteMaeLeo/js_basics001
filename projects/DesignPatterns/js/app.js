@@ -119,3 +119,43 @@ const module1 = (function () {
 })();
 
 export { showClient };
+
+///MIX PATTERN
+console.log("****** MIX PATTERN ******");
+
+class PersonMix {
+  constructor(name, email) {
+    this.name = name;
+    this.email = email;
+  }
+}
+
+class ClientMix {
+  constructor(name, email, company) {
+    this.name = name;
+    this.email = email;
+    this.company = company;
+  }
+}
+
+const functionsPerson = {
+  showInfo() {
+    console.log(`"Name: ${this.name}, Email: ${this.email}"`);
+  },
+  showName() {
+    console.log(`Name: ${this.name}`);
+  },
+};
+
+Object.assign(PersonMix.prototype, functionsPerson);
+Object.assign(ClientMix.prototype, functionsPerson);
+
+const p1 = new PersonMix("Peter Potter", "peter@email.com");
+console.log(p1);
+p1.showInfo();
+p1.showName();
+
+const p2 = new PersonMix("Wallace Potter", "Wallace@email.com");
+console.log(p2);
+p2.showInfo();
+p2.showName();
