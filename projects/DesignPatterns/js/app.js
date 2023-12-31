@@ -159,3 +159,58 @@ const p2 = new PersonMix("Wallace Potter", "Wallace@email.com");
 console.log(p2);
 p2.showInfo();
 p2.showName();
+
+//namespaces
+console.log("****** namespaces ******");
+
+const restaurantApp = {};
+
+restaurantApp.food = [
+  {
+    food: "Pizza",
+    price: 10,
+  },
+  {
+    food: "Burger",
+    price: 10,
+  },
+  {
+    food: "Beef steak",
+    price: 20,
+  },
+];
+
+restaurantApp.functions = {
+  showMenu: (food) => {
+    console.log("Restaurant Menu");
+
+    food.forEach((food, index) => {
+      console.log(`${index}: ${food.food} : ${food.price}`);
+    });
+  },
+
+  order: (id) => {
+    console.log(`Preparing: ${restaurantApp.food[id].food}`);
+  },
+
+  addFood: (food, price) => {
+    const newFood = {
+      food,
+      price,
+    };
+
+    restaurantApp.food.push(newFood);
+  },
+};
+
+const { food } = restaurantApp;
+
+restaurantApp.functions.showMenu(food);
+
+restaurantApp.functions.order(1);
+
+restaurantApp.functions.addFood("Chicken Pasta", 15);
+
+restaurantApp.functions.showMenu(food);
+
+console.log(restaurantApp);
