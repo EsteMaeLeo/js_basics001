@@ -214,3 +214,44 @@ restaurantApp.functions.addFood("Chicken Pasta", 15);
 restaurantApp.functions.showMenu(food);
 
 console.log(restaurantApp);
+
+//mediator
+console.log("****** MEDIATOR ******");
+
+function Seller(name) {
+  this.name = name;
+  this.room = null;
+}
+
+Seller.prototype = {
+  offer: (article, price) => {
+    console.log(`Article: ${article} with price: ${price}`);
+  },
+  sold: (buyer) => {
+    console.log(`Sold to ${buyer}`);
+  },
+};
+
+function Buyer(name) {
+  this.name = name;
+  this.room = null;
+}
+
+Buyer.prototype = {
+  offer:(quantity, buyer)=>{
+    console.log(`${buyer.name} : ${quantity}`)
+  }
+}
+
+function Auction() {}
+
+const john = new Buyer("John");
+const petter = new Buyer("Petter");
+const seller = new Seller("Car Seller");
+const auction = new Auction();
+
+seller.offer("Ford", 2500);
+
+john.offer(300, john)
+
+seller.sold("Petter");
