@@ -238,20 +238,32 @@ function Buyer(name) {
 }
 
 Buyer.prototype = {
-  offer:(quantity, buyer)=>{
-    console.log(`${buyer.name} : ${quantity}`)
-  }
+  offer: (quantity, buyer) => {
+    console.log(`${buyer.name} : ${quantity}`);
+  },
+};
+
+function Auction() {
+  let buyers = {};
+
+  return {
+    register: (user) => {
+      buyers[user.name] = user;
+    },
+  };
 }
 
-function Auction() {}
-
 const john = new Buyer("John");
+const pedro = new Buyer("pedro");
 const petter = new Buyer("Petter");
 const seller = new Seller("Car Seller");
 const auction = new Auction();
 
 seller.offer("Ford", 2500);
 
-john.offer(300, john)
+john.offer(300, john);
+petter.offer(400, john);
+john.offer(500, john);
+petter.offer(600, john);
 
-seller.sold("Petter");
+seller.sold("William");
