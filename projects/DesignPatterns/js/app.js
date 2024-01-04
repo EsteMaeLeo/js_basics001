@@ -239,7 +239,7 @@ function Buyer(name) {
 
 Buyer.prototype = {
   offer: (quantity, buyer) => {
-    console.log(`${buyer.name} : ${quantity}`);
+    console.log(`${buyer.name} : ${quantity} ${buyer.room}`);
   },
 };
 
