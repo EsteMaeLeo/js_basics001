@@ -249,6 +249,7 @@ function Auction() {
   return {
     register: (user) => {
       buyers[user.name] = user;
+      user.room = this;
     },
   };
 }
@@ -258,6 +259,11 @@ const pedro = new Buyer("pedro");
 const petter = new Buyer("Petter");
 const seller = new Seller("Car Seller");
 const auction = new Auction();
+
+//register
+auction.register(john);
+auction.register(petter);
+auction.register(seller);
 
 seller.offer("Ford", 2500);
 
