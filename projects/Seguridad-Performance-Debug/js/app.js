@@ -115,6 +115,8 @@ function mostrarAlerta(mensaje) {
 function consultarAPI() {
   const { moneda, criptomoneda } = objBusqueda;
 
+  const ini = performance.now();
+
   const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
 
   mostrarSpinner();
@@ -124,6 +126,10 @@ function consultarAPI() {
     .then((cotizacion) => {
       mostrarCotizacionHTML(cotizacion.DISPLAY[criptomoneda][moneda]);
     });
+
+  const ending = performance.now();
+  console.log("Performance API");
+  console.log(ending - ini);
 }
 
 function mostrarCotizacionHTML(cotizacion) {
