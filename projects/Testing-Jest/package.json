@@ -1,0 +1,14 @@
+{
+  "name": "testing-jest",
+  "version": "1.0.0",
+  "description": "Testing JEST",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "LMJ",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
