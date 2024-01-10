@@ -6,8 +6,30 @@ Citas {
     {
       "fecha": "10-10-2024",
       "hora": "11:20",
-      "id": 1704714408280,
+      "id": 1704861142679,
       "mascota": "Doggy",
+      "propietario": "John",
+      "sintomas": "sick",
+      "telefono": "65588771122",
+    },
+  ],
+}
+`;
+
+exports[`Test Citas Class Delete new Cita 1`] = `
+Citas {
+  "citas": [],
+}
+`;
+
+exports[`Test Citas Class Update new Cita 1`] = `
+Citas {
+  "citas": [
+    {
+      "fecha": "10-10-2024",
+      "hora": "11:20",
+      "id": 1704861142679,
+      "mascota": "Charlie",
       "propietario": "John",
       "sintomas": "sick",
       "telefono": "65588771122",

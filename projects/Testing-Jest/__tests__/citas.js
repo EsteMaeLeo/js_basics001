@@ -7,6 +7,7 @@ describe("Test Citas Class", () => {
 
   test("Add new Cita", () => {
     const citaObj = {
+      id,
       mascota: "Doggy",
       propietario: "John",
       telefono: "65588771122",
@@ -34,6 +35,14 @@ describe("Test Citas Class", () => {
     };
 
     cita.editarCita(citaUpdate);
+
+    //test
+    expect(cita).toMatchSnapshot();
+  });
+
+  test("Delete new Cita", () => {
+
+    cita.eliminarCita(id);
 
     //test
     expect(cita).toMatchSnapshot();
