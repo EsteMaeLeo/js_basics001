@@ -11,5 +11,10 @@ describe("validate form", () => {
 
       cy.get('[data-cy="alert-cy"]')
       .should("have.class", "alert-danger");
-  });
+ 
+       //verify text of citas data-cy="citas-heading"
+       cy.get('[data-cy="citas-heading"]')
+       .invoke("text")
+       .should("equal", "No hay Citas, comienza creando una");
+    });
 });

@@ -10,5 +10,17 @@ describe("validate form", () => {
     cy.get('[data-cy="input-hour"]').type("12:15");
     cy.get('[data-cy="input-symptoms"]').type("Very sick and sad");
     cy.get('[data-cy="submit-cy"]').click();
+
+    //verify text of citas data-cy="citas-heading"
+    cy.get('[data-cy="citas-heading"]')
+      .invoke("text")
+      .should("equal", "Administra tus Citas");
+
+    //select alert
+    cy.get('[data-cy="alert-cy"]')
+      .invoke("text")
+      .should("equal", "Se agregó correctamente");
+
+    cy.get('[data-cy="alert-cy"]').should("have.class", "alert-success");
   });
 });
