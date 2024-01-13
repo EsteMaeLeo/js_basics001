@@ -9,5 +9,6 @@ describe("validate form", () => {
     cy.get('[data-cy="input-date"]').type("2024-01-22");
     cy.get('[data-cy="input-hour"]').type("12:15");
     cy.get('[data-cy="input-symptoms"]').type("Very sick and sad");
+    cy.get('[data-cy="submit-cy"]').click();
   });
 });
