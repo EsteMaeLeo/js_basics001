@@ -1,4 +1,4 @@
-describe("validate form create new appoitment", () => {
+describe("edit new appoitment", () => {
   it("Fields for new appoitment", () => {
     //using baseUrl
     cy.visit("/index.html");
@@ -20,6 +20,19 @@ describe("validate form create new appoitment", () => {
     cy.get('[data-cy="alert-cy"]')
       .invoke("text")
       .should("equal", "Se agregó correctamente");
+
+    cy.get('[data-cy="alert-cy"]').should("have.class", "alert-success");
+  });
+
+  it("Edit appoitment", () => {
+    cy.get('[data-cy="btn-edit"]').click();
+    cy.get('[data-cy="input-pet"]').clear().type("New Dogger");
+
+    cy.get('[data-cy="submit-cy"]').click();
+
+    cy.get('[data-cy="alert-cy"]')
+      .invoke("text")
+      .should("equal", "Guardado Correctamente");
 
     cy.get('[data-cy="alert-cy"]').should("have.class", "alert-success");
   });
