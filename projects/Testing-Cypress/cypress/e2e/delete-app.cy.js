@@ -43,7 +43,7 @@ describe("edit new appoitment", () => {
         cy.get('[data-cy="citas-heading"]')
         .invoke("text")
         .should("equal", "No hay Citas, comienza creando una");
-  
+                                                                                                                                                 
       });
   });
   
