@@ -7,7 +7,10 @@ const app = express();
 const port = process.env.PORT || 5001;
 
 //enable pub
-app.set('view engine', 'pug')
+app.set("view engine", "pug");
+
+//define public folder
+app.use(express.static("public"));
 
 //adding routes
 app.use("/", router);
