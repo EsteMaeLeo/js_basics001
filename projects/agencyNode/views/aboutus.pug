@@ -3,4 +3,30 @@ extends ./layout/index
 block content
     main.container.mt-5 
         .row
-            h1= page
+            .col-md-5
+                img(src="img/nosotros.jpg", alt="image about us", class="img-fluid")
+            .col-md-7
+                h1 #{page}
+                blockquote Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet dictum nibh. Nullam maximus quam vitae libero congue faucibus. Vestibulum in tempus nunc. Aenean sed mattis quam. Curabitur et libero euismod, maximus mi ut, congue enim. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin porttitor ac turpis et pulvinar. Ut malesuada fringilla tortor quis volutpat. Aenean suscipit magna urna, at porta urna hendrerit et. .
+
+                p Cras semper finibus semper. Mauris a auctor lectus. Nullam hendrerit eros augue, gravida aliquet nibh eleifend sit amet. Aenean dapibus nec tellus sit amet dapibus. Pellentesque auctor et nulla vitae blandit. Curabitur rutrum tortor feugiat purus pellentesque tristique. Suspendisse non magna ut quam euismod finibus id sed nunc.
+
+                p Aenean venenatis lorem quis sodales tincidunt. Nunc eros nisi, interdum sed nunc non, placerat posuere metus. Fusce pellentesque, ligula ut placerat vulputate, risus enim fermentum enim, et gravida sapien dui vulputate nisl. Pellentesque eu dolor rhoncus, lobortis purus non, ultrices libero. Fusce sagittis luctus gravida. Curabitur elementum dui convallis dignissim bibendum. Duis consequat ex nec cursus pharetra. Sed a est et ex ullamcorper scelerisque. Sed non libero in enim dictum finibus.
+
+    .listado-iconos
+        .container.mt-5.py-5.text-cemter
+            .row
+                .col-md-4
+                    img(src="img/icono_seguridad.svg", alt="security icon", class="img-fluid mb-4")
+                    h2.mb-4 Security
+                    p Duis consequat ex nec cursus pharetra. Sed a est et ex ullamcorper scelerisque. Sed non libero in enim dictum finibus.
+
+                .col-md-4
+                    img(src="img/icono_destinos.svg", alt="destination icon", class="img-fluid mb-4")
+                    h2.mb-4 Best Destinations
+                    p Duis consequat ex nec cursus pharetra. Sed a est et ex ullamcorper scelerisque. Sed non libero in enim dictum finibus.     
+
+                .col-md-4
+                    img(src="img/icono_precios.svg", alt="security icon", class="img-fluid mb-4")
+                    h2.mb-4 Best Prices
+                    p Duis consequat ex nec cursus pharetra. Sed a est et ex ullamcorper scelerisque. Sed non libero in enim dictum finibus.                
