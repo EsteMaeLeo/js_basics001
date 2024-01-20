@@ -13,7 +13,7 @@ app.set("view engine", "pug");
 app.use((req, res, next) => {
   const actualYear = new Date();
   res.locals.actualYear = actualYear.getFullYear();
-  console.log(res.locals);
+  res.locals.nameSite = "Travel Agency"
   return next();
 });
 
