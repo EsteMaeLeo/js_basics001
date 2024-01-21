@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 });
 
 //define public folder
-app.use(express.static("public"));
+//app.use(express.static("public"));
 
 //adding routes
 app.use("/", router);
