@@ -26,10 +26,10 @@ app.use(function (req, res, next) {
   var actualYear = new Date();
   res.locals.actualYear = actualYear.getFullYear();
   res.locals.nameSite = "Travel Agency";
-  return next();
+  next();
 }); //define public folder
-//app.use(express.static("public"));
-//adding routes
+
+app.use(_express["default"]["static"]("public")); //adding routes
 
 app.use("/", _index["default"]);
 app.listen(port, function () {

@@ -20,11 +20,11 @@ app.use((req, res, next) => {
   const actualYear = new Date();
   res.locals.actualYear = actualYear.getFullYear();
   res.locals.nameSite = "Travel Agency";
-  return next();
+  next();
 });
 
 //define public folder
-//app.use(express.static("public"));
+app.use(express.static("public"));
 
 //adding routes
 app.use("/", router);
