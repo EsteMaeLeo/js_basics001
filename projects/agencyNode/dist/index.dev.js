@@ -6,9 +6,18 @@ var _chalk = _interopRequireDefault(require("chalk"));
 
 var _index = _interopRequireDefault(require("./routes/index.js"));
 
+var _db = _interopRequireDefault(require("./config/db.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var app = (0, _express["default"])();
+var app = (0, _express["default"])(); //connecty db
+
+_db["default"].authenticate().then(function () {
+  return console.log(_chalk["default"].bgBlue("DB connected"));
+})["catch"](function (error) {
+  return console.log(_chalk["default"].bgRedBright("Error: ".concat(error)));
+});
+
 var port = process.env.PORT || 5001; //enable pub
 
 app.set("view engine", "pug"); //get year
