@@ -1,16 +1,10 @@
 import express from "express";
+import { pageInit } from "../controllers/pageControler.js";
 
 const router = express.Router();
 
 //res: express response and req is what user sent
-router.get("/", (req, res) => {
-  res.render("home", {
-    page: "Home",
-  });
-  /* res.json({
-          id:"001"
-      })*/
-});
+router.get("/", pageInit);
 
 router.get("/about", (req, res) => {
   const travelGermany = "Travel to Germany";
