@@ -15,21 +15,8 @@ var router = _express["default"].Router(); //res: express response and req is wh
 
 
 router.get("/", _pageControler.pageInit);
-router.get("/about", function (req, res) {
-  var travelGermany = "Travel to Germany";
-  res.render("aboutus", {
-    page: "About"
-  });
-});
-router.get("/travels", function (req, res) {
-  res.render("travels", {
-    page: "Travels"
-  });
-});
-router.get("/reviews", function (req, res) {
-  res.render("reviews", {
-    page: "Reviews"
-  });
-});
+router.get("/about", _pageControler.pageAbout);
+router.get("/travels", _pageControler.pageTravels);
+router.get("/reviews", _pageControler.pageReviews);
 var _default = router;
 exports["default"] = _default;
