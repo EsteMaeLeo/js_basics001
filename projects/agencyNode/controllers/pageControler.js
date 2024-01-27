@@ -1,3 +1,5 @@
+import { Travel } from "../models/Travels.js";
+
 const pageInit = (req, res) => {
   res.render("home", {
     page: "Home",
@@ -11,7 +13,11 @@ const pageAbout = (req, res) => {
   });
 };
 
-const pageTravels = (req, res) => {
+const pageTravels = async (req, res) => {
+  //get data DB
+  const travel = await Travel.findAll();
+
+  console.log(travel);
   res.render("travels", {
     page: "Travels",
   });

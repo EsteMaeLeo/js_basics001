@@ -9,9 +9,13 @@ var _sequelize = require("sequelize");
 
 var _db = _interopRequireDefault(require("../config/db.js"));
 
+var _dotenv = _interopRequireDefault(require("dotenv"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var Travel = _db["default"].define("travel_agency_v1", {
+_dotenv["default"].config();
+
+var Travel = _db["default"].define(process.env.DB_TABLE, {
   titulo: {
     type: _sequelize.Sequelize.STRING
   },
@@ -24,13 +28,13 @@ var Travel = _db["default"].define("travel_agency_v1", {
   fecha_vuelta: {
     type: _sequelize.Sequelize.DATE
   },
-  image: {
+  imagen: {
     type: _sequelize.Sequelize.STRING
   },
   descripcion: {
     type: _sequelize.Sequelize.STRING
   },
-  disponible: {
+  disponibles: {
     type: _sequelize.Sequelize.STRING
   },
   slug: {

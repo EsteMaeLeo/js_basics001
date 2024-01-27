@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.pageReviews = exports.pageTravels = exports.pageAbout = exports.pageInit = void 0;
 
+var _Travels = require("../models/Travels.js");
+
 var pageInit = function pageInit(req, res) {
   res.render("home", {
     page: "Home"
@@ -23,8 +25,26 @@ var pageAbout = function pageAbout(req, res) {
 exports.pageAbout = pageAbout;
 
 var pageTravels = function pageTravels(req, res) {
-  res.render("travels", {
-    page: "Travels"
+  var travel;
+  return regeneratorRuntime.async(function pageTravels$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          _context.next = 2;
+          return regeneratorRuntime.awrap(_Travels.Travel.findAll());
+
+        case 2:
+          travel = _context.sent;
+          console.log(travel);
+          res.render("travels", {
+            page: "Travels"
+          });
+
+        case 5:
+        case "end":
+          return _context.stop();
+      }
+    }
   });
 };
 

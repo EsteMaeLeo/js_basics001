@@ -1,7 +1,10 @@
 import { Sequelize } from "sequelize";
 import db from "../config/db.js";
+import dotenv from "dotenv";
 
-export const Travel = db.define("travel_agency_v1", {
+dotenv.config();
+
+export const Travel = db.define(process.env.DB_TABLE, {
   titulo: {
     type: Sequelize.STRING,
   },
@@ -14,13 +17,13 @@ export const Travel = db.define("travel_agency_v1", {
   fecha_vuelta: {
     type: Sequelize.DATE,
   },
-  image: {
+  imagen: {
     type: Sequelize.STRING,
   },
   descripcion: {
     type: Sequelize.STRING,
   },
-  disponible: {
+  disponibles: {
     type: Sequelize.STRING,
   },
   slug: {

@@ -17,6 +17,9 @@ var db = new _sequelize.Sequelize(process.env.DB_NAME, process.env.DB_USER, proc
   host: "127.0.0.1",
   port: "3306",
   dialect: "mysql",
+  define: {
+    timestamps: false
+  },
   pool: {
     max: 5,
     min: 0,
