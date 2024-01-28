@@ -37,7 +37,8 @@ var pageTravels = function pageTravels(req, res) {
           travel = _context.sent;
           console.log(travel);
           res.render("travels", {
-            page: "Travels"
+            page: "Travels",
+            travel: travel
           });
 
         case 5:

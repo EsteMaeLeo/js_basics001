@@ -20,6 +20,7 @@ const pageTravels = async (req, res) => {
   console.log(travel);
   res.render("travels", {
     page: "Travels",
+    travel
   });
 };
 
