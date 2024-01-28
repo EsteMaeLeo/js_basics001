@@ -6,5 +6,9 @@ block content
     main.container.mt-5 
         .row.proximos-viajes
         
-        each travels in travel
-            h2= travels.titulo
+            each travels in travel
+                .col-md-6.col-lg-4.mb-4 
+                    .card
+                        img.card-img-top(src=`img/destinos_${travels.imagen}.jpg`) 
+                    .card-body
+                        h2= travels.titulo
