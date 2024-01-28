@@ -1,7 +1,10 @@
 extends ./layout/index
 
 block content
+   
+    h1 #{page}
     main.container.mt-5 
-        .row
-            h1= page
-        p= JSON.stringify(travel)
+        .row.proximos-viajes
+        
+        each travels in travel
+            h2= travels.titulo
