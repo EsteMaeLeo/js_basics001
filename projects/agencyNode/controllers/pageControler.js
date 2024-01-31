@@ -32,12 +32,12 @@ const pageReviews = (req, res) => {
 
 //show page by slug
 const pageDetailTravel = async (req, res) => {
-  const { travel } = req.params;
+  const { slug } = req.params;
   try {
-    const result = await Travel.findOne({ where: { slug: travel } });
+    const travels = await Travel.findOne({ where: { slug: slug } });
     res.render("travel", {
       page: "Travel Information",
-      result,
+      travels,
     });
   } catch (erro) {
     console.log(error);

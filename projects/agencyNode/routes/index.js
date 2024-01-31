@@ -15,7 +15,7 @@ router.get("/", pageInit);
 router.get("/about", pageAbout);
 
 router.get("/travels", pageTravels);
-router.get("/travels/:travel", pageDetailTravel);
+router.get("/travels/:slug", pageDetailTravel);
 
 router.get("/reviews", pageReviews);
 
