@@ -20,7 +20,7 @@ const pageTravels = async (req, res) => {
   console.log(travel);
   res.render("travels", {
     page: "Travels",
-    travel
+    travel,
   });
 };
 
@@ -30,4 +30,18 @@ const pageReviews = (req, res) => {
   });
 };
 
-export { pageInit, pageAbout, pageTravels, pageReviews };
+//show page by slug
+const pageDetailTravel = async (req, res) => {
+  const { travel } = req.params;
+  try {
+    const result = await Travel.findOne({ where: { slug: travel } });
+    res.render("travel", {
+      page: "Travel Information",
+      result,
+    });
+  } catch (erro) {
+    console.log(error);
+  }
+};
+
+export { pageInit, pageAbout, pageTravels, pageReviews, pageDetailTravel };

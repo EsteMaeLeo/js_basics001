@@ -4,6 +4,7 @@ import {
   pageAbout,
   pageTravels,
   pageReviews,
+  pageDetailTravel,
 } from "../controllers/pageControler.js";
 
 const router = express.Router();
@@ -14,6 +15,7 @@ router.get("/", pageInit);
 router.get("/about", pageAbout);
 
 router.get("/travels", pageTravels);
+router.get("/travels/:travel", pageDetailTravel);
 
 router.get("/reviews", pageReviews);
 

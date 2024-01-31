@@ -17,6 +17,7 @@ var router = _express["default"].Router(); //res: express response and req is wh
 router.get("/", _pageControler.pageInit);
 router.get("/about", _pageControler.pageAbout);
 router.get("/travels", _pageControler.pageTravels);
+router.get("/travels/:travel", _pageControler.pageDetailTravel);
 router.get("/reviews", _pageControler.pageReviews);
 var _default = router;
 exports["default"] = _default;

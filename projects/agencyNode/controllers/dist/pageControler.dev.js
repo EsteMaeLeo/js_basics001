@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.pageReviews = exports.pageTravels = exports.pageAbout = exports.pageInit = void 0;
+exports.pageDetailTravel = exports.pageReviews = exports.pageTravels = exports.pageAbout = exports.pageInit = void 0;
 
 var _Travels = require("../models/Travels.js");
 
@@ -55,6 +55,46 @@ var pageReviews = function pageReviews(req, res) {
   res.render("reviews", {
     page: "Reviews"
   });
-};
+}; //show page by slug
+
 
 exports.pageReviews = pageReviews;
+
+var pageDetailTravel = function pageDetailTravel(req, res) {
+  var travel, result;
+  return regeneratorRuntime.async(function pageDetailTravel$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          travel = req.params.travel;
+          _context2.prev = 1;
+          _context2.next = 4;
+          return regeneratorRuntime.awrap(_Travels.Travel.findOne({
+            where: {
+              slug: travel
+            }
+          }));
+
+        case 4:
+          result = _context2.sent;
+          res.render("travel", {
+            page: "Travel Information",
+            result: result
+          });
+          _context2.next = 11;
+          break;
+
+        case 8:
+          _context2.prev = 8;
+          _context2.t0 = _context2["catch"](1);
+          console.log(error);
+
+        case 11:
+        case "end":
+          return _context2.stop();
+      }
+    }
+  }, null, null, [[1, 8]]);
+};
+
+exports.pageDetailTravel = pageDetailTravel;
