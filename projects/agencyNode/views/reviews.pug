@@ -2,5 +2,13 @@ extends ./layout/index
 
 block content
     main.container.mt-5 
-        .row
-            h1= page
+        h1.text-center.mt-5 #{page}
+        .row 
+
+        h2.d-blockw-100.text-center Add Rewiew 
+
+        .row-justify-concent-center
+            .col-md-8
+                form(action="" method="POST")
+                    .form-group 
+                        label(for="name") Name
