@@ -27,7 +27,11 @@ app.use(function (req, res, next) {
   res.locals.actualYear = actualYear.getFullYear();
   res.locals.nameSite = "Travel Agency";
   next();
-}); //define public folder
+}); //add body parser
+
+app.use(_express["default"].urlencoded({
+  extended: true
+})); //define public folder
 
 app.use(_express["default"]["static"]("public")); //adding routes
 

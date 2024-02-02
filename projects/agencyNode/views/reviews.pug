@@ -7,9 +7,17 @@ block content
 
         h2.d-blockw-100.text-center Add Rewiew 
 
-        .row-justify-concent-center
+        .row-justify-concent-center.col
             .col-md-8
-                form(action="" method="POST")
+                form(action="/reviews" method="POST")
                     .form-group 
                         label(for="name") Name
                         input#name(type="text" placeholder="Your name" name="name" class="form-control")
+                    .form-group 
+                        label(for="email") Email
+                        input#email(type="text" placeholder="Your email" name="email" class="form-control")
+                    .form-group 
+                        label(for="message") Message
+                        textarea#message(class="form-control" name="message" placeholder="Your message" rows=3)     
+
+                    input.btn.btn-success.btn-block(type="submit")                   

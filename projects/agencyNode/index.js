@@ -9,7 +9,7 @@ const app = express();
 db.authenticate()
   .then(() => console.log(chalk.bgBlue("DB connected")))
   .catch((error) => console.log(chalk.bgRedBright(`Error: ${error}`)));
-  
+
 const port = process.env.PORT || 5001;
 
 //enable pub
@@ -22,6 +22,9 @@ app.use((req, res, next) => {
   res.locals.nameSite = "Travel Agency";
   next();
 });
+
+//add body parser
+app.use(express.urlencoded({ extended: true }));
 
 //define public folder
 app.use(express.static("public"));
