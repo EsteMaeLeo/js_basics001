@@ -7,6 +7,10 @@ block content
 
         h2.d-blockw-100.text-center Add Rewiew 
 
+        if (errorLog)
+            each log in errorLog
+                .alert.col.alert-danger.text-center= log.message
+
         .row-justify-concent-center.col
             .col-md-8
                 form(action="/reviews" method="POST")

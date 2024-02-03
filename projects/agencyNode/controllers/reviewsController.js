@@ -12,7 +12,12 @@ const saveReviews = (req, res) => {
   if (message.trim() === "") {
     errorLog.push({ message: "message is empty" });
   }
-  console.log(errorLog);
+  if(errorLog.length > 0){
+    res.render('reviews',{
+      page: 'Reviews',
+      errorLog
+    })
+  }
 };
 
 export { saveReviews };
