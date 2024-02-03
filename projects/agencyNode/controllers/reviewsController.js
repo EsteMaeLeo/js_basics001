@@ -15,7 +15,10 @@ const saveReviews = (req, res) => {
   if(errorLog.length > 0){
     res.render('reviews',{
       page: 'Reviews',
-      errorLog
+      errorLog,
+      name,
+      email,
+      message
     })
   }
 };

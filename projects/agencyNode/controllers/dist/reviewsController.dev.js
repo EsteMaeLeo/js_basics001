@@ -34,7 +34,10 @@ var saveReviews = function saveReviews(req, res) {
   if (errorLog.length > 0) {
     res.render('reviews', {
       page: 'Reviews',
-      errorLog: errorLog
+      errorLog: errorLog,
+      name: name,
+      email: email,
+      message: message
     });
   }
 };
