@@ -39,7 +39,7 @@ var saveReviews = function saveReviews(req, res) {
       email: email,
       message: message
     });
-  }
+  } else {}
 };
 
 exports.saveReviews = saveReviews;
