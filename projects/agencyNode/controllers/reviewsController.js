@@ -1,4 +1,6 @@
-const saveReviews = (req, res) => {
+import { reviews } from "../models/reviews.js";
+
+const saveReviews = async (req, res) => {
   //validate
   const { name, email, message } = req.body;
 
@@ -12,16 +14,24 @@ const saveReviews = (req, res) => {
   if (message.trim() === "") {
     errorLog.push({ message: "message is empty" });
   }
-  if(errorLog.length > 0){
-    res.render('reviews',{
-      page: 'Reviews',
+  if (errorLog.length > 0) {
+    res.render("reviews", {
+      page: "Reviews",
       errorLog,
       name,
       email,
-      message
-    })
-  }else{
-    
+      message,
+    });
+  } else {
+    try {
+      await reviews.create({
+        name,
+        email,
+        message,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 
