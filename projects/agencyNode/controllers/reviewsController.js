@@ -15,12 +15,15 @@ const saveReviews = async (req, res) => {
     errorLog.push({ message: "message is empty" });
   }
   if (errorLog.length > 0) {
+    const reviews = await reviews.findAll();
+
     res.render("reviews", {
       page: "Reviews",
       errorLog,
       name,
       email,
       message,
+      reviews
     });
   } else {
     try {
