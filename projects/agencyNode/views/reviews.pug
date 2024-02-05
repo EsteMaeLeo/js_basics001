@@ -3,7 +3,17 @@ extends ./layout/index
 block content
     main.container.mt-5 
         h1.text-center.mt-5 #{page}
-        p= JSON.stringify(revPage)
+        blockquote.text-center Client Reviews
+        .row.testimoniales 
+            each review in revPage
+                .col-md-6.col-lg-4.mb-4
+                    .card
+                        .card-body
+                            blockquote.blockquote
+                            p.mb-0
+                                | #{review.message}
+                            footer.blockquote-footer
+                                | #{review.name}
         .row 
 
         h2.d-blockw-100.text-center Add Rewiew 
