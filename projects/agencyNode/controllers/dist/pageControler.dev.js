@@ -7,6 +7,8 @@ exports.pageDetailTravel = exports.pageReviews = exports.pageTravels = exports.p
 
 var _Travels = require("../models/Travels.js");
 
+var _reviews = require("../models/reviews.js");
+
 var pageInit = function pageInit(req, res) {
   res.render("home", {
     page: "Home"
@@ -52,9 +54,35 @@ var pageTravels = function pageTravels(req, res) {
 exports.pageTravels = pageTravels;
 
 var pageReviews = function pageReviews(req, res) {
-  res.render("reviews", {
-    page: "Reviews"
-  });
+  var revPage;
+  return regeneratorRuntime.async(function pageReviews$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          _context2.prev = 0;
+          _context2.next = 3;
+          return regeneratorRuntime.awrap(_reviews.reviews.findAll());
+
+        case 3:
+          revPage = _context2.sent;
+          res.render("reviews", {
+            page: "Reviews",
+            revPage: revPage
+          });
+          _context2.next = 10;
+          break;
+
+        case 7:
+          _context2.prev = 7;
+          _context2.t0 = _context2["catch"](0);
+          console.log(_context2.t0);
+
+        case 10:
+        case "end":
+          return _context2.stop();
+      }
+    }
+  }, null, null, [[0, 7]]);
 }; //show page by slug
 
 
@@ -62,13 +90,13 @@ exports.pageReviews = pageReviews;
 
 var pageDetailTravel = function pageDetailTravel(req, res) {
   var slug, travels;
-  return regeneratorRuntime.async(function pageDetailTravel$(_context2) {
+  return regeneratorRuntime.async(function pageDetailTravel$(_context3) {
     while (1) {
-      switch (_context2.prev = _context2.next) {
+      switch (_context3.prev = _context3.next) {
         case 0:
           slug = req.params.slug;
-          _context2.prev = 1;
-          _context2.next = 4;
+          _context3.prev = 1;
+          _context3.next = 4;
           return regeneratorRuntime.awrap(_Travels.Travel.findOne({
             where: {
               slug: slug
@@ -76,22 +104,22 @@ var pageDetailTravel = function pageDetailTravel(req, res) {
           }));
 
         case 4:
-          travels = _context2.sent;
+          travels = _context3.sent;
           res.render("travel", {
             page: "Travel Information",
             travels: travels
           });
-          _context2.next = 11;
+          _context3.next = 11;
           break;
 
         case 8:
-          _context2.prev = 8;
-          _context2.t0 = _context2["catch"](1);
+          _context3.prev = 8;
+          _context3.t0 = _context3["catch"](1);
           console.log(error);
 
         case 11:
         case "end":
-          return _context2.stop();
+          return _context3.stop();
       }
     }
   }, null, null, [[1, 8]]);

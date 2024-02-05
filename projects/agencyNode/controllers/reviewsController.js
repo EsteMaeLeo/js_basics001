@@ -29,6 +29,7 @@ const saveReviews = async (req, res) => {
         email,
         message,
       });
+      res.redirect("/reviews");
     } catch (error) {
       console.log(error);
     }

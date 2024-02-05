@@ -1,4 +1,5 @@
 import { Travel } from "../models/Travels.js";
+import { reviews } from "../models/reviews.js";
 
 const pageInit = (req, res) => {
   res.render("home", {
@@ -24,10 +25,16 @@ const pageTravels = async (req, res) => {
   });
 };
 
-const pageReviews = (req, res) => {
-  res.render("reviews", {
-    page: "Reviews",
-  });
+const pageReviews = async (req, res) => {
+  try {
+    const revPage = await reviews.findAll();
+    res.render("reviews", {
+      page: "Reviews",
+      revPage
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 //show page by slug

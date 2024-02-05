@@ -48,7 +48,7 @@ var saveReviews = function saveReviews(req, res) {
             email: email,
             message: message
           });
-          _context.next = 17;
+          _context.next = 18;
           break;
 
         case 9:
@@ -61,20 +61,21 @@ var saveReviews = function saveReviews(req, res) {
           }));
 
         case 12:
-          _context.next = 17;
+          res.redirect("/reviews");
+          _context.next = 18;
           break;
 
-        case 14:
-          _context.prev = 14;
+        case 15:
+          _context.prev = 15;
           _context.t0 = _context["catch"](9);
           console.log(_context.t0);
 
-        case 17:
+        case 18:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[9, 14]]);
+  }, null, null, [[9, 15]]);
 };
 
 exports.saveReviews = saveReviews;
