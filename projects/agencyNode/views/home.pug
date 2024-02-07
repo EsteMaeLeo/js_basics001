@@ -1,8 +1,16 @@
 extends ./layout/index
 
-block slider 
+block slider
+    .slider
+        h1 Rio Janerio
+        em aventura
 
 block content
     main.container.mt-5 
-        .row
-            h1= page
+        h2.text-center.mb-5 About Us
+        .row.mb-5
+            .col-md-6
+                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae massa nisi. Quisque volutpat porta libero in efficitur. Morbi lacinia facilisis erat nec egestas. 
+                p In hac habitasse platea dictumst. Nunc viverra bibendum congue. Praesent luctus tempor porta. Vestibulum pretium mi eu porttitor varius. Nullam blandit, nunc porta tristique auctor.
+            .col-md-6
+                img(src="/img/inicio_nosotros.jpg" alt="about us" class='img-fluid')

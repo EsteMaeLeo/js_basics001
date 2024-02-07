@@ -11,7 +11,8 @@ var _reviews = require("../models/reviews.js");
 
 var pageInit = function pageInit(req, res) {
   res.render("home", {
-    page: "Home"
+    page: "Home",
+    clase: 'home'
   });
 };
 

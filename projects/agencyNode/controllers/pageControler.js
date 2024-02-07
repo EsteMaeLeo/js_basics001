@@ -4,6 +4,7 @@ import { reviews } from "../models/reviews.js";
 const pageInit = (req, res) => {
   res.render("home", {
     page: "Home",
+    clase: 'home'
   });
 };
 
