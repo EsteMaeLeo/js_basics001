@@ -1,11 +1,19 @@
 import { Travel } from "../models/Travels.js";
 import { reviews } from "../models/reviews.js";
 
-const pageInit = (req, res) => {
-  res.render("home", {
-    page: "Home",
-    clase: 'home'
-  });
+const pageInit = async (req, res) => {
+  //get 3 travels from model
+  try {
+    const travel = await Travel.findAll({ limit: 3 });
+
+    res.render("home", {
+      page: "Home",
+      clase: "home",
+      travel
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const pageAbout = (req, res) => {
@@ -31,7 +39,7 @@ const pageReviews = async (req, res) => {
     const revPage = await reviews.findAll();
     res.render("reviews", {
       page: "Reviews",
-      revPage
+      revPage,
     });
   } catch (error) {
     console.log(error);

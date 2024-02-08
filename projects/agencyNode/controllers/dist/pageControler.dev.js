@@ -10,10 +10,38 @@ var _Travels = require("../models/Travels.js");
 var _reviews = require("../models/reviews.js");
 
 var pageInit = function pageInit(req, res) {
-  res.render("home", {
-    page: "Home",
-    clase: 'home'
-  });
+  var travel;
+  return regeneratorRuntime.async(function pageInit$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          _context.prev = 0;
+          _context.next = 3;
+          return regeneratorRuntime.awrap(_Travels.Travel.findAll({
+            limit: 3
+          }));
+
+        case 3:
+          travel = _context.sent;
+          res.render("home", {
+            page: "Home",
+            clase: "home",
+            travel: travel
+          });
+          _context.next = 10;
+          break;
+
+        case 7:
+          _context.prev = 7;
+          _context.t0 = _context["catch"](0);
+          console.log(_context.t0);
+
+        case 10:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, null, null, [[0, 7]]);
 };
 
 exports.pageInit = pageInit;
@@ -29,15 +57,15 @@ exports.pageAbout = pageAbout;
 
 var pageTravels = function pageTravels(req, res) {
   var travel;
-  return regeneratorRuntime.async(function pageTravels$(_context) {
+  return regeneratorRuntime.async(function pageTravels$(_context2) {
     while (1) {
-      switch (_context.prev = _context.next) {
+      switch (_context2.prev = _context2.next) {
         case 0:
-          _context.next = 2;
+          _context2.next = 2;
           return regeneratorRuntime.awrap(_Travels.Travel.findAll());
 
         case 2:
-          travel = _context.sent;
+          travel = _context2.sent;
           console.log(travel);
           res.render("travels", {
             page: "Travels",
@@ -46,7 +74,7 @@ var pageTravels = function pageTravels(req, res) {
 
         case 5:
         case "end":
-          return _context.stop();
+          return _context2.stop();
       }
     }
   });
@@ -56,31 +84,31 @@ exports.pageTravels = pageTravels;
 
 var pageReviews = function pageReviews(req, res) {
   var revPage;
-  return regeneratorRuntime.async(function pageReviews$(_context2) {
+  return regeneratorRuntime.async(function pageReviews$(_context3) {
     while (1) {
-      switch (_context2.prev = _context2.next) {
+      switch (_context3.prev = _context3.next) {
         case 0:
-          _context2.prev = 0;
-          _context2.next = 3;
+          _context3.prev = 0;
+          _context3.next = 3;
           return regeneratorRuntime.awrap(_reviews.reviews.findAll());
 
         case 3:
-          revPage = _context2.sent;
+          revPage = _context3.sent;
           res.render("reviews", {
             page: "Reviews",
             revPage: revPage
           });
-          _context2.next = 10;
+          _context3.next = 10;
           break;
 
         case 7:
-          _context2.prev = 7;
-          _context2.t0 = _context2["catch"](0);
-          console.log(_context2.t0);
+          _context3.prev = 7;
+          _context3.t0 = _context3["catch"](0);
+          console.log(_context3.t0);
 
         case 10:
         case "end":
-          return _context2.stop();
+          return _context3.stop();
       }
     }
   }, null, null, [[0, 7]]);
@@ -91,13 +119,13 @@ exports.pageReviews = pageReviews;
 
 var pageDetailTravel = function pageDetailTravel(req, res) {
   var slug, travels;
-  return regeneratorRuntime.async(function pageDetailTravel$(_context3) {
+  return regeneratorRuntime.async(function pageDetailTravel$(_context4) {
     while (1) {
-      switch (_context3.prev = _context3.next) {
+      switch (_context4.prev = _context4.next) {
         case 0:
           slug = req.params.slug;
-          _context3.prev = 1;
-          _context3.next = 4;
+          _context4.prev = 1;
+          _context4.next = 4;
           return regeneratorRuntime.awrap(_Travels.Travel.findOne({
             where: {
               slug: slug
@@ -105,22 +133,22 @@ var pageDetailTravel = function pageDetailTravel(req, res) {
           }));
 
         case 4:
-          travels = _context3.sent;
+          travels = _context4.sent;
           res.render("travel", {
             page: "Travel Information",
             travels: travels
           });
-          _context3.next = 11;
+          _context4.next = 11;
           break;
 
         case 8:
-          _context3.prev = 8;
-          _context3.t0 = _context3["catch"](1);
+          _context4.prev = 8;
+          _context4.t0 = _context4["catch"](1);
           console.log(error);
 
         case 11:
         case "end":
-          return _context3.stop();
+          return _context4.stop();
       }
     }
   }, null, null, [[1, 8]]);
