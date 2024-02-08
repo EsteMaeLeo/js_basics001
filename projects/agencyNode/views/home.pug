@@ -14,30 +14,5 @@ block content
                 p In hac habitasse platea dictumst. Nunc viverra bibendum congue. Praesent luctus tempor porta. Vestibulum pretium mi eu porttitor varius. Nullam blandit, nunc porta tristique auctor.
             .col-md-6
                 img(src="/img/inicio_nosotros.jpg" alt="about us" class='img-fluid')
-        .row.proximos-viajes
-            each travels in travel
-                .col-md-6.col-lg-4.mb-4 
-                    .card
-                        img.card-img-top(src=`img/destinos_${travels.imagen}.jpg`) 
-                        .card-body
-                            h2= travels.titulo
-                            P
-                                svg.icon.icon-tabler.icon-tabler-calendar-check(xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewbox='0 0 24 24' stroke-width='1.5' stroke='#00abfb' fill='none' stroke-linecap='round' stroke-linejoin='round')
-                                    path(stroke='none' d='M0 0h24v24H0z' fill='none')
-                                    path(d='M11.5 21h-5.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v6')
-                                    path(d='M16 3v4')
-                                    path(d='M8 3v4')
-                                    path(d='M4 11h16')
-                                    path(d='M15 19l2 2l4 -4')                     
-                                | #{travels.fecha_ida} - #{travels.fecha_vuelta}
-                            p
-                                svg.icon.icon-tabler.icon-tabler-users-plus(xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewbox='0 0 24 24' stroke-width='1.5' stroke='#00abfb' fill='none' stroke-linecap='round' stroke-linejoin='round')
-                                    path(stroke='none' d='M0 0h24v24H0z' fill='none')
-                                    path(d='M5 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0')
-                                    path(d='M3 21v-2a4 4 0 0 1 4 -4h4c.96 0 1.84 .338 2.53 .901')
-                                    path(d='M16 3.13a4 4 0 0 1 0 7.75')
-                                    path(d='M16 19h6')
-                                    path(d='M19 16v6')
-                                |#{travels.disponibles} Available seats
-                            p= travels.descripcion.substr(0, 100) + '...' 
-                            a(href=`travels/${travels.slug}`, class="btn btn-success btn-block") More Information
+
+        include ./layout/blocktravels       
