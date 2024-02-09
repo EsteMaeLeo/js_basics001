@@ -3,15 +3,20 @@ import { reviews } from "../models/reviews.js";
 
 const pageInit = async (req, res) => {
   //get 3 travels from model
+
+  const promiseDB = [];
+  promiseDB.push( Travel.findAll({ limit: 3 }) );
+  promiseDB.push( reviews.findAll({ limit: 3 }) );
   try {
-    const travel = await Travel.findAll({ limit: 3 });
-    const revPage = await reviews.findAll({ limit: 3 });
+    //const travel = await Travel.findAll({ limit: 3 });
+    //const revPage = await reviews.findAll({ limit: 3 });
+    const resultado = await Promise.all(promiseDB);
 
     res.render("home", {
       page: "Home",
       clase: "home",
-      travel,
-      revPage
+      travel: resultado[0],
+      revPage: resultado[1],
     });
   } catch (error) {
     console.log(error);
