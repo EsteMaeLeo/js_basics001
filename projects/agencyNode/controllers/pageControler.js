@@ -5,11 +5,13 @@ const pageInit = async (req, res) => {
   //get 3 travels from model
   try {
     const travel = await Travel.findAll({ limit: 3 });
+    const revPage = await reviews.findAll({ limit: 3 });
 
     res.render("home", {
       page: "Home",
       clase: "home",
-      travel
+      travel,
+      revPage
     });
   } catch (error) {
     console.log(error);

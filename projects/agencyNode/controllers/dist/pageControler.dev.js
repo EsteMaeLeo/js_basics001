@@ -10,7 +10,7 @@ var _Travels = require("../models/Travels.js");
 var _reviews = require("../models/reviews.js");
 
 var pageInit = function pageInit(req, res) {
-  var travel;
+  var travel, revPage;
   return regeneratorRuntime.async(function pageInit$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
@@ -23,25 +23,33 @@ var pageInit = function pageInit(req, res) {
 
         case 3:
           travel = _context.sent;
+          _context.next = 6;
+          return regeneratorRuntime.awrap(_reviews.reviews.findAll({
+            limit: 3
+          }));
+
+        case 6:
+          revPage = _context.sent;
           res.render("home", {
             page: "Home",
             clase: "home",
-            travel: travel
+            travel: travel,
+            revPage: revPage
           });
-          _context.next = 10;
+          _context.next = 13;
           break;
 
-        case 7:
-          _context.prev = 7;
+        case 10:
+          _context.prev = 10;
           _context.t0 = _context["catch"](0);
           console.log(_context.t0);
 
-        case 10:
+        case 13:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 7]]);
+  }, null, null, [[0, 10]]);
 };
 
 exports.pageInit = pageInit;
