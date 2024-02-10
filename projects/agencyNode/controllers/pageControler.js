@@ -1,6 +1,7 @@
 import { Travel } from "../models/Travels.js";
 import { reviews } from "../models/reviews.js";
 
+
 const pageInit = async (req, res) => {
   //get 3 travels from model
 
